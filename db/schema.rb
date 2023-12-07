@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_12_07_063458) do
+ActiveRecord::Schema.define(version: 2023_12_07_063411) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_063458) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.string "email"
     t.string "title"
     t.text "body"
@@ -117,19 +117,12 @@ ActiveRecord::Schema.define(version: 2023_12_07_063458) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "training_part_relationships", force: :cascade do |t|
-    t.integer "training_part_id", null: false
-    t.integer "training_menu_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["training_menu_id"], name: "index_training_part_relationships_on_training_menu_id"
-    t.index ["training_part_id"], name: "index_training_part_relationships_on_training_part_id"
-  end
-
   create_table "training_parts", force: :cascade do |t|
-    t.string "name"
+    t.integer "training_menu_id", null: false
+    t.integer "training_part"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["training_menu_id"], name: "index_training_parts_on_training_menu_id"
   end
 
   create_table "training_sets", force: :cascade do |t|
@@ -181,8 +174,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_063458) do
   add_foreign_key "training_details", "training_menus"
   add_foreign_key "training_details", "training_sets"
   add_foreign_key "training_details", "users"
-  add_foreign_key "training_part_relationships", "training_menus"
-  add_foreign_key "training_part_relationships", "training_parts"
+  add_foreign_key "training_parts", "training_menus"
   add_foreign_key "training_sets", "users"
   add_foreign_key "weights", "users"
 end
