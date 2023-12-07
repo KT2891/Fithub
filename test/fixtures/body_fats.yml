@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  body_fat: 1.5
+  day_or_night: 1
+  date: 2023-12-07
+
+two:
+  user: two
+  body_fat: 1.5
+  day_or_night: 1
+  date: 2023-12-07
