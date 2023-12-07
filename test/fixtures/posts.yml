@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  training_set: one
+  body: MyText
+  show_permission: 1
+  share_permission: false
+
+two:
+  user: two
+  training_set: two
+  body: MyText
+  show_permission: 1
+  share_permission: false
