@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root to: 'homes#top'
-  get '/about', to: "homes#about", as: "about"
 
   #会員用
   devise_for :users,skip: [:passwords], controllers: {
@@ -13,5 +11,9 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+  
+  # top & about
+  root to: "public/homes#top"
+  get "about" => "public/homes#about"
 
 end
