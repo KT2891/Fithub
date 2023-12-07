@@ -25,46 +25,38 @@ ActiveRecord::Schema.define(version: 2023_12_07_063411) do
   end
 
   create_table "body_fats", force: :cascade do |t|
-    t.integer "user_id", limit: 5, null: false
+    t.bigint "user_id"
     t.float "body_fat"
     t.integer "day_or_night"
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_body_fats_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id", limit: 5, null: false
-    t.integer "post_id", limit: 5
-    t.integer "commnet_id", limit: 5
+    t.bigint "user_id"
+    t.bigint "post_id"
+    t.bigint "commnet_id"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["commnet_id"], name: "index_comments_on_commnet_id"
-    t.index ["post_id"], name: "index_comments_on_post_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "post_id", null: false
+    t.bigint "user_id"
+    t.bigint "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_favorites_on_post_id"
-    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.integer "training_set_id"
+    t.bigint "user_id"
+    t.bigint "training_set_id"
     t.text "body"
     t.integer "show_permission", default: 0, null: false
     t.boolean "share_permission", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["training_set_id"], name: "index_posts_on_training_set_id"
-    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -78,35 +70,30 @@ ActiveRecord::Schema.define(version: 2023_12_07_063411) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.integer "user_id", limit: 5
+    t.bigint "user_id"
     t.string "email"
     t.string "title"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "training_counts", force: :cascade do |t|
-    t.integer "training_detail_id", limit: 5, null: false
+    t.bigint "training_detail_id"
     t.float "weight"
     t.integer "count"
     t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["training_detail_id"], name: "index_training_counts_on_training_detail_id"
   end
 
   create_table "training_details", force: :cascade do |t|
-    t.integer "user_id", limit: 5, null: false
-    t.integer "training_menu_id", limit: 5, null: false
-    t.integer "training_set_id", limit: 5, null: false
+    t.bigint "user_id"
+    t.bigint "training_menu_id"
+    t.bigint "training_set_id"
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["training_menu_id"], name: "index_training_details_on_training_menu_id"
-    t.index ["training_set_id"], name: "index_training_details_on_training_set_id"
-    t.index ["user_id"], name: "index_training_details_on_user_id"
   end
 
   create_table "training_menus", force: :cascade do |t|
@@ -118,19 +105,17 @@ ActiveRecord::Schema.define(version: 2023_12_07_063411) do
   end
 
   create_table "training_parts", force: :cascade do |t|
-    t.integer "training_menu_id", limit: 5, null: false
+    t.bigint "training_menu_id"
     t.integer "training_part"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["training_menu_id"], name: "index_training_parts_on_training_menu_id"
   end
 
   create_table "training_sets", force: :cascade do |t|
-    t.integer "user_id", limit: 5, null: false
+    t.bigint "user_id"
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_training_sets_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -152,29 +137,12 @@ ActiveRecord::Schema.define(version: 2023_12_07_063411) do
   end
 
   create_table "weights", force: :cascade do |t|
-    t.integer "user_id", limit: 5, null: false
+    t.bigint "user_id"
     t.float "weight"
     t.integer "day_or_night"
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_weights_on_user_id"
   end
 
-  add_foreign_key "body_fats", "users"
-  add_foreign_key "comments", "commnets"
-  add_foreign_key "comments", "posts"
-  add_foreign_key "comments", "users"
-  add_foreign_key "favorites", "posts"
-  add_foreign_key "favorites", "users"
-  add_foreign_key "posts", "training_sets"
-  add_foreign_key "posts", "users"
-  add_foreign_key "requests", "users"
-  add_foreign_key "training_counts", "training_details"
-  add_foreign_key "training_details", "training_menus"
-  add_foreign_key "training_details", "training_sets"
-  add_foreign_key "training_details", "users"
-  add_foreign_key "training_parts", "training_menus"
-  add_foreign_key "training_sets", "users"
-  add_foreign_key "weights", "users"
 end
