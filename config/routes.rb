@@ -11,9 +11,14 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
+
   # top & about
   root to: "public/homes#top"
   get "about" => "public/homes#about"
+
+  # 会員用画面
+  scope module: :blog do
+    resources :posts, only: %i[index show create destroy]
+  end
 
 end
