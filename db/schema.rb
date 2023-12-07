@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_063411) do
   end
 
   create_table "body_fats", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.integer "user_id", limit: 5, null: false
     t.float "body_fat"
     t.integer "day_or_night"
     t.date "date"
@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 2023_12_07_063411) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "post_id"
-    t.bigint "commnet_id"
+    t.integer "user_id", limit: 5, null: false
+    t.integer "post_id", limit: 5
+    t.integer "commnet_id", limit: 5
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 2023_12_07_063411) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "post_id", null: false
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_favorites_on_post_id"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_063411) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.bigint "user_id"
+    t.integer "user_id", limit: 5
     t.string "email"
     t.string "title"
     t.text "body"
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_063411) do
   end
 
   create_table "training_counts", force: :cascade do |t|
-    t.bigint "training_detail_id", null: false
+    t.integer "training_detail_id", limit: 5, null: false
     t.float "weight"
     t.integer "count"
     t.text "memo"
@@ -98,9 +98,9 @@ ActiveRecord::Schema.define(version: 2023_12_07_063411) do
   end
 
   create_table "training_details", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "training_menu_id", null: false
-    t.bigint "training_set_id", null: false
+    t.integer "user_id", limit: 5, null: false
+    t.integer "training_menu_id", limit: 5, null: false
+    t.integer "training_set_id", limit: 5, null: false
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_063411) do
   end
 
   create_table "training_parts", force: :cascade do |t|
-    t.bigint "training_menu_id", null: false
+    t.integer "training_menu_id", limit: 5, null: false
     t.integer "training_part"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_063411) do
   end
 
   create_table "training_sets", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.integer "user_id", limit: 5, null: false
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -152,7 +152,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_063411) do
   end
 
   create_table "weights", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.integer "user_id", limit: 5, null: false
     t.float "weight"
     t.integer "day_or_night"
     t.date "date"
