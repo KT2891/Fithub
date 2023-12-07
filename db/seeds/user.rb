@@ -32,7 +32,7 @@ module Seeds
           name: Faker::Name.name,
           sex: rand(SEX_RANGE),
           height: [(HEIGHT_RANGE).to_a, nil].flatten.sample,
-          birthday: Faker::Date.between(from: '1970-01-01', to: '2005-12-25'),
+          birthday: Faker::Date.between(from: '1970-01-01', to: '2005-12-25').strftime('%Y-%m-%d'),
           status: rand(USER_STATUS_RANGE),
           share_permission: rand(USER_SHARE_PERMISSION_RANGE)
         )
