@@ -1,24 +1,70 @@
 Rails.application.routes.draw do
 
-  #会員用
-  devise_for :users,skip: [:passwords], controllers: {
+   #会員用
+  devise_for :users,skip: :passwords, controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
 
   # 管理者用
   # URL /admin/sign_in
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  devise_for :admin, skip: %i[registrations passwords] ,controllers: {
     sessions: "admin/sessions"
   }
 
   # top & about
-  root to: "public/homes#top"
+  root "public/homes#top"
   get "about" => "public/homes#about"
 
   # 会員用画面
-  scope module: :blog do
-    resources :posts, only: %i[index show create destroy]
+  scope module: :public do
+    # 会員画面用
+    # showで他人のプロフィール閲覧可能
+    # relathionships: フォロー機能
+    resources :users, only: %i[show] do
+      resource :relationship, only: %i[create destroy]
+      member do
+        get "following" => "relationships#following"
+        get "followers" => "relationships#followers"
+      end
+    end
+    # 会員情報編集用
+    # セキュリティ上、current_userを利用するためIDをつけない
+    # confirm: 退会確認画面
+    resource :user, only: %i[edit update destroy] do
+      get "confirm" => "public/users#confirm"
+    end
+
+    # 投稿用
+    # reply: comment to comment
+    resources :posts, only: %i[index show create destroy] do
+      resources :comments, only: %i[create destroy] do
+        resources :replies, only: %i[create destroy]
+      end
+      resource :favorite, only: %i[create destroy]
+    end
+
+    # トレーニング成果の日単位での表示・削除
+    resources :training_sets, only: %i[index show destroy]
+    # トレーニングメニューごとの追加・編集・削除
+    resources :training_details, only: %i[new create edit update destroy]
+    # 体重・体脂肪率の表示・追加・編集・削除機能
+    resources :body_compositions, only: %i[index create update destroy]
+    # お問い合わせ機能
+    resource :request, only: %i[new create]
+  end
+
+  namespace :admin do
+    # 管理者ログイン後は投稿一覧画面へ移動
+    root "posts#index"
+    # 管理者/投稿の確認と不適切内容の削除
+    resources :posts, only: %i[show destroy]
+    # 管理者/ユーザの確認とステータス等の編集
+    resources :users, only: %i[index show edit update]
+    # トレーニングメニューの追加
+    resources :training_menus, except: :show
+    # お問い合わせの確認、既読への編集
+    resources :requests, only: %i[index update]
   end
 
 end
