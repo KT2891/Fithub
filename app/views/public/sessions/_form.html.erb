@@ -1,0 +1,27 @@
+<div class="modal-body">
+  <div>
+    <h1>Log In</h1>
+    <br>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="wrap">
+        <div class="field">
+          <label for="email">Email</label>
+          <%= f.email_field :email %>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div><br>
+        
+        <div>
+          <%= f.submit "Log in", class: 'btn btn-primary' %>
+        </div>
+
+        <div>
+            <% render "public/shared/links" %>
+        </div>
+
+      </div>
+    <% end %>
+  </div>

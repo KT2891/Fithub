@@ -1,0 +1,17 @@
+// Bootstrap の Sass mixin を使えるようにするための記述
+@use "~bootstrap/scss/bootstrap" as *;
+
+@use "../global/variables" as *;
+
+.top__main{
+  background-image: url($main-background);
+  background-size: cover;
+  background-position: center;
+  height: 832px;
+  width: 100%;
+}
+
+.main__head{
+  margin-top: 500px;
+}
+

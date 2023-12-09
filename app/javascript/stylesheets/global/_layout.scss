@@ -1,0 +1,12 @@
+// Bootstrap の Sass mixin を使えるようにするための記述
+@use "~bootstrap/scss/bootstrap" as *;
+
+@use "../global/variables" as *;
+
+.m-10{
+  margin: 10rem !important;
+}
+
+.mt-10{
+  margin-top: 10rem !important;
+}
