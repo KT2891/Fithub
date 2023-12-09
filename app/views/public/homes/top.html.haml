@@ -1,0 +1,11 @@
+.top__main
+  .container
+    .row.pt-5
+      .main__login.mt-5.col-4.hidden
+        .main__login-form
+          = render "public/sessions/form"
+      .main__head.col-5.offset-7
+        %h3.main__head-title
+          = t("main-head-title")
+        %p.main__head-text
+          = t("main-head-text")

@@ -2,6 +2,9 @@ const { environment } = require('@rails/webpacker')
 
 module.exports = environment
 
+environment.splitChunks()
+
+
 const webpack = require('webpack')
 environment.plugins.prepend(
   'Provide',
