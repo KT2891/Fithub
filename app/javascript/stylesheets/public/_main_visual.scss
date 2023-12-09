@@ -9,9 +9,15 @@
   background-position: center;
   height: 832px;
   width: 100%;
+  .main__head{
+    margin-top: 100px;
+  }
+  .main__login-form{
+    color: white;
+    background-color: #404040;
+    opacity: 0.9;
+    border-radius: 20px;
+  }
 }
 
-.main__head{
-  margin-top: 500px;
-}
 

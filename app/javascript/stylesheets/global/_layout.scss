@@ -10,3 +10,12 @@
 .mt-10{
   margin-top: 10rem !important;
 }
+
+.show{
+  display: block;
+}
+
+.hidden{
+  opacity: 0 !important;
+  pointer-events: none;
+}

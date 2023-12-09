@@ -1,0 +1,18 @@
+.modal-body
+  %div
+    %h2.text-center.mb-3
+      = t("log_in")
+    = form_with model: resource, url: session_path(resource_name), local: true, class: "my-1 d-lg-flex justify-content-lg-center" do |f|
+      .wrap
+        .field.m-3
+          = f.label :email, t("email")
+          %br
+          = f.email_field :email, size: 30
+        .field.m-3
+          = f.label :password, t("password")
+          %br
+          = f.password_field :password, autocomplete: "off", size: 30
+        .text-center.mt-5
+          = f.submit "Log in", class: 'btn btn-lg btn-primary'
+        %div
+          - render "public/shared/links"
