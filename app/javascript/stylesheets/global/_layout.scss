@@ -12,10 +12,6 @@
 }
 
 .show{
-  display: block;
-}
-
-.hidden{
-  opacity: 0 !important;
-  pointer-events: none;
+  opacity: 0.8;
+  pointer-events: auto !important;
 }

@@ -1,8 +1,11 @@
-.modal-body
-  %div
-    %h2.text-center.mb-3
-      = t("log_in")
-    = form_with model: resource, url: session_path(resource_name), local: true, class: "my-1 d-lg-flex justify-content-lg-center" do |f|
+.container-fluid
+  .row
+    %h2.mx-auto.text-center
+      = t("log-in")
+  .row
+    .error-messages.mx-auto.pr-3.pl-3.rounded#login-error-messages
+  .row.mx-auto
+    = form_with model: resource, url: session_path(resource_name), local: false, id: "login-form", class: "my-1 d-flex justify-content-center" do |f|
       .wrap
         .field.m-3
           = f.label :email, t("email")
@@ -12,7 +15,12 @@
           = f.label :password, t("password")
           %br
           = f.password_field :password, autocomplete: "off", size: 30
-        .text-center.mt-5
+        .text-center.mt-5.mb-2
           = f.submit "Log in", class: 'btn btn-lg btn-primary'
+        %br
+        .register-link.text-center
+          %p
+            新規登録は
+            = link_to t("regstration-link"), new_user_registration_path, class: "btn btn-sm btn-success text-light"
         %div
           - render "public/shared/links"

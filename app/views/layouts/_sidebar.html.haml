@@ -1,0 +1,6 @@
+.sidebar.container-fluid
+  .row.main-logo
+    #logo.logo.mx-auto
+      = link_to root_path, class: "navbar-brand" do
+        = image_tag "main_logo.png", class: "main_logo"
+  = sidebar_sub_items.each do |item|
