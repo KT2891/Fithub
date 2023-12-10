@@ -37,17 +37,17 @@ module Public::HomesHelper
       {
         type: "link",
         path: admin_users_path,
-        text: "会員一覧"
+        text: t("posts")
       },
       {
         type: "link",
         path: admin_requests_path,
-        text: "お問い合わせ"
+        text: t("requests")
       },
       {
         type: "link",
         path: destroy_admin_session_path,
-        text: "ログアウト",
+        text: t("log-out"),
         method: :delete
       }
     ]
@@ -58,7 +58,7 @@ module Public::HomesHelper
       {
         type: "pop_up",
         path: new_request_path,
-        text: "お問い合わせ"
+        text: t("requests")
       },
       {
         type: "link",
@@ -73,7 +73,7 @@ module Public::HomesHelper
       {
         type: "link",
         path: destroy_user_session_path,
-        text: "ログアウト",
+        text: t("log-out"),
         method: :delete
       }
     ]
@@ -83,7 +83,7 @@ module Public::HomesHelper
     [
       {
         type: "pop_up",
-        text: "お問い合わせ",
+        text: t("requests"),
         class: "guest-request"
       },
       {
@@ -94,11 +94,11 @@ module Public::HomesHelper
       {
         type: "link",
         path: new_user_registration_path,
-        text: "新規登録"
+        text: t("regstration-up")
       },
       {
         type: "pop_up",
-        text: "ログイン",
+        text: t("log-in"),
         class: "guest-login"
       }
     ]
