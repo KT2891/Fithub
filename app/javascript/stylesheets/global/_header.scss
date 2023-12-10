@@ -2,3 +2,24 @@
 @use "~bootstrap/scss/bootstrap" as *;
 
 @use "../global/variables" as *;
+
+header{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  .main_logo{
+    height: 100px;
+    width: 150px;
+  }
+  .navigation-menu-button{
+    font-size: 25px;
+    color: black;
+    margin-left: 30px;
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}

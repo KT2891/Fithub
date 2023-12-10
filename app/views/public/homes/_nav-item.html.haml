@@ -1,0 +1,7 @@
+%li.navigation-menu-item
+  - if item[:type] == "link"
+    = link_to item[:path], method: item[:method] || nil, class: "navigation-menu-button #{item[:class]}" do
+      = item[:text]
+  - elsif item[:type] == "pop_up"
+    %vbtn.navigation-menu-button{class: "#{item[:class]}"}
+      = item[:text]
