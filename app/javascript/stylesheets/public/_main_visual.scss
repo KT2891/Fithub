@@ -29,4 +29,17 @@
   }
 }
 
-
+.posts__main{
+  background-color: rgb(237, 228, 208, 0.8);
+  .posts__content-wrap{
+    border-bottom: 1px solid #000;
+  }
+  .post-form{
+    font-size: 24px;
+    resize: none;
+    background-color: rgb(237, 228, 208, 1);
+    border: none;
+    width: 500px;
+    height: 200px;
+  }
+}

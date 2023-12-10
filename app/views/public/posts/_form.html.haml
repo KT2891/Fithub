@@ -1,0 +1,6 @@
+.container.posts__content-wrap.col-12.mt-5
+  = form_with model: post do |f|
+    .row
+      = f.text_area :body, placeholder: "今日はどうでしたか？", class: "post-form"
+    .row
+      = f.submit t("post-submit-text"), class: "btn btn-primary rounded-pill offset-8"

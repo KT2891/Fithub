@@ -3,4 +3,15 @@
     #logo.logo.mx-auto
       = link_to root_path, class: "navbar-brand" do
         = image_tag "main_logo.png", class: "main_logo"
-  = sidebar_sub_items.each do |item|
+  - sidebar_main_items.each do |item|
+    .row.justify-content-center.sidebar__item-wrap
+      - if item[:type] == "link"
+        = link_to item[:text], item[:path], class: "sidebar__item-link text-light"
+      - elsif item[:type] == "pup_up"
+        = link_to item[:text], item[:path], local: false, class: "sidebar__item-link text-light #{item[:class]}"
+  - sidebar_sub_items.each do |item|
+    .row.justify-content-center.sidebar__item-wrap
+      - if item[:type] == "link"
+        = link_to item[:text], item[:path], class: "sidebar__item-link text-light"
+      - elsif item[:type] == "pup_up"
+        = link_to item[:text], item[:path], local: false, class: "sidebar__item-link text-light #{item[:class]}"

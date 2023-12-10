@@ -50,11 +50,11 @@ module ApplicationHelper
       {
         type: "link",
         path: posts_path,
-        text: t("requests")
+        text: "Post"
       },
       {
         type: "link",
-        path: following_user_path,
+        path: following_user_path(current_user),
         text: "Follow"
       },
       {
@@ -69,7 +69,7 @@ module ApplicationHelper
       },
       {
         type: "link",
-        path: user_path,
+        path: user_path(current_user),
         text: "My Page"
       },
     ]
