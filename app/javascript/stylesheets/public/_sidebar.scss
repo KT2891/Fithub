@@ -4,6 +4,8 @@
 @use "../global/variables" as *;
 
 .sidebar{
+  position: sticky;
+  top: 0px;
   background-image: linear-gradient(0deg, rgba(250, 180, 113, 1), rgba(255, 237, 221, 1) 30%, rgba(237, 160, 86, 1) 100%);;
   color: white;
   height: 850px;

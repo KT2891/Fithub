@@ -1,2 +1,9 @@
-%h1 Public::Users#edit
-%p Find me in app/views/public/users/edit.html.haml
+.container
+  .row
+    .col-3
+      = render "layouts/sidebar"
+    .col-9
+      .row
+        %h2.mt-5.ml-5
+          = t("user-edit")
+        = render "public/users/form", user: @user

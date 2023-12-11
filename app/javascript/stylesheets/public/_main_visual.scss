@@ -42,4 +42,13 @@
     width: 500px;
     height: 200px;
   }
+  .posts__content-user-name{
+    &:hover{
+      text-decoration: none;
+      font-size: 20px;
+    }
+  }
+  .posts__content-text{
+    text-decoration: none;
+  }
 }

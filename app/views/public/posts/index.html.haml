@@ -2,6 +2,6 @@
   .row
     .col-3
       = render "layouts/sidebar"
-    .posts__main.col-9
-      =render "public/posts/form", post: @post
-      =render partial: "public/posts/show_post", collection: @posts
+    .posts__main.col-9.mb-5
+      = render "public/posts/form", post: @post
+      = render partial: "public/posts/show_post", collection: @posts

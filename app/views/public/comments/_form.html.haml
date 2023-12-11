@@ -1,0 +1,5 @@
+= form_with model: [post, comment], local: false do |f|
+  .row.mb-2
+    = f.text_field :body, placeholder: t("send-comment")
+  // .row
+  //   = f.submit t("comment")

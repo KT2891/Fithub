@@ -1,5 +1,6 @@
 ---
 ja:
+  post: 投稿
   posts: 投稿一覧
   requests: お問い合わせ
   regstration-up: 新規登録
@@ -7,6 +8,7 @@ ja:
   title: FITHUB
   main-head-title: トレーニングの旅を記録
   main-head-text: あなたのフィットネスは、単なる数字以上のものです。それは一つ一つの汗と努力の物語であり、日々の成長と変化を映し出す旅路です。私たちのプラットフォームは、その旅の一歩一歩を記録し、形にするためにここにあります。体重や体脂肪率だけでなく、達成したランニングの距離、持ち上げた重量、完走したセット数を記録しましょう。そして、それらの成果をSNS形式で共有することで、友人や仲間たちと刺激を与え合うことができます。
+  name: 名前
   email: メールアドレス
   password: パスワード
   log-in: ログイン
@@ -14,3 +16,17 @@ ja:
   regstration-link: こちら
   post-submit-text: 投稿
   post-error-message: 投稿に失敗しました
+  comment: コメント
+  success-create-comment: コメントしました
+  destroy: 削除
+  send-comment: コメントを送信
+  my-training: MYトレ
+  change-profile: プロフィール編集
+  user-edit: 会員情報編集
+  introduction: 紹介文
+  change: 変更
+  height: 身長
+  birthday: 生年月日
+  error-birthday: 無効な日付です
+  success-update-message: 会員情報を更新しました
+  error-update-message: 更新に失敗しました
