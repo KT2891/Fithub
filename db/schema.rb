@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(version: 2023_12_10_121107) do
 
   create_table "training_sets", force: :cascade do |t|
     t.bigint "user_id"
-    t.date "date"
+    t.datetime "start_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
