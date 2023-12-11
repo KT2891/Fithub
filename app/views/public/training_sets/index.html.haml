@@ -2,8 +2,8 @@
   .row
     .col-3
       = render "layouts/sidebar"
-    .col-9.mb-5
+    .container-fluid.col-9.mb-5
       = render "public/training_sets/calendar", events: @training_sets
-  .row
-    .col-7
-      = link_to t("create-today-trainings"), selected_training_link, class: "btn btn-danger"
+      .row
+        .col-7
+          = link_to t("create-today-training"), new_training_detail_path, class: "btn btn-danger"
