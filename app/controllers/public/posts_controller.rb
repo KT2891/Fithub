@@ -1,10 +1,15 @@
 class Public::PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.with_user_and_images.all
+    # フォーム用インスタンス生成
     @post = Post.new
+    @comment = Comment.new
   end
 
   def show
+    @post = Post.find(params[:id])
+    # フォーム用インスタンス生成
+    @comment = Comment.new
   end
 
   def create

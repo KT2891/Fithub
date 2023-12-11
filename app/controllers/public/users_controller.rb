@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+
   def show
   end
 
@@ -7,4 +8,7 @@ class Public::UsersController < ApplicationController
 
   def confirm
   end
+
+  private
+
 end

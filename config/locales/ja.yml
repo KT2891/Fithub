@@ -14,3 +14,7 @@ ja:
   regstration-link: こちら
   post-submit-text: 投稿
   post-error-message: 投稿に失敗しました
+  comment: コメント
+  success-create-comment: コメントしました
+  destroy: 削除
+  send-comment: コメントを送信

@@ -1,5 +1,14 @@
 .container-fluid.posts__content-wrap.col-12
   .row
-    = show_post.user.name
-  .row
-    = show_post.body
+    = link_to user_path(show_post.user), class: "posts__content-user-name" do
+      = image_tag show_post.user.get_profile_image(50,50), class: "rounded-circle"
+      %span.mx-2.my-auto.text-dark
+        = show_post.user.name
+  = link_to post_path(show_post), class: "posts__content-text"  do
+    .row.mt-3
+      %p.ml-5.text-dark
+        = show_post.body
+  .row.mt-2
+    = render partial: "public/comments/show_comment", collection: show_post.comments, as: :comment
+  .row.ml-2.mt-2
+    = render "public/comments/form", post: show_post, comment: @comment

@@ -1,0 +1,9 @@
+.container-fluid.commnet__wrap
+  %span.fa-solid.fa-arrow-turn-down-right
+  .row.comment__wrap-user.justify-content-between
+    = link_to user_path(comment.user) do
+      = image_tag comment.user.get_profile_image(30,30)
+      = comment.user.name
+    %p.commnet__wrap-body.col-4
+      = comment.body
+    = link_to t("destroy"), post_comment_path(comment.post,comment), method: :delete, class: "content-end btn btn-sm btn-danger"

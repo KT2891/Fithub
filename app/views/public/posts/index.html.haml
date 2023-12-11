@@ -1,7 +1,7 @@
 .container
   .row
-    .col-3
+    .col-3{"data-spy": "affix"}
       = render "layouts/sidebar"
-    .posts__main.col-9
-      =render "public/posts/form", post: @post
-      =render partial: "public/posts/show_post", collection: @posts
+    .posts__main.col-9.mb-5
+      = render "public/posts/form", post: @post
+      = render partial: "public/posts/show_post", collection: @posts
