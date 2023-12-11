@@ -1,0 +1,7 @@
+.container
+  .row
+    .col-3
+      = render "layouts/sidebar"
+    .container-fluid.col-8.my-auto
+      = render "public/training_details/form", training_detail: @training_detail
+

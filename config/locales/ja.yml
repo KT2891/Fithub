@@ -30,3 +30,11 @@ ja:
   error-birthday: 無効な日付です
   success-update-message: 会員情報を更新しました
   error-update-message: 更新に失敗しました
+  create-today-training: 本日のトレーニング
+  weight: 重さ
+  count: 回数
+  memo: メモ
+  training-menu: トレーニングメニュー
+  save: 保存
+  error-save-message: 保存できませんでした
+  success-save-message: 保存しました

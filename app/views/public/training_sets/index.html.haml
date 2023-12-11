@@ -1,2 +1,9 @@
-%h1 Public::TrainingSets#index
-%p Find me in app/views/public/training_sets/index.html.haml
+.container
+  .row
+    .col-3
+      = render "layouts/sidebar"
+    .container-fluid.col-9.mb-5
+      = render "public/training_sets/calendar", events: @training_sets
+      .row
+        .col-7
+          = link_to t("create-today-training"), new_training_detail_path, class: "btn btn-danger"

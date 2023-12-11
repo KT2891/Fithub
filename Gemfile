@@ -75,3 +75,4 @@ gem "net-imap"
 gem "enum_help"
 
 gem "rails-i18n"
+gem 'simple_calendar'
