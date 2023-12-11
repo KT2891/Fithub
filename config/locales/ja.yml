@@ -27,4 +27,6 @@ ja:
   change: 変更
   height: 身長
   birthday: 生年月日
-  error_birthday: 無効な日付です
+  error-birthday: 無効な日付です
+  success-update-message: 会員情報を更新しました
+  error-update-message: 更新に失敗しました

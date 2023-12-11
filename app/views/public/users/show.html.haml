@@ -4,13 +4,12 @@
       = render "layouts/sidebar"
     .user__main.col-9.mb-5
       = render "public/users/info", user: @user
-      .row.row-cols-aut.text-center.bg-success.text-light
+      .row.justify-content-around.text-center.text-light.border-bottom
         - link_items.each do |item|
-          .col
-            - if item[:type] == "ajax"
-              %btn
-                = item[:text]
-            - elsif item[:type] == "link"
-              = link_to item[:text], item[:path], class: "text-light"
+          - if item[:type] == "ajax"
+            %btn.col-2.bg-success
+              = item[:text]
+          - elsif item[:type] == "link"
+            = link_to item[:text], item[:path], class: "text-light col-2 bg-primary"
       .row
         = render partial: "public/posts/show_post", collection: @user.posts

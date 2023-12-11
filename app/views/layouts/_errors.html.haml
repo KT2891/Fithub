@@ -1,0 +1,10 @@
+= content_for :error do
+  - if model && model.errors.any?
+    = render "layouts/alert", type: :error do
+      %div
+        .font-weight-bold.d-flex.align-items-center
+          .fa-solid.fa-xmark.mr-2
+        %ul
+          - model.errors.full_messages.each do |message| %>
+            %li
+              = message

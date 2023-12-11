@@ -15,11 +15,11 @@
       %p.my-auto.ml-3 cm
     .row.my-5
       = f.label :birthday, t("birthday"), class: "offset-1 col-2"
-      = f.select :birth_year, (1930..2023).to_a,{},  class: "text-center"
+      = f.select :birth_year, (1930..2023).to_a,{selected: user.birthday.try(:year)},  class: "text-center"
       %p.my-auto.mx-3 年
-      = f.select :birth_month, (1..12).to_a,{},  class: "text-center"
+      = f.select :birth_month, (1..12).to_a,{selected: user.birthday.try(:month)},  class: "text-center"
       %p.my-auto.mx-3 月
-      = f.select :birth_day, (1..31).to_a,{},  class: "text-center"
+      = f.select :birth_day, (1..31).to_a,{selected: user.birthday.try(:day)},  class: "text-center"
       %p.my-auto.mx-3 日
     .row.offset-4.mt-5
       = f.submit t("change"), class: "btn btn-lg btn-success"

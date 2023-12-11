@@ -9,4 +9,9 @@
     %script{:crossorigin => "anonymous", :src => "https://kit.fontawesome.com/f772debc2c.js"}
     = javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = yield
+    .primay
+      = yield :error
+      #flash
+        = render "layouts/notification"
+    .main
+      = yield

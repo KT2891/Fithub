@@ -73,3 +73,5 @@ gem "net-pop"
 gem "net-imap"
 
 gem "enum_help"
+
+gem "rails-i18n"

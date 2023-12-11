@@ -1,0 +1,12 @@
+- flash.each do |message_type, message|
+  - case message_type
+  - when "notice"
+    = render "layouts/alert", type: :notice do 
+      .font-weight-bold
+        %i.fa-solidfa-checkmr-2
+        = message
+  - when "alert"
+    = render "layouts/alert", type: :alert do 
+      .font-weight-bold
+        %i.fa-solid.fa-triangle-exclamation.mr-2
+        = message
