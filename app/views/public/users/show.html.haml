@@ -1,2 +1,16 @@
-%h1 Public::Users#show
-%p Find me in app/views/public/users/show.html.haml
+.container
+  .row
+    .col-3
+      = render "layouts/sidebar"
+    .user__main.col-9.mb-5
+      = render "public/users/info", user: @user
+      .row.row-cols-aut.text-center.bg-success.text-light
+        - link_items.each do |item|
+          .col
+            - if item[:type] == "ajax"
+              %btn
+                = item[:text]
+            - elsif item[:type] == "link"
+              = link_to item[:text], item[:path], class: "text-light"
+      .row
+        = render partial: "public/posts/show_post", collection: @user.posts

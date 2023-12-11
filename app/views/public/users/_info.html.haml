@@ -1,0 +1,11 @@
+.row.mt-4
+  .col-3
+    = image_tag user.get_profile_image(100,100), class: "rounded-circle"
+  .col-4.ml-3
+    %p
+      = user.name
+  .col-4
+    = link_to t("change-profile"), edit_user_path, class: "btn btn-success"
+.row.m-4
+  %p
+    = user.introduction

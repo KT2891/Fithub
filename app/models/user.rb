@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  scope :with_images, -> { includes(item: { image_attachment: :blob }) }
+  scope :with_posts, -> { includes(:post) }
 
   def get_profile_image(height, width)
     unless profile_image.attached?

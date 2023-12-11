@@ -150,6 +150,7 @@ ActiveRecord::Schema.define(version: 2023_12_10_121107) do
     t.string "name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.text "introduction"
     t.integer "sex", default: 0, null: false
     t.integer "height"
     t.date "birthday"

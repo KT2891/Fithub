@@ -31,8 +31,9 @@ Rails.application.routes.draw do
     # 会員情報編集用
     # セキュリティ上、current_userを利用するためIDをつけない
     # confirm: 退会確認画面
-    resource :user, only: %i[edit update destroy] do
-      get "confirm" => "public/users#confirm"
+    resource :user, only: %i[edit destroy] do
+      get "confirm" => "users#confirm"
+      patch "update" => "users#update", as: "update"
     end
 
     # 投稿用

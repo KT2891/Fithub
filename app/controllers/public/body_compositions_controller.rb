@@ -1,4 +1,7 @@
 class Public::BodyCompositionsController < ApplicationController
+  def index
+  end
+
   def new
   end
 
