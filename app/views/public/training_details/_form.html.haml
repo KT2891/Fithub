@@ -1,24 +1,29 @@
-.row.my-3
-  %h2
-    トレーニング記録
-.row.mb-2
-  = form_with model: training_detail, class: "col-12" do |f|
+= form_with model: training_detail do |f|
+  .row.my-3
+    %h2.col-5
+      トレーニング記録
+    .offset-1.col-4
+      = f.date_field :date, value: Date.current
+  .row.mb-2
     = f.label :training_menu_id, t("training-menu")
-    = f.select :training_menu_id, TrainingMenu.all.collect { |menu| [menu.name, menu.id] },{}, class: "m-3 col-3 offset-3"
+    = f.select :training_menu_id, TrainingMenu.all.collect { |menu| [menu.name, menu.id] },{}, class: "m-3 col-lg-3 col-md-5 offset-3"
     - @default_count.times do |count|
-      .row.border.mb-2
-        .my-auto.ml-3.text-center
+      .row.border.mb-2.col-10.default-form
+        .my-auto.ml-3.text-center.set-count
           = count + 1
         .div.ml-5
-          .row
-            = f.text_field :"weight_#{count}", placeholder: t("weight"), class: "m-3 border"
-            %p.my-auto
-              kg
-            = f.text_field :"count_#{count}", placeholder: t("count"), class: "m-3 border"
-            %p.my-auto
-              回
-          .row.my-3
-            = f.text_field :"memo_#{count}", placeholder: t("memo"), class: "m-3 col-11 mb-2 border"
-    .row.justify-content-center
-      = f.hidden_field :count, value: @default_count
-      = f.submit t("save"), class: "btn btn-lg btn-success"
+          = fields_for :training_counts do |i|
+            .row
+              = text_field_tag "weights[]","", placeholder: t("weight"), class: "m-3 border", id: nil
+              %p.my-auto
+                kg
+              = text_field_tag "counts[]","", placeholder: t("count"), class: "m-3 border", id: nil
+              %p.my-auto
+                回
+            .row.my-3
+              = text_field_tag "memos[]","", placeholder: t("memo"), class: "m-3 col-11 mb-2 border", id: nil
+  .row
+    %button.btn.btn-primary.add-form
+      = t("add-set")
+  .row.justify-content-center
+    = f.submit t("save"), class: "btn btn-lg btn-success"

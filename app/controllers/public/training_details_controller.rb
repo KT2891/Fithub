@@ -8,14 +8,14 @@ class Public::TrainingDetailsController < ApplicationController
 
   def create
     # トレーニング詳細の基本パラメータセット
-    @training_detail = @user.training_details.build(
-      training_menu_id: training_detail_params,
-      date: params_by_date
-    )
-
+    @training_detail = @user.training_details.build(training_detail_params)
+    # 1セット目のデータが入力されているか確認
+    unless check_count_params_present?(params[:weights].first, params[:counts].first)
+      render :new, alert: t("error-save-message")
+      return
+    end
     if @training_detail.save
-      create_training_counts(params[:training_detail][:count].to_i)
-      @training_set
+      create_training_counts(get_count_param_length)
       create_or_find_training_set
       redirect_to training_sets_path, notice: t("success-save-message")
     else
@@ -36,27 +36,41 @@ class Public::TrainingDetailsController < ApplicationController
     @training_detail.update(training_set_id: @training_set.id)
   end
 
-  # 入力データからトレーニン詳細のセット数ごとのデータを作成
-  def create_training_counts(counts)
-    counts.times do |count|
-      @training_detail.training_counts.create(
-        weight: params[:training_detail][:"weight_#{count}"],
-        count: params[:training_detail][:"count_#{count}"],
-        memo: params[:training_detail][:"memo_#{count}"]
-      )
+  # 重さか回数データがない場合はカウントを保存しない
+  def check_count_params_present?(weight, count)
+     weight.present? || count.present?
+  end
+
+  # 入力データからトレーニング詳細のセット数ごとのデータを作成
+  def create_training_counts(length)
+    length.times do |count|
+      if check_count_params_present?(params[:weights][count], params[:counts][count])
+        @training_detail.training_counts.create(
+          weight: params[:weights][count].to_i,
+          count: params[:counts][count].to_i,
+          memo: params[:memos][count]
+        )
+      else
+        return
+      end
     end
   end
 
+  # データの個数確認
+  def get_count_param_length
+    length = [
+      params[:weights].length,
+      params[:counts].length
+      ].max
+  end
+
+  # ログインしているユーザを変数に格納
   def set_current_user
-    # ログインしているユーザを変数に格納
     @user = current_user
   end
 
+  # ストロングパラーメータ設定
   def training_detail_params
-    params[:training_detail][:training_menu_id]
-  end
-
-  def params_by_date
-    Date.current
+    params.require(:training_detail).permit(:training_menu_id, :date)
   end
 end
