@@ -14,6 +14,7 @@ import "bootstrap";
 
 import "../stylesheets/application";
 import "./header"
+import "./top"
 import "./main"
 
 Rails.start()
