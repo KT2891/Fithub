@@ -1,2 +1,10 @@
-%h1 Public::TrainingSets#show
-%p Find me in app/views/public/training_sets/show.html.haml
+.container
+  .row
+    .col-3
+      = render "layouts/sidebar"
+    .container.col-9.mt-5
+      .row.ml-3
+        %h2
+          = "#{@training_set.start_time.year}年#{@training_set.start_time.month}月#{@training_set.start_time.day}日のトレーニング"
+      .row
+        = render partial: "public/training_sets/show_detail", collection: @training_set.training_details, as: :detail

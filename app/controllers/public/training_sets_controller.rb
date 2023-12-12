@@ -5,6 +5,7 @@ class Public::TrainingSetsController < ApplicationController
   end
 
   def show
+    @training_set = TrainingSet.find_by(id: params[:id], user_id: current_user.id)
   end
 
   private

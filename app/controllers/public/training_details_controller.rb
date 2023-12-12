@@ -24,6 +24,11 @@ class Public::TrainingDetailsController < ApplicationController
     end
   end
 
+  def destroy
+    @training_detail = TrainingDetail.find(params[:id]).destroy
+    redirect_to request.referer
+  end
+
   private
 
   # トレーニング詳細に紐づくトレーニングセット作成
