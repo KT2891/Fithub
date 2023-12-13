@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :training_details, dependent: :destroy
   has_many :weights, dependent: :destroy
   has_many :body_fats, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   # フォロー関係のアソシエーション
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
