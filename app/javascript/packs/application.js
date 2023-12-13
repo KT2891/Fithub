@@ -12,6 +12,8 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 
+import "chartkick/chart.js"
+
 import "../stylesheets/application";
 import "./header"
 import "./top"

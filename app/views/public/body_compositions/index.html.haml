@@ -1,0 +1,7 @@
+.container
+  .row
+    .col-3
+      = render "layouts/sidebar"
+    .row.col.mt-5.justify-content-center
+      = render "public/body_compositions/form", weight: @weight, body_fat: @body_fat
+      = render "public/body_compositions/chart", data: @line_chart_data
