@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :training_sets, dependent: :destroy
   has_many :training_details, dependent: :destroy
+  has_many :weights, dependent: :destroy
+  has_many :body_fats, dependent: :destroy
 
   scope :with_posts, -> { includes(:post) }
 

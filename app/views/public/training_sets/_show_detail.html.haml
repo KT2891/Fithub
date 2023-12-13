@@ -16,5 +16,5 @@
           -if item.count.present?
             %p.col-4.text-center
               = "#{item.count} 回"
-    .row.justify-content-center.detail-delete-btn
+    .justify-content-center.detail-delete-btn.mx-auto.mt-auto.mb-2
       = link_to t("削除"), training_detail_path(detail), method: :delete, class: "btn btn-danger"

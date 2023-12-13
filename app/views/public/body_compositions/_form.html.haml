@@ -1,0 +1,43 @@
+.container
+  = form_with model: weight, url: body_compositions_path do |f|
+    .row.justify-content-center
+      = f.date_field :date, value: Date.current, class: "col-3 rounded-pill"
+    .row.mt-5
+      .container.col-6
+        .row
+          %p.col-3.mx-auto.bg-primary.text-light.rounded-pill.text-center.py-2
+            = t("weight")
+        .row
+          %p.col.text-center
+            = image_tag "morning.png", size: "50x50"
+          %p.col.text-center
+            = image_tag "night.png", size: "50x50"
+        .row
+          .col.p-3
+            %p.weight-form.mx-auto.d-flex.justify-content-center.align-items-center
+              = f.text_field :weight, name: "body[weights][]", placeholder: "ーー" ,class: "border-0 col-6 text-center"
+              kg
+          .col.p-3
+            %p.weight-form.mx-auto.d-flex.justify-content-center.align-items-center
+              = f.text_field :weight, name: "body[weights][]", placeholder: "ーー" ,class: "border-0 col-6 text-center"
+              kg
+        .row
+      .container.col-6
+        %p.col-4.mx-auto.bg-primary.text-light.rounded-pill.text-center.py-2
+          = t("body_fat")
+        .row
+          %p.col.text-center
+            = image_tag "morning.png", size: "50x50"
+          %p.col.text-center
+            = image_tag "night.png", size: "50x50"
+        .row
+          .col.p-3
+            %p.weight-form.mx-auto.d-flex.justify-content-center.align-items-center
+              = f.text_field :body_fat, name: "body[fats][]", placeholder: "ーー" ,class: "border-0 col-6 text-center"
+              = "%"
+          .col.p-3
+            %p.weight-form.mx-auto.d-flex.justify-content-center.align-items-center
+              = f.text_field :body_fat, name: "body[fats][]", placeholder: "ーー" ,class: "border-0 col-6 text-center"
+              = "%"
+    .row.justify-content-center
+      = f.submit t("save"), class: "btn btn-success"
