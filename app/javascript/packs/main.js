@@ -18,7 +18,6 @@ $(document).ready(function() {
     // 新しいフォームをクローンして追加
     var newForm = $('.default-form:first').clone();
     newForm.find('input[type="text"]').val(''); // 入力フィールドを空にする
-    newForm.find('input[type="hidden"]').remove(); // 新しいフォームでは隠しフィールドを削除
 
     // データ属性を設定
     newForm.find('input[type="text"]').each(function() {
@@ -33,5 +32,17 @@ $(document).ready(function() {
     newForm.find('.set-count').text(defaultCount);
 
     $('.default-form:last').after(newForm);
+  });
+
+  $('#comment_show_btn').on('click', function() {
+    $('.comment__wrap').toggleClass('comment_show');
+
+    if ($('.comment__wrap').hasClass('comment_show')) {
+      $(this).find('.btn-text').text('-'); // テキストを"-"に変更
+      $(this).find('.btn').removeClass('btn-success').addClass('btn-danger'); // btn-successをbtn-dangerに切り替え
+    } else {
+      $(this).find('.btn-text').text('+'); // テキストを"+"に変更
+      $(this).find('.btn').removeClass('btn-danger').addClass('btn-success'); // btn-dangerをbtn-successに切り替え
+    }
   });
 });

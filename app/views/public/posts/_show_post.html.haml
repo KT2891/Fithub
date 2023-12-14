@@ -6,16 +6,18 @@
       %p.ml-5.text-dark
         = show_post.body
   .row.mt-2.d-flex.align-items-center
-    .btn.ml-5
-      %span.btn.btn-success.btn-sm.h-25
+    .btn.ml-5#comment_show_btn
+      %span.btn.btn-success.btn-sm.h-25.btn-text
         = "+"
       %span.my-auto.ml-1
         コメントを見る/送る
-  .row.mt-2
-    .col-8
-      = render partial: "public/comments/show_comment", collection: show_post.comments, as: :comment
-  .row.ml-5.mt-2
-    .col-8
-      = render "public/comments/form", post: show_post, comment: comment
+  .comment__wrap
+    .row.mt-2
+      .col-8#comment__wrap
+        .container-fluid.comment__wrap-content
+          = render partial: "public/comments/show_comment", collection: show_post.comments, as: :comment
+    .row.ml-5.mt-2
+      .col-8
+        = render "public/comments/form", post: show_post, comment: comment
   .row#favorite__wrap
     = render "public/favorites/btn", post: show_post

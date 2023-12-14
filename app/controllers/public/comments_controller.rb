@@ -1,21 +1,24 @@
 class Public::CommentsController < ApplicationController
+  before_action :set_post, only: %i[create destroy]
 
   def create
-    post = Post.find(params[:post_id])
-    comment = current_user.comments.new(comment_params)
-    comment.post_id = post.id
-    comment.save
-    redirect_to posts_path, notice: t("success-craete-comment")
+    @comment = current_user.comments.new(comment_params)
+    @comment.post_id = @post.id
+    @comment.save
   end
 
   def destroy
     Comment.find(params[:id]).destroy
-    redirect_to posts_path, notice: t("success-destroy-comment")
+    @comments = @post.comments
   end
 
   private
 
   def comment_params
     params.require(:comment).permit(:body)
+  end
+
+  def set_post
+    @post = Post.find(params[:post_id])
   end
 end
