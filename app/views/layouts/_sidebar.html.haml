@@ -2,8 +2,7 @@
   .row.main-logo
     #logo.logo.mx-auto
       = link_to root_path, class: "navbar-brand" do
-        text
-        // = image_tag "main_logo.png", class: "main_logo"
+        = image_tag asset_path("main_logo.png"), class: "main_logo"
   - sidebar_main_items.each do |item|
     .row.justify-content-center.sidebar__item-wrap
       - if item[:type] == "link"
