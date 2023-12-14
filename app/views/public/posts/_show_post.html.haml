@@ -1,25 +1,21 @@
 .container-fluid.posts__content-wrap.col-12.mt-2
   .row
-    = link_to user_path(show_post.user), class: "posts__content-user-name" do
-      = image_tag show_post.user.get_profile_image(50,50), class: "rounded-circle"
-      %span.mx-2.my-auto.text-dark.col-5
-        = show_post.user.name
-      // - unless show_post.user == current_user
-      - if current_user.followed_by?(show_post.user)
-        = link_to t("unfollow"), user_relationship_path(show_post.user), method: :delete, class: "offset-4 btn btn-danger rounded-pill my-auto"
-      - else
-        = link_to t("follow"), user_relationship_path(show_post.user), method: :post, class: "offset-4 btn btn-primary rounded-pill my-auto"
+    = render "public/users/post_user_info", show_post: show_post
   = link_to post_path(show_post), class: "posts__content-text"  do
     .row.mt-3
       %p.ml-5.text-dark
         = show_post.body
   .row.mt-2.d-flex.align-items-center
-    .btn
+    .btn.ml-5
       %span.btn.btn-success.btn-sm.h-25
         = "+"
       %span.my-auto.ml-1
         コメントを見る/送る
   .row.mt-2
-    = render partial: "public/comments/show_comment", collection: show_post.comments, as: :comment
-  .row.ml-2.mt-2
-    = render "public/comments/form", post: show_post, comment: @comment
+    .col-8
+      = render partial: "public/comments/show_comment", collection: show_post.comments, as: :comment
+  .row.ml-5.mt-2
+    .col-8
+      = render "public/comments/form", post: show_post, comment: comment
+  .row#favorite__wrap
+    = render "public/favorites/btn", post: show_post

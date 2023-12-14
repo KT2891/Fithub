@@ -1,0 +1,4 @@
+- if current_user.followed_by?(user)
+  = link_to t("unfollow"), user_relationship_path(user), method: :delete, remote: true, class: "btn btn-danger rounded-pill my-auto"
+- else
+  = link_to t("follow"), user_relationship_path(user), method: :post, remote: true, class: "btn btn-primary rounded-pill my-auto"

@@ -4,4 +4,4 @@
       = render "layouts/sidebar"
     .posts__main.col-9.mb-5
       = render "public/posts/form", post: @post
-      = render partial: "public/posts/show_post", collection: @posts
+      = render partial: "public/posts/show_post", collection: @posts, locals: { comment: @comment}

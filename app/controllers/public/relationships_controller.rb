@@ -9,20 +9,12 @@ class Public::RelationshipsController < ApplicationController
   end
 
   def create
-    if current_user.active_relationships.create(followed_id: @user.id)
-      redirect_to posts_path, notice: t("success-follow")
-    else
-      redirect_to posts_path, alert: t("error-follow")
-    end
+    current_user.active_relationships.create(followed_id: @user.id)
   end
 
   def destroy
     relationship = current_user.active_relationships.find_by(followed_id: @user.id)
-    if relationship.destroy
-      redirect_to posts_path, notice: t("success-unfollow")
-    else
-      redirect_to posts_path, alert: t("error-unfollow")
-    end
+    relationship.destroy
   end
 
   private

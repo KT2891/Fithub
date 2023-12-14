@@ -5,4 +5,8 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   scope :with_user_and_images, -> { includes(user: { profile_image_attachment: :blob })}
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
 end

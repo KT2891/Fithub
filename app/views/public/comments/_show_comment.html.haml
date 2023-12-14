@@ -1,7 +1,7 @@
 .container-fluid.commnet__wrap
   .row.comment__wrap-user.my-2.ml-5
     = link_to user_path(comment.user) do
-      = image_tag comment.user.get_profile_image(30,30)
+      = image_tag comment.user.get_profile_image(30,30), class: "rounded-circle"
       = comment.user.name
     %p.commnet__wrap-body.col-4
       = comment.body
