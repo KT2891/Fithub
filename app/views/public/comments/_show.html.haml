@@ -4,6 +4,11 @@
     = comment.user.name
   %p.commnet__wrap-body.col-4
     = comment.body
-  %span.btn.btn-success.mr-4.repry-btn
+  %span.btn.btn-success.mr-4{ id: "reply-btn-#{comment.id}" }
     返信
   = link_to t("destroy"), post_comment_path(comment.post,comment), method: :delete, remote: true, class: "content-end btn btn-sm btn-danger"
+.row.reply__wrap
+  = render "public/replies/show", collection: @replys
+.row.my-2.ml-5.comment__reply-form{ id: "comment-reply-form-#{comment.id}" }
+  = form_with model: [comment.post, comment, @reply], url: post_comment_replies_path(comment.post, comment), method: :post, local: false do |f|
+    = f.text_field :body, placeholder: t("send-reply")

@@ -4,6 +4,7 @@ class Public::PostsController < ApplicationController
     # フォーム用インスタンス生成
     @post = Post.new
     @comment = Comment.new
+    @reply = Comment.new
   end
 
   def show

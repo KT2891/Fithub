@@ -45,4 +45,9 @@ $(document).ready(function() {
       $(this).find('.btn').removeClass('btn-danger').addClass('btn-success'); // btn-dangerをbtn-successに切り替え
     }
   });
+
+  $(document).on('click', '[id^=reply-btn-]', function() {
+    var commentId = $(this).attr('id').split('-')[2];
+    $('#comment-reply-form-' + commentId).toggleClass('comment__reply-form_show');
+  });
 });
