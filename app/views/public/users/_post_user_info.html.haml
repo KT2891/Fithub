@@ -1,0 +1,7 @@
+= link_to user_path(show_post.user), class: "posts__content-user-name" do
+  = image_tag show_post.user.get_profile_image(50,50), class: "rounded-circle"
+  %span.mx-2.my-auto.text-dark.col-5
+    = show_post.user.name
+  // - unless show_post.user == current_user
+  #follow__wrap.col-3.offset-4
+    = render "public/relationships/btn", user: show_post.user

@@ -1,9 +1,10 @@
 .container-fluid.commnet__wrap
-  %span.fa-solid.fa-arrow-turn-down-right
-  .row.comment__wrap-user.justify-content-between
+  .row.comment__wrap-user.my-2.ml-5
     = link_to user_path(comment.user) do
-      = image_tag comment.user.get_profile_image(30,30)
+      = image_tag comment.user.get_profile_image(30,30), class: "rounded-circle"
       = comment.user.name
     %p.commnet__wrap-body.col-4
       = comment.body
+    %span.btn.btn-success.mr-4
+      返信
     = link_to t("destroy"), post_comment_path(comment.post,comment), method: :delete, class: "content-end btn btn-sm btn-danger"

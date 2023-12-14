@@ -17,7 +17,8 @@ ja:
   post-submit-text: 投稿
   post-error-message: 投稿に失敗しました
   comment: コメント
-  success-create-comment: コメントしました
+  success-craete-comment: コメントしました
+  success-destroy-comment: コメントを削除しました
   destroy: 削除
   send-comment: コメントを送信
   my-training: MYトレ
@@ -41,3 +42,9 @@ ja:
   add-set: セットを追加
   body_fat: 体脂肪率
   weight: 体重
+  unfollow: フォロー解除
+  follow: フォロー
+  success-follow: フォローしました
+  error-follow: すでにフォローされています
+  success-unfollow: フォローを解除しました
+  error-unfollow: すでにフォローが解除されています

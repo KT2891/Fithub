@@ -5,13 +5,12 @@ class Public::CommentsController < ApplicationController
     comment = current_user.comments.new(comment_params)
     comment.post_id = post.id
     comment.save
-    flash[:notice] = t("success_create_comment")
-    redirect_to posts_path
+    redirect_to posts_path, notice: t("success-craete-comment")
   end
 
   def destroy
-    comment = Comment.find(params[:id]).destroy
-    redirect_to posts_path
+    Comment.find(params[:id]).destroy
+    redirect_to posts_path, notice: t("success-destroy-comment")
   end
 
   private
