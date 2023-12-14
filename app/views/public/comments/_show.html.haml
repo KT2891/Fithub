@@ -4,11 +4,13 @@
     = comment.user.name
   %p.commnet__wrap-body.col-4
     = comment.body
-  %span.btn.btn-success.mr-4{ id: "reply-btn-#{comment.id}" }
-    返信
+  %span.offset-2.btn.btn-success.mr-4{ id: "reply-btn-#{comment.id}" }
+    = t("reply")
   = link_to t("destroy"), post_comment_path(comment.post,comment), method: :delete, remote: true, class: "content-end btn btn-sm btn-danger"
-.row.reply__wrap
-  = render "public/replies/show", collection: @replys
+.container.reply__wrap.ml-5{id: "reply__wrap-comment-#{comment.id}"}
+  - unless comment.replies.empty?
+    %span.fa-solid.fa-arrow-right
+  = render partial: "public/replies/show_reply", collection: comment.replies, as: "reply"
 .row.my-2.ml-5.comment__reply-form{ id: "comment-reply-form-#{comment.id}" }
-  = form_with model: [comment.post, comment, @reply], url: post_comment_replies_path(comment.post, comment), method: :post, local: false do |f|
-    = f.text_field :body, placeholder: t("send-reply")
+  = form_with model: [comment.post, comment, Comment.new], url: post_comment_replies_path(comment.post, comment), method: :post, local: false do |i|
+    = i.text_field :body, placeholder: t("send-reply")
