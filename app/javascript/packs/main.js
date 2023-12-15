@@ -1,5 +1,7 @@
 /*global $*/
-$(document).ready(function() {
+// トレーニング記録のフォーム追加処理
+// 初期は3つで10個以上は警告発生
+$(document).on('turbolinks:load', function() {
   var maxForms = 10; // 最大フォーム数を設定する
   var defaultCount = 3; // 最初のデフォルトカウント
 
@@ -34,6 +36,10 @@ $(document).ready(function() {
     $('.default-form:last').after(newForm);
   });
 
+});
+
+// コメントの表示/非表示の処理
+$(document).on('turbolinks:load', function() {
   $('#comment_show_btn').on('click', function() {
     $('.comment__wrap').toggleClass('comment_show');
 

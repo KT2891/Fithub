@@ -1,2 +1,83 @@
-.container
-  = line_chart data
+.container.mb-5.mt-3
+  %canvas#myChart
+  :javascript
+    document.addEventListener('turbolinks:load', function() {
+      var ctx = document.getElementById('myChart').getContext('2d');
+
+      var weightsByWeek = #{@weights_by_week};
+      var bodyFatsByWeek = #{@body_fats_by_week};
+
+      var maxWeight = Math.max.apply(null, weightsByWeek) + 10;
+      var maxBodyFat = Math.max.apply(null, bodyFatsByWeek) + 5;
+
+      var minWeight = Math.min.apply(null, weightsByWeek);
+      var minBodyFat = Math.min.apply(null, bodyFatsByWeek);
+
+      // 最小値が10以上であれば、10を引く
+      var minWeight = minWeight >= 10 ? minWeight - 10 : 0;
+      // 最小値が5以上であれば、5を引く
+      var minBodyFat = minBodyFat >= 5 ? minBodyFat - 5 : 0;
+
+      var weekByNightAndMorning = #{@week_by_night_and_morning};
+
+      var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: weekByNightAndMorning,
+          datasets: [{
+            label: '体重',
+            data: weightsByWeek,
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1,
+            lineTension: 0.4,
+            yAxisID: 'y-axis-weight', // 体重用のy軸
+          }, {
+            label: '体脂肪率',
+            data: bodyFatsByWeek,
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
+            lineTension: 0.4,
+            yAxisID: 'y-axis-body-fat', // 体脂肪率用のy軸
+          }]
+        },
+        options: {
+          scales: {
+            'y-axis-weight': {
+              type: 'linear',
+              position: 'left',
+              title: {
+                display: true,
+                text: "体重[kg]"
+              },
+              ticks: {
+                beginAtZero: true,
+              },
+              max: maxWeight,
+              min: minWeight
+            },
+            'y-axis-body-fat': {
+              type: 'linear',
+              position: 'right',
+              title: {
+                display: true,
+                text: "体脂肪率[%]"
+              },
+              gridLines: {
+                drawOnChartArea: false // 右側のy軸のグリッドラインを非表示にする
+              },
+              ticks: {
+                beginAtZero: true
+              },
+              max: maxBodyFat,
+              min: minBodyFat
+            },
+            xAxes: [{
+              ticks: {
+                autoSkip: false
+              }
+            }]
+          },
+          responsive: true
+        }
+      });
+    });
