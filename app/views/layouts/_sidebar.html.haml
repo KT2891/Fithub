@@ -1,7 +1,7 @@
 .sidebar.container-fluid
   .row.main-logo
     #logo.logo.mx-auto
-      = link_to root_path, class: "navbar-brand" do
+      = link_to root_path do
         = image_tag asset_path("main_logo.png"), class: "main_logo"
   - sidebar_main_items.each do |item|
     .row.justify-content-center.sidebar__item-wrap

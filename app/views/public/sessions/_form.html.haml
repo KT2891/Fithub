@@ -5,22 +5,20 @@
   .row
     .error-messages.mx-auto.pr-3.pl-3.rounded#login-error-messages
   .row.mx-auto
-    = form_with model: resource, url: session_path(resource_name), local: false, id: "login-form", class: "my-1 d-flex justify-content-center" do |f|
+    = form_with model: user, url: user_session_path, local: false, id: "login-form", class: "my-1 d-flex justify-content-center" do |f|
       .wrap
         .field.m-3
           = f.label :email, t("email")
           %br
-          = f.email_field :email, size: 30
+          = f.email_field :email, autocomplete: "username", size: 30
         .field.m-3
           = f.label :password, t("password")
           %br
-          = f.password_field :password, autocomplete: "off", size: 30
+          = f.password_field :password, autocomplete: "current-password", size: 30
         .text-center.mt-5.mb-2
-          = f.submit "Log in", class: 'btn btn-lg btn-primary'
+          = f.submit "Login", class: 'btn btn-lg btn-primary'
         %br
         .register-link.text-center
           %p
             新規登録は
             = link_to t("regstration-link"), new_user_registration_path, class: "btn btn-sm btn-success text-light"
-        %div
-          - render "public/shared/links"

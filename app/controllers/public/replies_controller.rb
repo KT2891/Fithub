@@ -10,7 +10,6 @@ class Public::RepliesController < ApplicationController
   def destroy
     reply = Comment.find(params[:id])
     reply.destroy
-    @replies = @comment.replies
   end
 
   private

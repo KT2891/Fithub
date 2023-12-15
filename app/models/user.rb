@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  validate :password_must_contain_letter
+
+
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :training_sets, dependent: :destroy
@@ -27,6 +31,13 @@ class User < ApplicationRecord
     following.include?(user)
   end
 
+  def password_must_contain_letter
+    return if password.blank?
+    unless password.match?(/[a-zA-Z]/)
+      errors.add(:password, 'は少なくとも一つのアルファベットを含む必要があります')
+    end
+  end
+
   # ユーザにプロフィール画像が設定されていなければ"no-image.jpgを返す
   # リサイズ: method(height, width)の形式でサイズを指定
   def get_profile_image(height, width)
@@ -36,5 +47,6 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [height, width]).processed
   end
+
 
 end
