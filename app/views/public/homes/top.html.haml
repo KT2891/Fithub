@@ -4,7 +4,7 @@
     .row.pt-5
       .main__form-wrap.offset-lg-2.col-lg-4.col-12.hidden
         .main__login-form
-          = render "public/sessions/form"
+          = render "public/sessions/form", user: @user
       .main__head.col-5.offset-7
         %h3.main__head-title
           = t("main-head-title")

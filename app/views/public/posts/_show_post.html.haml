@@ -19,5 +19,12 @@
     .row.ml-5.mt-2
       .col-8
         = render "public/comments/form", post: show_post, comment: comment
-  .row#favorite__wrap
-    = render "public/favorites/btn", post: show_post
+  .row
+    #favorite__wrap.col-2.offset-1.text-center
+      = render "public/favorites/btn", post: show_post
+    .btn.col-2
+      %span.fa-solid.fa-retweet
+      = t("repost")
+    .btn.col-2
+      %span.fa-solid.fa-triangle-exclamation
+      = t("report")

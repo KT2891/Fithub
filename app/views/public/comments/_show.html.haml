@@ -10,7 +10,8 @@
 .container.reply__wrap.ml-5{id: "reply__wrap-comment-#{comment.id}"}
   - unless comment.replies.empty?
     %span.fa-solid.fa-arrow-right
-  = render partial: "public/replies/show_reply", collection: comment.replies, as: "reply"
+  %div{id: "reply__wrap-content-#{comment.id}"}
+    = render partial: "public/replies/show_reply", collection: comment.replies, as: "reply"
 .row.my-2.ml-5.comment__reply-form{ id: "comment-reply-form-#{comment.id}" }
   = form_with model: [comment.post, comment, Comment.new], url: post_comment_replies_path(comment.post, comment), method: :post, local: false do |i|
     = i.text_field :body, placeholder: t("send-reply")
