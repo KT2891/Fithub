@@ -1,2 +1,2 @@
 :plain
-  $('#favorite__wrap').html("#{ j(render 'public/favorites/btn', post: @post) }");
+  $('#favorite__wrap-#{@post.id}').html("#{ j(render 'public/favorites/btn', post: @post) }");
