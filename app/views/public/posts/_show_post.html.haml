@@ -6,21 +6,21 @@
       %p.ml-5.text-dark
         = show_post.body
   .row.mt-2.d-flex.align-items-center
-    .btn.ml-5#comment_show_btn
-      %span.btn.btn-success.btn-sm.h-25.btn-text
+    .btn.ml-5{id: "comment_show_btn-#{show_post.id}"}
+      %span.btn.btn-success.btn-sm.h-25.btn-text{id: "comment_show_btn_text-#{show_post.id}"}
         = "+"
       %span.my-auto.ml-1
         コメントを見る/送る
-  .comment__wrap
+  .comment__wrap{id: "comment__wrap-#{show_post.id}"}
     .row.mt-2
-      .col-10#comment__wrap
-        .container-fluid.comment__wrap-content
+      .col-10
+        .container-fluid{id: "comment__wrap-content-#{show_post.id}"}
           = render partial: "public/comments/show_comment", collection: show_post.comments, as: :comment
     .row.ml-5.mt-2
       .col-8
         = render "public/comments/form", post: show_post, comment: comment
   .row
-    #favorite__wrap.col-2.offset-1.text-center
+    .col-2.offset-1.text-center{id: "favorite__wrap-#{show_post.id}"}
       = render "public/favorites/btn", post: show_post
     .btn.col-2
       %span.fa-solid.fa-retweet

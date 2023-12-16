@@ -44,11 +44,15 @@ ja:
   weight: 体重
   unfollow: フォロー解除
   follow: フォロー
+  follower: フォロワー
   success-follow: フォローしました
   error-follow: すでにフォローされています
   success-unfollow: フォローを解除しました
   error-unfollow: すでにフォローが解除されています
   send-reply: リプライを送信
   reply: 返信
-  repost: 引用ポスト
+  repost: 引用
   report: 通報
+  following: フォロー
+  followers: フォロワー
+  user-followed-by: あなたをフォローしています

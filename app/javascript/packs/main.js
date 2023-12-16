@@ -40,16 +40,20 @@ $(document).on('turbolinks:load', function() {
 
 // コメントの表示/非表示の処理
 $(document).on('turbolinks:load', function() {
-  $('#comment_show_btn').on('click', function() {
-    $('.comment__wrap').toggleClass('comment_show');
+  $(document).on('click', '[id^=comment_show_btn-]', function() {
+      var commentId = $(this).attr('id').split('-')[1]; // ボタンのIDからcommentIdを取得
+      var commentWrap = $('#comment__wrap-' + commentId); // 対応するコメントのラッパーを取得
+      var commentWrapText= $('#comment_show_btn_text-' + commentId); // 対応するコメントのラッパーを取得
 
-    if ($('.comment__wrap').hasClass('comment_show')) {
-      $(this).find('.btn-text').text('-'); // テキストを"-"に変更
-      $(this).find('.btn').removeClass('btn-success').addClass('btn-danger'); // btn-successをbtn-dangerに切り替え
-    } else {
-      $(this).find('.btn-text').text('+'); // テキストを"+"に変更
-      $(this).find('.btn').removeClass('btn-danger').addClass('btn-success'); // btn-dangerをbtn-successに切り替え
-    }
+      commentWrap.toggleClass('comment_show'); // コメントの表示/非表示を切り替え
+
+      if (commentWrap.hasClass('comment_show')) {
+        commentWrapText.text('-'); // テキストを"-"に変更
+        commentWrapText.removeClass('btn-success').addClass('btn-danger'); // btn-successをbtn-dangerに切り替え
+      } else {
+        commentWrapText.text('+'); // テキストを"+"に変更
+        commentWrapText.removeClass('btn-danger').addClass('btn-success'); // btn-dangerをbtn-successに切り替え
+      }
   });
 
   $(document).on('click', '[id^=reply-btn-]', function() {

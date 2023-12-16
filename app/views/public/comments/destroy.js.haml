@@ -1,2 +1,2 @@
 :plain
-  $('.comment__wrap-content').html("#{ j(render partial: 'public/comments/show_comment', collection: @comments, as: :comment) }");
+  $('#comment__wrap-content-#{@post.id}').html("#{ j(render partial: 'public/comments/show_comment', collection: @comments, as: :comment) }");
