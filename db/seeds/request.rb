@@ -14,6 +14,7 @@ module Seeds
           email: Faker::Internet.email,
           title: request["title"],
           body: request["body"],
+          status: [0,1].sample
           )
           puts "[Seeds] Created request #{request["title"]}"
       end

@@ -1,2 +1,16 @@
-%h1 Admin::Requests#index
-%p Find me in app/views/admin/requests/index.html.haml
+.container
+  .row
+    .col-3
+      = render "layouts/sidebar"
+    .container.bg-light.col-9.py-5
+      %h3
+        = t("requests")
+      %table.table
+        %thead
+          %tr
+            %th ID
+            %th タイトル
+            %th 日時
+            %th
+            %th 閲覧
+        = render partial: "admin/requests/show", collection: @requests, as: "request"

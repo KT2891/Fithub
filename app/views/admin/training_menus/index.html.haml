@@ -1,2 +1,22 @@
-%h1 Admin::TrainingMenus#index
-%p Find me in app/views/admin/training_menus/index.html.haml
+.container
+  .row
+    .col-3
+      = render "layouts/sidebar"
+    .container.bg-light.col-9.py-5
+      .row.justify-content-between
+        %h3
+          = t("training-menu-index")
+        %span.mr-5
+          = link_to t("add"), new_admin_training_menu_path, class: "btn btn-success"
+      %table.table
+        %thead
+          %tr
+            %th ID
+            %th
+              = t("name")
+            %th 効果部位
+            %th
+            %th
+            %th
+              = t("status")
+        = render partial: "admin/training_menus/show", collection: @training_menus, as: "training_menu"

@@ -1,2 +1,9 @@
-%h1 Admin::TrainingMenus#new
-%p Find me in app/views/admin/training_menus/new.html.haml
+.container
+  .row
+    .col-3
+      = render "layouts/sidebar"
+    .container.bg-light.col-9.py-5
+      .row
+        %h3
+          = t("training-create")
+      = render "admin/training_menus/form", training_menu: @training_menu

@@ -1,0 +1,19 @@
+= form_with model: training_menu, url: admin_training_action(training_menu) do |f|
+  .container.mx-5
+    .row.mb-3
+      = f.label :name, t("training"), class: "col-3 offset-1"
+      = f.text_field :name, placeholder: t("training"), class: "col-4 offset-1"
+    .row.mb-3
+      = f.label :training_part, t("body_part"), class: "col-3 offset-1"
+      = f.fields_for :training_parts do |i|
+        = i.select :training_part,
+        TrainingPart.training_parts.keys.map{ |k| [t("enums.training_part.training_part.#{k}"), k] },
+          { include_blank: "-"},
+          { name: "training_part[training_part][]", class: "offset-1 parts_select" }
+      %span.btn.btn-success.offset-1#part-select-add
+        +
+    .row.mb-3
+      = f.label :explanation, t("explanation"), class: "col-3 offset-1"
+      = f.text_area :explanation, class: "col-5 offset-1"
+    .row.mb-3.justify-content-center
+      = f.submit text_training_btn, class: "btn btn-success"

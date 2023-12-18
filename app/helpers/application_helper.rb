@@ -24,7 +24,7 @@ module ApplicationHelper
     [
       {
         type: "link",
-        path: admin_posts_path,
+        path: posts_path,
         text: "Post",
       },
       {
@@ -106,7 +106,7 @@ module ApplicationHelper
       {
         type: "link",
         path: destroy_admin_session_path,
-        text: t("log-out"),
+        text: "Log Out",
         method: :delete
       }
     ]

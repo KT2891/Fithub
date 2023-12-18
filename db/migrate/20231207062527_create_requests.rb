@@ -5,6 +5,7 @@ class CreateRequests < ActiveRecord::Migration[6.1]
       t.string :email
       t.string :title
       t.text :body
+      t.integer :status, default: 0
 
       t.timestamps
     end

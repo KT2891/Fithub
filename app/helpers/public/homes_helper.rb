@@ -16,13 +16,13 @@ module Public::HomesHelper
     [
       {
         type: "link",
-        path: admin_root_path,
+        path: posts_path,
         text: "SNS"
       },
       {
         type: "link",
         path: admin_users_path,
-        text: t("posts")
+        text: t("users")
       },
       {
         type: "link",

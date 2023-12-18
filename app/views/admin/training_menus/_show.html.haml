@@ -1,0 +1,45 @@
+%tr{class: check_active(training_menu)}
+  %td
+    = training_menu.id
+  %td
+    = training_menu.name
+  %td
+    - training_menu.training_parts.each do |part|
+      = part.training_part_i18n
+  %td
+    %btn.btn.btn-primary{type: "button", "data-toggle": "modal", "data-target": "#trainingMenu#{training_menu.id}"}
+      = t("confirm")
+  %td
+    = link_to edit_admin_training_menu_path(training_menu) do
+      %btn.btn.btn-success
+        = t("edit")
+  %td.text-center
+    = active_text(training_menu)
+
+
+= form_with model: training_menu, url: admin_training_menu_path(training_menu), method: :patch do |f|
+  .modal.fade{id: "trainingMenu#{training_menu.id}", tabindex: "-1", role: "dialog", 'aria-labelledby': "trainingMenuLabel", 'aria-hidden': "true" }
+    .modal-dialog{ role: "document" }
+      .modal-content
+        .modal-header
+          %h5.modal-title#trainingMenuLabel
+            = t("training_menus")
+          %button.close{ type: "button", 'data-dismiss': "modal", 'aria-label': "Close" }
+            %span{ 'aria-hidden': "true" } &times;
+        .modal-body.container.justify-content-center
+          .row.mb-3
+            %p.col-10.offset-1
+              = training_menu.name
+          .row.mb-3
+            %p.col-10.offset-1
+              - training_menu.training_parts.each do |part|
+                = "#{part.training_part_i18n}" + " "
+          .row.mb-3
+            %p.col-10.offset-1
+              = training_menu.explanation
+          .row
+            = f.select :status, {t("active") => true, t("negative") => false} ,{},{class: "col-2 offset-2 form-select"}
+        .modal-footer
+          %button.btn.btn-secondary.mx-1{ type: "button", 'data-dismiss': "modal" } Close
+          = link_to t("destroy"), admin_training_menu_path(training_menu), method: :delete, class: "btn btn-danger mx-1"
+          = f.submit t("change"), class: "btn btn-primary mx-1"

@@ -1,47 +1,93 @@
+  # スクワット: 太もも
 - training_id: 1
-  body_parts: [2, 5, 6] # スクワット: 太もも、臀部、腰部
+  body_part: 2
+  # スクワット: 臀部
+- training_id: 1
+  body_part: 5
+  # スクワット: 腰部
+- training_id: 1
+  body_part: 6
 
+  # デッドリフト: 背中
 - training_id: 2
-  body_parts: [4, 6, 5] # デッドリフト: 背中、脚、腰
+  body_part: 4
+  # デッドリフト: 脚
+- training_id: 2
+  body_part: 6
+  # デッドリフト: 腰
+- training_id: 2
+  body_part: 5
 
+  # ベンチプレス: 胸
 - training_id: 3
-  body_parts: [3, 2, 1] # ベンチプレス: 胸、腕、肩
+  body_part: 3
+  # ベンチプレス: 腕
+- training_id: 3
+  body_part: 2
+  # ベンチプレス: 肩
+- training_id: 3
+  body_part: 1
 
+  # プルアップ: 背中
 - training_id: 4
-  body_parts: [4, 2] # プルアップ: 背中、二頭筋
+  body_part: 4
+  # プルアップ: 二頭筋
+- training_id: 4
+  body_part: 2
 
+  # レッグプレス: 脚
 - training_id: 5
-  body_parts: [6, 5] # レッグプレス: 脚、臀部
+  body_part: 6
+  # レッグプレス: 臀部
+- training_id: 5
+  body_part: 5
 
+  # ショルダープレス: 肩
 - training_id: 6
-  body_parts: [1, 2] # ショルダープレス: 肩、三頭筋
+  body_part: 1
+  # ショルダープレス: 三頭筋
+- training_id: 6
+  body_part: 2
 
+  # バーベルカール: 二頭筋
 - training_id: 7
-  body_parts: [2] # バーベルカール: 二頭筋
+  body_part: 2
 
+  # トライセップスエクステンション: 三頭筋
 - training_id: 8
-  body_parts: [2] # トライセップスエクステンション: 三頭筋
+  body_part: 2
 
+  # レッグカール: 太ももの裏
 - training_id: 9
-  body_parts: [6] # レッグカール: 太ももの裏
+  body_part: 6
 
+  # クランチ: 腹筋
 - training_id: 10
-  body_parts: [6] # クランチ: 腹筋
+  body_part: 6
 
+  # プランク: コア
 - training_id: 11
-  body_parts: [6] # プランク: コア
+  body_part: 6
 
+  # カーフレイズ: ふくらはぎ
 - training_id: 12
-  body_parts: [6] # カーフレイズ: ふくらはぎ
+  body_part: 6
 
+  # ラットプルダウン: 広背筋
 - training_id: 13
-  body_parts: [4] # ラットプルダウン: 広背筋
+  body_part: 4
 
+  # ダンベルフライ: 胸
 - training_id: 14
-  body_parts: [3] # ダンベルフライ: 胸
+  body_part: 3
 
+  # ルーマニアンデッドリフト: ハムストリングス
 - training_id: 15
-  body_parts: [6, 5] # ルーマニアンデッドリフト: ハムストリングス、臀部
+  body_part: 6
+  # ルーマニアンデッドリフト: 臀部
+- training_id: 15
+  body_part: 5
 
+  # レッグエクステンション: 大腿四頭筋
 - training_id: 16
-  body_parts: [6] # レッグエクステンション: 大腿四頭筋
+  body_part: 6

@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2023_12_10_121107) do
     t.string "email"
     t.string "title"
     t.text "body"
+    t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
