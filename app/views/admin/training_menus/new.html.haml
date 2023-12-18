@@ -5,4 +5,5 @@
     .container.bg-light.col-9.py-5
       .row
         %h3
-          
+          = t("training-create")
+      = render "admin/training_menus/form", training_menu: @training_menu

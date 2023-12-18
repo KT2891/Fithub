@@ -10,8 +10,8 @@ ja:
       status:
         unread: 未読
         read: 既読
-    trainig_part:
-      trainig_part:
+    training_part:
+      training_part:
         shoulders: 肩
         arms: 腕
         chest: 胸
@@ -85,3 +85,14 @@ ja:
   training-menu-index: トレーニング一覧
   active: 有効
   negative: 無効
+  success-training-status-edit: トレーニングのステータスを更新しました
+  add: 追加
+  confirm: 確認
+  training-create: トレーニング作成
+  training-edit: トレーニング編集
+  status: ステータス
+  training: トレーニング
+  body_part: 効果部位
+  explanation: 説明
+  error-create: 作成に失敗しました
+  success-create-training: トレーニングメニューを作成しました

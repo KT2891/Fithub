@@ -35,7 +35,31 @@ $(document).on('turbolinks:load', function() {
 
     $('.default-form:last').after(newForm);
   });
+});
 
+// トレーニングメニュー作成時の効果部位追加
+// 初期は1箇所で最大3箇所まで選択可
+$(document).on('turbolinks:load', function() {
+  var maxForms = 3; // 最大フォーム数を設定する
+
+  $('#part-select-add').click(function(e) {
+    e.preventDefault();
+
+    // 現在のフォーム数を取得
+    var currentForms = $('.parts_select').length;
+
+    // 最大フォーム数を超えている場合は新しいフォームを追加しない
+    if (currentForms >= maxForms) {
+      alert('最大フォーム数に達しました');
+      return;
+    }
+
+    // 新しいフォームをクローンして追加
+    var newForm = $('.parts_select:first').clone();
+    newForm.find('input[type="text"]').val(''); // 入力フィールドを空にする
+
+    $('.parts_select:last').after(newForm);
+  });
 });
 
 // コメントの表示/非表示の処理
