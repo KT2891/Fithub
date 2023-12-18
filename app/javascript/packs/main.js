@@ -61,3 +61,17 @@ $(document).on('turbolinks:load', function() {
     $('#comment-reply-form-' + commentId).toggleClass('comment__reply-form_show');
   });
 });
+
+
+$(document).on('turbolinks:load', function() {
+  var followingBtn = $("#following_btn");
+  var followersBtn = $("#followers_btn");
+  followingBtn.on('click', function() {
+    followingBtn.addClass("btn-success");
+    followersBtn.removeClass("btn-success");
+  });
+  followersBtn.on('click', function() {
+    followersBtn.addClass("btn-success");
+    followingBtn.removeClass("btn-success");
+  });
+});

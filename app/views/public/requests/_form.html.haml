@@ -1,0 +1,21 @@
+= form_with model: Request.new, url: request_path, method: :post do |f|
+  .modal.fade#requestForm{ tabindex: "-1", role: "dialog", 'aria-labelledby': "requestLabel", 'aria-hidden': "true" }
+    .modal-dialog{ role: "document" }
+      .modal-content
+        .modal-header
+          %h5.modal-title#requestLabel
+            = t("requests")
+          %button.close{ type: "button", 'data-dismiss': "modal", 'aria-label': "Close" }
+            %span{ 'aria-hidden': "true" } &times;
+        .modal-body.container.justify-content-center
+          - if user_signed_in?
+            = f.hidden_field :user_id, value: current_user.id
+          .form-group.row
+            = f.text_field :email, class: "col-8 mx-auto", placeholder: t("email"), value: request_user_email
+          .form-group.row
+            = f.text_field :title, class: "col-8 mx-auto", placeholder: t("title")
+          .form-group.row
+            = f.text_area :body, class: "col-8 mx-auto", placeholder: t("text"), size: 40
+        .modal-footer
+          %button.btn.btn-secondary{ type: "button", 'data-dismiss': "modal" } Close
+          = f.submit t("post-submit-text"), class: "btn btn-primary"

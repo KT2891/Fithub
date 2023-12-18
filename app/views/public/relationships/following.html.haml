@@ -4,7 +4,7 @@
       = render "layouts/sidebar"
     .container.col-9.mb-5.mt-5
       .row.col-7.mx-auto.d-flex.justify-content-between
-        = link_to t("follow"), following_user_path(current_user), remote: true, id: "following-content"
-        = link_to t("follower"), followers_user_path(current_user), remote: true, id: "followers-content"
-      .row
-        = render "public/relationships/show_follower", following: @following
+        = link_to t("follow"), following_user_path(current_user), remote: true, class: "btn btn-success", id: "following_btn"
+        = link_to t("follower"), followers_user_path(current_user), remote: true, class: "btn", id: "followers_btn"
+      .row#relationship__wrap
+        = render "public/relationships/show_page", items: @following

@@ -14,4 +14,7 @@
       - if item[:type] == "link"
         = link_to item[:text], item[:path], method: item[:method] || nil, class: "sidebar__item-link text-light"
       - elsif item[:type] == "pup_up"
-        = link_to item[:text], item[:path], local: false, class: "sidebar__item-link text-light #{item[:class]}"
+        %span.btn.text-light.sidebar__item-link{"data-toggle": "modal", "data-target": "#requestForm"}
+          = item[:text]
+
+= render "public/requests/form"
