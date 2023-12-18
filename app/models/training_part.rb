@@ -10,4 +10,7 @@ class TrainingPart < ApplicationRecord
   }
 
   belongs_to :training_menu
+
+  validates :training_menu_id, presence: true
+  validates :training_part, presence: true
 end
