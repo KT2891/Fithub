@@ -6,18 +6,22 @@ module Seeds
     USER_SHARE_PERMISSION_RANGE = 0..1
 
     def self.create_dev_user(email, password)
-      User.create!(
-        email: email,
-        password: password,
-        password_confirmation: password,
-        name: "テストユーザー",
-        sex: 1,
-        height: 175,
-        birthday: "1995-01-01",
-        status: 0,
-        share_permission: 0
-      )
-      puts "[Seeds] Created User for development"
+      unless User.exists?(email: email)
+        User.create!(
+          email: email,
+          password: password,
+          password_confirmation: password,
+          name: "テストユーザー",
+          sex: 1,
+          height: 175,
+          birthday: "1995-01-01",
+          status: 0,
+          share_permission: 0
+        )
+        puts "[Seeds] Created User for development"
+      else
+        puts "[Seeds] User already exists"
+      end
     end
 
     def self.create_fake_users(users_count)
