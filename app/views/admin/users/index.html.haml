@@ -1,2 +1,12 @@
-%h1 Admin::Users#index
-%p Find me in app/views/admin/users/index.html.haml
+.container
+  .row
+    .col-3
+      = render "layouts/sidebar"
+    .container.bg-light.col-9.py-5
+      %table.table
+        %thead
+          %tr
+            %th
+            %th 名前
+            %th 会員ステータス
+        = render partial: "admin/users/show", collection: @users, as: "user"

@@ -1,7 +1,6 @@
 class Admin::PostsController < ApplicationController
-  def index
-  end
-
-  def show
+  def destroy
+    Post.find(params[:id]).destroy
+    redirect_to posts_path, notice: t("destroy-post")
   end
 end

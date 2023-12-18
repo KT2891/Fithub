@@ -56,10 +56,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    # 管理者ログイン後は投稿一覧画面へ移動
-    root "posts#index"
-    # 管理者/投稿の確認と不適切内容の削除
-    resources :posts, only: %i[show destroy]
+    resources :posts, only: :destroy
     # 管理者/ユーザの確認とステータス等の編集
     resources :users, only: %i[index show edit update]
     # トレーニングメニューの追加

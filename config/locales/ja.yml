@@ -1,5 +1,23 @@
 ---
 ja:
+  enums:
+    user:
+      status:
+        active: 有効
+        quit: 退会
+        block: ブロック
+    request:
+      status:
+        unread: 未読
+        read: 既読
+    trainig_part:
+      trainig_part:
+        shoulders: 肩
+        arms: 腕
+        chest: 胸
+        back: 背中
+        glutes: 尻
+        legs_core: 脚
   post: 投稿
   posts: 投稿一覧
   requests: リクエスト
@@ -24,6 +42,7 @@ ja:
   my-training: MYトレ
   change-profile: プロフィール編集
   user-edit: 会員情報編集
+  edit: 編集
   introduction: 紹介文
   change: 変更
   height: 身長
@@ -59,3 +78,10 @@ ja:
   text: 本文
   title: タイトル
   success-request: リクエストを送信しました
+  admin-sign-in: 管理者ログイン
+  not-have-authenticate: あなたには権限がありません
+  destroy-post: 投稿を削除しました
+  users: 会員一覧
+  training-menu-index: トレーニング一覧
+  active: 有効
+  negative: 無効

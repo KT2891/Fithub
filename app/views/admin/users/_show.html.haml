@@ -1,0 +1,11 @@
+%tr
+  %td
+    = link_to user_path(user) do
+      = image_tag user.get_profile_image(50,50), class: "rounded-circle"
+  %td
+    = user.name
+  = form_with model: user, url: admin_user_path(user) do |f|
+    %td
+      = f.select :status, User.statuses.keys.map { |k| [t("enums.user.status.#{k}"), k] }, {}, {class: "form-select"}
+    %td
+      = f.submit t("change"), class: "btn btn-success"

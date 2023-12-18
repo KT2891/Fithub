@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  enum status: { active: 0, quit: 1, block: 2 }
+
   validate :password_must_contain_letter
 
 

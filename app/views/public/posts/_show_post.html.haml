@@ -19,12 +19,15 @@
     .row.ml-5.mt-2
       .col-8
         = render "public/comments/form", post: show_post, comment: comment
-  .row
-    .col-2.offset-1.text-center{id: "favorite__wrap-#{show_post.id}"}
-      = render "public/favorites/btn", post: show_post
-    .btn.col-2
-      %span.fa-solid.fa-retweet
-      = t("repost")
-    .btn.col-2
-      %span.fa-solid.fa-triangle-exclamation
-      = t("report")
+  .row.mb-2
+    - unless admin_signed_in?
+      .col-2.offset-1.text-center{id: "favorite__wrap-#{show_post.id}"}
+        = render "public/favorites/btn", post: show_post
+      .btn.col-2
+        %span.fa-solid.fa-retweet
+        = t("repost")
+      .btn.col-2
+        %span.fa-solid.fa-triangle-exclamation
+        = t("report")
+    - if destroy_authenticate?(show_post)
+      = link_to t("destroy"), destroy_move(show_post), method: :delete, class: "mx-auto btn btn-danger rounded-pill my-auto"

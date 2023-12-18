@@ -6,7 +6,7 @@ module Seeds
       training_part_data.each do |training_part|
         TrainingPart.create!(
           training_menu_id: training_part["training_id"],
-          training_part: training_part["body_parts"]
+          training_part: training_part["body_part"]
           )
           puts "[Seeds] Created training part #{training_part["name"]}"
       end

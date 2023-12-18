@@ -21,9 +21,19 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  def destroy
+    post = Post.find(params[:id])
+    if post.user == current_user
+      post.destroy
+      redirect_to posts_path, notice: t("destroy-post")
+    else
+      redirect_to posts_path, alert: t("not-have-authenticate")
+    end
+  end
+
   private
   def post_params
     params.require(:post).permit(:body)
   end
-  
+
 end

@@ -7,7 +7,7 @@ module Seeds
         TrainingMenu.create!(
           name: training_menu["name"],
           explanation: training_menu["explanation"],
-          status: 0
+          status: true
           )
           puts "[Seeds] Created training menu #{training_menu["name"]}"
       end

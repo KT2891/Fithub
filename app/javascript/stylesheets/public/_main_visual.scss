@@ -31,15 +31,14 @@
 }
 
 .posts__main{
-  background-color: rgb(237, 228, 208, 0.8);
+  background-color: white;
   .posts__content-wrap{
     border-bottom: 1px solid #000;
   }
   .post-form{
     font-size: 24px;
     resize: none;
-    background-color: rgb(237, 228, 208, 1);
-    border: none;
+    border: 1px solid #000;
     width: 500px;
     height: 200px;
   }
@@ -74,4 +73,8 @@
 
 .comment__reply-form_show{
   display: block !important;
+}
+
+.session__wrap{
+  width: 400px;
 }

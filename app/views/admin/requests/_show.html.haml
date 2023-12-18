@@ -1,0 +1,38 @@
+%tr{class: check_unread(request)}
+  %td
+    = request.id
+  %td
+    = request.title
+  %td
+    = request.created_at.strftime('%y/%m/%d')
+  %td
+    %btn.btn.btn-primary{type: "button", "data-toggle": "modal", "data-target": "#request#{request.id}"}
+      確認
+  %td
+    = request.status_i18n
+
+
+= form_with model: request, url: admin_request_path(request), method: :patch do |f|
+  .modal.fade{id: "request#{request.id}", tabindex: "-1", role: "dialog", 'aria-labelledby': "requestLabel", 'aria-hidden': "true" }
+    .modal-dialog{ role: "document" }
+      .modal-content
+        .modal-header
+          %h5.modal-title#requestLabel
+            = t("requests")
+          %button.close{ type: "button", 'data-dismiss': "modal", 'aria-label': "Close" }
+            %span{ 'aria-hidden': "true" } &times;
+        .modal-body.container.justify-content-center
+          .row.mb-3
+            %p.col-10.offset-1
+              = request.email
+          .row.mb-3
+            %p.col-10.offset-1
+              = request.title
+          .row.mb-3
+            %p.col-10.offset-1
+              = request.body
+          .row
+            = f.select :status, Request.statuses.keys.map { |k| [t("enums.request.status.#{k}"), k] },{},{class: "col-2 offset-2 form-select"}
+        .modal-footer
+          %button.btn.btn-secondary{ type: "button", 'data-dismiss': "modal" } Close
+          = f.submit t("change"), class: "btn btn-primary"
