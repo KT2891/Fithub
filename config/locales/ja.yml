@@ -2,7 +2,7 @@
 ja:
   post: 投稿
   posts: 投稿一覧
-  requests: お問い合わせ
+  requests: リクエスト
   regstration-up: 新規登録
   log-out: ログアウト
   title: FITHUB
@@ -56,3 +56,6 @@ ja:
   following: フォロー
   followers: フォロワー
   user-followed-by: あなたをフォローしています
+  text: 本文
+  title: タイトル
+  success-request: リクエストを送信しました

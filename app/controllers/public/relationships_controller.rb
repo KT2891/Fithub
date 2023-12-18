@@ -2,10 +2,12 @@ class Public::RelationshipsController < ApplicationController
   before_action :set_user, only: %i[create destroy]
   def following
     @following = current_user.following
+    @flag = :following
   end
 
   def followers
     @followers = current_user.followers
+    @flag = :followers
   end
 
   def create
