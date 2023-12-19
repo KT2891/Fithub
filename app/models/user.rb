@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   enum status: { active: 0, quit: 1, block: 2 }
 
-  validate :password_must_contain_letter
+  # validate :password_must_contain_letter
 
 
 
@@ -48,6 +48,15 @@ class User < ApplicationRecord
       profile_image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
     end
     profile_image.variant(resize_to_limit: [height, width]).processed
+  end
+
+  GUEST_USER_EMAIL = "guest@example.com"
+
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲストユーザー"
+    end
   end
 
 

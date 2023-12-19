@@ -18,7 +18,9 @@
         .text-center.mt-5.mb-2
           = f.submit "Login", class: 'btn btn-lg btn-primary'
         %br
-        .register-link.text-center
-          %p
+        .row.register-link
+          %p.offset-2
+            = link_to t("guest"), users_guest_sign_in_path, method: :post, class: "btn btn-sm btn-secondary text-light"
+          %p.offset-2
             新規登録は
             = link_to t("regstration-link"), new_user_registration_path, class: "btn btn-sm btn-success text-light"
