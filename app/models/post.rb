@@ -6,7 +6,10 @@ class Post < ApplicationRecord
 
   has_one_attached :image
 
-  scope :with_user_and_images, -> { includes(user: { profile_image_attachment: :blob })}
+  scope :with_user_and_images, -> {
+    includes(:image_attachment => :blob, user: { profile_image_attachment: :blob })
+    .order(created_at: :desc)
+  }
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
