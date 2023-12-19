@@ -1,0 +1,18 @@
+.col-lg-6.col-md-8.mb-5
+  .m-3.border.rounded.h-100.d-flex.flex-column
+    .row.m-3
+      %h4.mx-auto.text-center
+        = detail.training_menu.name
+    .training_set
+      - detail.training_counts.each_with_index do |item, index|
+        .row
+          %p.col-1.offset-1
+            = "#{index + 1}."
+          - if item.weight.present?
+            %p.col-4.text-center
+              = "#{item.weight} kg"
+            %p.col-1.text-center
+              ✕
+          -if item.count.present?
+            %p.col-4.text-center
+              = "#{item.count} 回"

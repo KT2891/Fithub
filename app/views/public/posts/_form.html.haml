@@ -1,6 +1,38 @@
 .container.posts__content-wrap.col-12.mt-5.pb-4
+  .row.justify-content-between.mb-3
+    %div.col-3.text-center.active#form-btn1
+      %span.fa-solid.fa-pen-to-square
+      White Space
+    %div.col-3.text-center#form-btn2
+      %span.fa-regular.fa-image
+      Shere Image
+    %div.col-3.text-center#form-btn3
+      %span.fa-solid.fa-dumbbell
+      Share Training
   = form_with model: post do |f|
-    .row
-      = f.text_area :body, placeholder: "今日はどうでしたか？", class: "post-form"
-    .row
-      = f.submit t("post-submit-text"), class: "btn btn-primary rounded-pill offset-8"
+    // テキスト記述用
+    .container#tab1
+      .row.justify-content-center
+        = f.text_area :body, placeholder: "今日はどうでしたか？", class: "post-form"
+      .row.justify-content-center.mt-3
+        = f.submit t("post-submit-text"), class: "btn btn-primary rounded-pill col-1"
+    // 画像投稿用
+    .container#tab2{hidden: true}
+      .row.justify-content-center
+        = f.file_field :image, id: "image-upload"
+      .row
+        %img.w-75.mx-auto.my-1#image-preview{src: "", alt: "Your image preview will appear here.", hidden: true}
+      .row.justify-content-center.mt-3
+        = f.submit t("post-submit-text"), class: "btn btn-primary rounded-pill col-1"
+    // トレーニング投稿用
+    .container#tab3{hidden: true}
+      .row.justify-content-center
+        .col-10
+          = month_calendar events: current_user.training_sets do |date, events|
+            = date.day
+            - events.each do |event|
+              %div
+                = f.radio_button :selected_date, date
+                = image_tag asset_path("dumbbell.png"), size: "50x40", class: "ml-4"
+      .row.justify-content-center.mt-3
+        = f.submit t("post-submit-text"), class: "btn btn-primary rounded-pill col-1"

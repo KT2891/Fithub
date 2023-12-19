@@ -5,6 +5,12 @@
     .row.mt-3
       %p.ml-5.text-dark
         = show_post.body
+  - if show_post.image.present?
+    .row
+      = image_tag show_post.image, class: "w-50 offset-1"
+  - if show_post.training_set.present?
+    .row
+      = render partial: "public/posts/show_training", collection: show_post.training_set.training_details, as: :detail
   .row.mt-2.d-flex.align-items-center
     .btn.ml-5{id: "comment_show_btn-#{show_post.id}"}
       %span.btn.btn-success.btn-sm.h-25.btn-text{id: "comment_show_btn_text-#{show_post.id}"}

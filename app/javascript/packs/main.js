@@ -88,14 +88,86 @@ $(document).on('turbolinks:load', function() {
 
 
 $(document).on('turbolinks:load', function() {
-  var followingBtn = $("#following_btn");
-  var followersBtn = $("#followers_btn");
-  followingBtn.on('click', function() {
-    followingBtn.addClass("btn-success");
-    followersBtn.removeClass("btn-success");
+  const followingBtn = document.getElementById("following_btn");
+  const followersBtn = document.getElementById("followers_btn");
+  const followingTab = document.getElementById("relationship__wrap-following");
+  const followersTab = document.getElementById("relationship__wrap-followers");
+
+  followingBtn.addEventListener('click', () => {
+    followingBtn.classList.add('active');
+    followersBtn.classList.remove('active');
+    followingTab.hidden = false;
+    followersTab.hidden = true;
   });
-  followersBtn.on('click', function() {
-    followersBtn.addClass("btn-success");
-    followingBtn.removeClass("btn-success");
+  followersBtn.addEventListener('click', () => {
+    followingBtn.classList.remove('active');
+    followersBtn.classList.add('active');
+    followingTab.hidden = true;
+    followersTab.hidden = false;
   });
+});
+
+// 投稿フォーム切り替え用
+document.addEventListener('turbolinks:load', () => {
+  const btn1 = document.getElementById('form-btn1');
+  const btn2 = document.getElementById('form-btn2');
+  const btn3 = document.getElementById('form-btn3');
+  const tab1 = document.getElementById('tab1');
+  const tab2 = document.getElementById('tab2');
+  const tab3 = document.getElementById('tab3');
+
+  // btn1とtab1がnullでないか確認
+  if (btn1 && tab1) {
+    btn1.addEventListener('click', () => {
+      tab1.hidden = false;
+      tab2.hidden = true;
+      tab3.hidden = true;
+      btn1.classList.add('active');
+      btn2.classList.remove('active');
+      btn3.classList.remove('active');
+    });
+  }
+
+  // btn2とtab2がnullでないか確認
+  if (btn2 && tab2) {
+    btn2.addEventListener('click', () => {
+      tab1.hidden = true;
+      tab2.hidden = false;
+      tab3.hidden = true;
+      btn1.classList.remove('active');
+      btn2.classList.add('active');
+      btn3.classList.remove('active');
+    });
+  }
+
+  // btn3とtab3がnullでないか確認
+  if (btn3 && tab3) {
+    btn3.addEventListener('click', () => {
+      tab1.hidden = true;
+      tab2.hidden = true;
+      tab3.hidden = false;
+      btn1.classList.remove('active');
+      btn2.classList.remove('active');
+      btn3.classList.add('active');
+    });
+  }
+});
+
+// 投稿画面にて即時にアップした写真を表示する
+document.addEventListener('turbolinks:load', () => {
+  const input = document.getElementById('image-upload');
+  const imagePreview = document.getElementById('image-preview');
+
+  // input と imagePreview が null でないことを確認
+  if (input && imagePreview) {
+    input.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        imagePreview.src = URL.createObjectURL(file);
+        imagePreview.hidden = false;
+      } else {
+        imagePreview.hidden = true;
+      }
+    });
+  }
 });

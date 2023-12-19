@@ -33,6 +33,7 @@ ja:
   log-in-error-message: ログインに失敗しました
   regstration-link: こちら
   post-submit-text: 投稿
+  post-success-message: 投稿しました
   post-error-message: 投稿に失敗しました
   comment: コメント
   success-craete-comment: コメントしました

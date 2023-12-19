@@ -43,7 +43,9 @@ module Public::HomesHelper
       {
         type: "pop_up",
         path: new_request_path,
-        text: t("requests")
+        text: t("requests"),
+        toggle: "modal",
+        target: "#requestForm"
       },
       {
         type: "link",
@@ -69,7 +71,9 @@ module Public::HomesHelper
       {
         type: "pop_up",
         text: t("requests"),
-        class: "guest-request"
+        class: "guest-request",
+        toggle: "modal",
+        target: "#requestForm"
       },
       {
         type: "link",
