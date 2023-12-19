@@ -19,7 +19,7 @@ class Public::PostsController < ApplicationController
       post.training_set_id = @training_set.id
     end
     if post.save
-      redirect_to posts_path, notice: t("")
+      redirect_to posts_path, notice: t("post-success-message")
     else
       render :index, alert: t("post-error-message")
     end
