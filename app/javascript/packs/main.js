@@ -99,3 +99,56 @@ $(document).on('turbolinks:load', function() {
     followingBtn.removeClass("btn-success");
   });
 });
+
+// 投稿フォーム切り替え用
+document.addEventListener('turbolinks:load', () => {
+  const btn1 = document.getElementById('form-btn1');
+  const btn2 = document.getElementById('form-btn2');
+  const btn3 = document.getElementById('form-btn3');
+  const tab1 = document.getElementById('tab1');
+  const tab2 = document.getElementById('tab2');
+  const tab3 = document.getElementById('tab3');
+
+  btn1.addEventListener('click', () => {
+    tab1.hidden = false;
+    tab2.hidden = true;
+    tab3.hidden = true;
+    btn1.classList.add('form-active');
+    btn2.classList.remove('form-active');
+    btn3.classList.remove('form-active');
+  });
+
+  btn2.addEventListener('click', () => {
+    tab1.hidden = true;
+    tab2.hidden = false;
+    tab3.hidden = true;
+    btn1.classList.remove('form-active');
+    btn2.classList.add('form-active');
+    btn3.classList.remove('form-active');
+  });
+
+  btn3.addEventListener('click', () => {
+    tab1.hidden = true;
+    tab2.hidden = true;
+    tab3.hidden = false;
+    btn1.classList.remove('form-active');
+    btn2.classList.remove('form-active');
+    btn3.classList.add('form-active');
+  });
+});
+
+// 投稿画面にて即時にアップした写真を表示する
+document.addEventListener('turbolinks:load', () => {
+  const input = document.getElementById('image-upload');
+  const imagePreview = document.getElementById('image-preview');
+
+  input.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      imagePreview.src = URL.createObjectURL(file);
+      imagePreview.hidden = false;
+    } else {
+      imagePreview.hidden = true;
+    }
+  });
+});
