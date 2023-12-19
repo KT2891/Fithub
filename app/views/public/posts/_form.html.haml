@@ -1,12 +1,12 @@
 .container.posts__form-wrap.col-12.mt-5.pb-4
   .row.justify-content-between.mb-3
     %div.col-3.text-center.active#form-btn1
-      %span.fa-solid.fa-pen-to-square
+      %span.fa-solid.fa-pen-to-square.pointer
       White Space
-    %div.col-3.text-center#form-btn2
+    %div.col-3.text-center#form-btn2.pointer
       %span.fa-regular.fa-image
       Shere Image
-    %div.col-3.text-center#form-btn3
+    %div.col-3.text-center#form-btn3.pointer
       %span.fa-solid.fa-dumbbell
       Share Training
   = form_with model: post do |f|

@@ -52,6 +52,12 @@
   }
 }
 
+.pointer{
+  &:hover{
+    cursor: pointer;
+  }
+}
+
 .weight-form{
   border: 2px solid #000;
   border-radius: 50% !important;
