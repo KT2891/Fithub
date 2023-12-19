@@ -173,3 +173,16 @@ document.addEventListener('turbolinks:load', () => {
     });
   }
 });
+
+$(document).on("turbolinks:load", function() {
+  if ($("nav.pagination a[rel=next]").length){
+    $(".posts_show").infiniteScroll({
+      path: "nav.pagination a[rel=next]",
+      append: ".posts__content-wrap",
+      history: true,
+      prefill: false,
+      status: ".page-load-status",
+      hideNav: ".pagination"
+    });
+  }
+})

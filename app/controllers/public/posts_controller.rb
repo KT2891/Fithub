@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   def index
-    @posts = Post.with_user_and_images.all
+    @posts = Post.with_user_and_images.page(params[:page]).per(5)
     # フォーム用インスタンス生成
     @post = Post.new
     @comment = Comment.new
