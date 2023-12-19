@@ -2,7 +2,7 @@
   .row
     .col-3
       = render "layouts/sidebar"
-    .user__main.col-9.mb-5
+    .user__main.col-9.mb-5.bg-light
       = render "public/users/info", user: @user
       .row.justify-content-around.text-center.text-light.border-bottom
         - link_items.each do |item|

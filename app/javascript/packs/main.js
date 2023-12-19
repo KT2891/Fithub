@@ -93,18 +93,20 @@ $(document).on('turbolinks:load', function() {
   const followingTab = document.getElementById("relationship__wrap-following");
   const followersTab = document.getElementById("relationship__wrap-followers");
 
-  followingBtn.addEventListener('click', () => {
-    followingBtn.classList.add('active');
-    followersBtn.classList.remove('active');
-    followingTab.hidden = false;
-    followersTab.hidden = true;
-  });
-  followersBtn.addEventListener('click', () => {
-    followingBtn.classList.remove('active');
-    followersBtn.classList.add('active');
-    followingTab.hidden = true;
-    followersTab.hidden = false;
-  });
+  if (followingBtn && followersBtn) {
+    followingBtn.addEventListener('click', () => {
+      followingBtn.classList.add('active');
+      followersBtn.classList.remove('active');
+      followingTab.hidden = false;
+      followersTab.hidden = true;
+    });
+    followersBtn.addEventListener('click', () => {
+      followingBtn.classList.remove('active');
+      followersBtn.classList.add('active');
+      followingTab.hidden = true;
+      followersTab.hidden = false;
+    });
+  }
 });
 
 // 投稿フォーム切り替え用
