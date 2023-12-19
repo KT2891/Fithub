@@ -2,7 +2,9 @@
   .row
     .col-3
       = render "layouts/sidebar"
-    .posts__main.col-9.mb-5
+    .posts__main.col-9.mb-5#post
       - unless admin_signed_in?
         = render "public/posts/form", post: @post
-      = render partial: "public/posts/show_post", collection: @posts, locals: { comment: @comment}
+      .posts_show
+        = render partial: "public/posts/show_post", collection: @posts, locals: { comment: @comment}
+      = paginate @posts

@@ -8,10 +8,12 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-import "jquery";
+
+import 'jquery';
 import "popper.js";
 import "bootstrap";
 
+import InfiniteScroll from 'infinite-scroll';
 import Chart from "chart.js/auto";
 global.Chart = Chart;
 
