@@ -1,2 +1,2 @@
 :plain
-  $('#follow__wrap').html("#{ j(render 'public/relationships/btn', user: @user) }");
+  $('.follow__wrap#{@user.id}').html("#{ j(render 'public/relationships/btn', user: @user) }");

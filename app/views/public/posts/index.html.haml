@@ -2,7 +2,7 @@
   .row
     .col-3
       = render "layouts/sidebar"
-    .posts__main.col-9.mb-5#post
+    .posts__main.col-9.mb-5
       - unless admin_signed_in?
         = render "public/posts/form", post: @post
       .posts_show

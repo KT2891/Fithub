@@ -4,8 +4,9 @@
   .col-4.ml-3
     %p
       = user.name
-  .col-4
-    = link_to t("change-profile"), edit_user_path, class: "btn btn-success"
+  - if user.email != "guest@example.com" && user == current_user
+    .col-4
+      = link_to t("change-profile"), edit_user_path, class: "btn btn-success"
 .row.m-4
   %p
     = user.introduction
