@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
    #会員用
   devise_for :users,skip: :passwords, controllers: {
     registrations: "public/registrations",
@@ -57,6 +56,8 @@ Rails.application.routes.draw do
     resources :body_compositions, only: %i[index create update destroy]
     # お問い合わせ機能
     resource :request, only: %i[new create]
+    # 通知確認画面
+    resources :notifications, only: :index
   end
 
   namespace :admin do

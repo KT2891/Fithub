@@ -3,6 +3,7 @@ class Public::FavoritesController < ApplicationController
 
   def create
     current_user.favorites.create(post_id: @post.id)
+    @post.create_notification_like!(current_user)
   end
 
   def destroy

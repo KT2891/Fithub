@@ -85,7 +85,11 @@ module ApplicationHelper
   end
 
   def user_sidebar_sub_items
-    [
+    [ {
+        type: "link",
+        path: notifications_path,
+        text: "Notification",
+      },
       {
         type: "pup_up",
         text: "Request",

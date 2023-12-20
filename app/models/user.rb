@@ -26,6 +26,11 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+  # 通知に関するアソシエーション
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+
+
   scope :with_posts, -> { includes(:post) }
 
   # 対象のユーザが引数のユーザをフォローしているかの確認
@@ -46,6 +51,17 @@ class User < ApplicationRecord
     return if password.blank?
     unless password.match?(/[a-zA-Z]/)
       errors.add(:password, 'は少なくとも一つのアルファベットを含む必要があります')
+    end
+  end
+  
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
     end
   end
 
