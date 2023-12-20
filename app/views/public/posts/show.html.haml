@@ -1,2 +1,7 @@
-%h1 Public::Posts#show
-%p Find me in app/views/public/posts/show.html.haml
+.container
+  .row
+    .col-3
+      = render "layouts/sidebar"
+    .posts__main.col-9.mb-5
+      .posts_show
+        = render "public/posts/show_post", show_post: @post, comment: @comment

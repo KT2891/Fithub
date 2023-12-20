@@ -2,7 +2,3 @@
   = image_tag show_post.user.get_profile_image(50,50), class: "rounded-circle"
   %span.mx-2.my-auto.text-dark.col-5
     = show_post.user.name
-  - unless show_post.user == current_user
-    - unless admin_signed_in?
-      .col-3.offset-4{class: "follow__wrap#{show_post.user.id}"}
-        = render "public/relationships/btn", user: show_post.user

@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   enum status: { active: 0, quit: 1, block: 2 }
 
-  # validate :password_must_contain_letter
+  validate :password_must_contain_letter
 
 
 
@@ -31,6 +31,15 @@ class User < ApplicationRecord
   # 対象のユーザが引数のユーザをフォローしているかの確認
   def followed_by?(user)
     following.include?(user)
+  end
+
+  # フォローしているユーザーのポストを取得
+  def following_posts
+    Post.where(user_id: following_ids)
+  end
+
+  def guest?
+    email != GUEST_USER_EMAIL
   end
 
   def password_must_contain_letter
