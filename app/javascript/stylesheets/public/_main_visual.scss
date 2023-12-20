@@ -32,9 +32,6 @@
 
 .posts__main{
   background-color: white;
-  .posts__content-wrap{
-    border-bottom: 1px solid #000;
-  }
   .post-form{
     font-size: 24px;
     resize: none;
@@ -87,4 +84,19 @@
 
 .active{
   border-bottom: 2px solid red;
+}
+.line__wrap{
+  width: 50px;
+  .line{
+    background-color: rgb(51, 54, 57);
+    height: 100%;
+    width: 2px;
+    margin: 0 auto;
+  }
+}
+
+.comment_form{
+  resize: none;
+  height: 200px;
+  border: none;
 }

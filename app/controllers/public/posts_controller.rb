@@ -1,6 +1,10 @@
 class Public::PostsController < ApplicationController
   def index
+    # 全てのポスト取得
+    # ページネーション1ページ5件
     @posts = Post.with_user_and_images.page(params[:page]).per(5)
+    # フォロワーのポストのみ取得
+    @follow_posts = current_user.following_posts.with_user_and_images.page(params[:page]).per(5)
     # フォーム用インスタンス生成
     @post = Post.new
     @comment = Comment.new

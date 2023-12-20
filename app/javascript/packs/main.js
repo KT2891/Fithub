@@ -63,30 +63,30 @@ $(document).on('turbolinks:load', function() {
 });
 
 // コメントの表示/非表示の処理
-$(document).on('turbolinks:load', function() {
-  $(document).on('click', '[id^=comment_show_btn-]', function() {
-      var commentId = $(this).attr('id').split('-')[1]; // ボタンのIDからcommentIdを取得
-      var commentWrap = $('#comment__wrap-' + commentId); // 対応するコメントのラッパーを取得
-      var commentWrapText= $('#comment_show_btn_text-' + commentId); // 対応するコメントのラッパーを取得
+// コメント表示/非表示の切り替えのイベントリスナー
+$(document).on('click', '[id^=comment_show_btn-]', function() {
+    var commentId = $(this).attr('id').split('-')[1];
+    var commentWrap = $('#comment__wrap-' + commentId);
+    var commentWrapText = $('#comment_show_btn_text-' + commentId);
 
-      commentWrap.toggleClass('comment_show'); // コメントの表示/非表示を切り替え
+    commentWrap.toggleClass('comment_show');
 
-      if (commentWrap.hasClass('comment_show')) {
-        commentWrapText.text('-'); // テキストを"-"に変更
-        commentWrapText.removeClass('btn-success').addClass('btn-danger'); // btn-successをbtn-dangerに切り替え
-      } else {
-        commentWrapText.text('+'); // テキストを"+"に変更
-        commentWrapText.removeClass('btn-danger').addClass('btn-success'); // btn-dangerをbtn-successに切り替え
-      }
-  });
-
-  $(document).on('click', '[id^=reply-btn-]', function() {
-    var commentId = $(this).attr('id').split('-')[2];
-    $('#comment-reply-form-' + commentId).toggleClass('comment__reply-form_show');
-  });
+    if (commentWrap.hasClass('comment_show')) {
+        commentWrapText.text('-');
+        commentWrapText.removeClass('btn-success').addClass('btn-danger');
+    } else {
+        commentWrapText.text('+');
+        commentWrapText.removeClass('btn-danger').addClass('btn-success');
+    }
 });
 
+// 返信ボタンのイベントリスナー
+$(document).on('click', '[id^=reply-btn-]', function() {
+    var commentId = $(this).attr('id').split('-')[2];
+    $('#comment-reply-form-' + commentId).toggleClass('comment__reply-form_show');
+});
 
+// フォロー、フォロワーの切り替え
 $(document).on('turbolinks:load', function() {
   const followingBtn = document.getElementById("following_btn");
   const followersBtn = document.getElementById("followers_btn");
@@ -117,6 +117,10 @@ document.addEventListener('turbolinks:load', () => {
   const tab1 = document.getElementById('tab1');
   const tab2 = document.getElementById('tab2');
   const tab3 = document.getElementById('tab3');
+  const postBtn1 = document.getElementById('all_posts_btn')
+  const postBtn2 = document.getElementById('follow_posts_btn')
+  const postTab1 = document.getElementById('all_posts');
+  const postTab2 = document.getElementById('follow_posts');
 
   // btn1とtab1がnullでないか確認
   if (btn1 && tab1) {
@@ -153,12 +157,32 @@ document.addEventListener('turbolinks:load', () => {
       btn3.classList.add('active');
     });
   }
+
+  if (postBtn1 && postTab1) {
+    postBtn1.addEventListener('click', () => {
+      postTab1.hidden = false;
+      postTab2.hidden = true;
+      postBtn1.classList.add('active');
+      postBtn2.classList.remove('active');
+    });
+  }
+
+  if (postBtn2 && postTab2) {
+    postBtn2.addEventListener('click', () => {
+      postTab1.hidden = true;
+      postTab2.hidden = false;
+      postBtn1.classList.remove('active');
+      postBtn2.classList.add('active');
+    });
+  }
+
 });
 
 document.addEventListener('turbolinks:load', function() {
   setupImageUpload('#image-upload', 'previews');
 });
 
+// プレビュー機能
 function setupImageUpload(uploadClass, previewContainerID) {
   document.querySelectorAll(uploadClass).forEach(function(input) {
     input.addEventListener('change', function(event) {
@@ -180,7 +204,7 @@ function setupImageUpload(uploadClass, previewContainerID) {
   });
 }
 
-
+// 無限スクロール機能
 $(document).on("turbolinks:load", function() {
   if ($("nav.pagination a[rel=next]").length){
     $(".posts_show").infiniteScroll({

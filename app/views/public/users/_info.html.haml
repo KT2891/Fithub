@@ -4,9 +4,12 @@
   .col-4.ml-3
     %p
       = user.name
-  - if user.email != "guest@example.com" && user == current_user
+  - if user.guest? && user == current_user
     .col-4
       = link_to t("change-profile"), edit_user_path, class: "btn btn-success"
+  - elsif !user.guest? && user != current_user
+    .col-3.mx-2{class: "follow__wrap#{user.id}"}
+      = render "public/relationships/btn", user: user
 .row.m-4
   %p
     = user.introduction

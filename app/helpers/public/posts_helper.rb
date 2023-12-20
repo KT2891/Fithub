@@ -4,6 +4,14 @@ module Public::PostsHelper
     post.user == current_user || admin_signed_in?
   end
 
+  def comment_icon(post)
+    if post.comments.present?
+      "fa-solid fa-comment"
+    else
+      "fa-regular fa-comment"
+    end
+  end
+
   def destroy_move(post)
     if admin_signed_in?
       admin_post_path(post)

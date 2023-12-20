@@ -5,8 +5,6 @@ module ApplicationHelper
       admin_sidebar_items
     elsif user_signed_in?
       user_sidebar_items
-    else
-      guest_sidebar_items
     end
   end
 
@@ -72,32 +70,6 @@ module ApplicationHelper
         path: user_path(current_user),
         text: "My Page"
       },
-    ]
-  end
-
-
-  def guest_sidebar_items
-    [
-      {
-        type: "pop_up",
-        text: t("requests"),
-        class: "guest-request"
-      },
-      {
-        type: "link",
-        path: about_path,
-        text: "About"
-      },
-      {
-        type: "link",
-        path: new_user_registration_path,
-        text: t("regstration-up")
-      },
-      {
-        type: "pop_up",
-        text: t("log-in"),
-        class: "guest-login"
-      }
     ]
   end
 

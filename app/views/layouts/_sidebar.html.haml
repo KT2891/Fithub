@@ -4,17 +4,18 @@
       = link_to root_path do
         = image_tag asset_path("main_logo.png"), class: "main_logo"
   - sidebar_main_items.each do |item|
-    .row.justify-content-center.sidebar__item-wrap
+    .row.ml-2.sidebar__item-wrap
       - if item[:type] == "link"
-        = link_to item[:text], item[:path], class: "sidebar__item-link text-dark"
+        = link_to item[:path], class: "sidebar__item-link text-dark" do
+          = item[:text]
       - elsif item[:type] == "pup_up"
         = link_to item[:text], item[:path], local: false, class: "sidebar__item-link text-dark #{item[:class]}"
   - sidebar_sub_items.each do |item|
-    .row.justify-content-center.sidebar__item-wrap
+    .row.ml-2.sidebar__item-wrap
       - if item[:type] == "link"
         = link_to item[:text], item[:path], method: item[:method] || nil, class: "sidebar__item-link text-dark"
       - elsif item[:type] == "pup_up"
-        %span.btn.text-dark.sidebar__item-link{"data-toggle": "modal", "data-target": "#requestForm"}
+        %span.pointer.text-dark.sidebar__item-link{"data-toggle": "modal", "data-target": "#requestForm"}
           = item[:text]
 
 = render "public/requests/form"

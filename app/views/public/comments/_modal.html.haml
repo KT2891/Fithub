@@ -1,0 +1,30 @@
+= form_with model: [post, comment], local: false do |f|
+  .modal.fade{id:"commentWrap#{post.id}", tabindex: '-1', role: 'dialog', 'aria-labelledby': 'exampleModalCenterTitle', 'aria-hidden': 'true' }
+    .modal-dialog.modal-dialog-centered{ role: 'document' }
+      .modal-content
+        .modal-header
+          %button.close{ type: 'button', 'data-dismiss': 'modal', 'aria-label': 'Close' }
+            %span{ 'aria-hidden': 'true' } &times;
+        .modal-body
+          .container-fluid.col-12.mt-2
+            .row
+              = render "public/users/post_user_info", show_post: post
+              %span.col-auto.offset-1.my-auto
+                = time_ago_in_words(post.created_at)
+            .row.mt-3
+              .line__wrap
+                .line
+              = link_to post_path(post), class: "posts__content-text"  do
+                %p.text-dark
+                  = post.body
+            .row
+              .line__wrap
+                .line
+              = link_to t("more-read"), post_path(post)
+            .row.mt-3
+              = link_to user_path(current_user), class: "posts__content-user-name" do
+                = image_tag current_user.get_profile_image(50,50), class: "rounded-circle"
+              = f.text_area :body, placeholder: t("send-comment"), class: "comment_form mx-2 col-8 pt-3"
+        .modal-footer
+          %button.btn.btn-secondary{ type: 'button', 'data-dismiss': 'modal' } Close
+          = f.submit t("reply"), class: "btn btn-primary"
