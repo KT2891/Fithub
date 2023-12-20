@@ -37,7 +37,7 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:body, :image)
+    params.require(:post).permit(:body, images: [])
   end
 
   def find_training_set

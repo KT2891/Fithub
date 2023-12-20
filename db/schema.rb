@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2023_12_10_121107) do
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "training_set_id"
+    t.bigint "parent_id"
     t.text "body"
     t.integer "show_permission", default: 0, null: false
     t.boolean "share_permission", default: true, null: false

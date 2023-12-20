@@ -5,9 +5,10 @@
     .row.mt-3
       %p.ml-5.text-dark
         = show_post.body
-  - if show_post.image.present?
-    .row
-      = image_tag show_post.image, class: "w-50 offset-1"
+  - if show_post.images.present?
+    - show_post.images.each do |img|
+      .row
+        = image_tag img, class: "w-50 offset-1"
   - if show_post.training_set.present?
     .row
       = render partial: "public/posts/show_training", collection: show_post.training_set.training_details, as: :detail

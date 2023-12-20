@@ -155,24 +155,31 @@ document.addEventListener('turbolinks:load', () => {
   }
 });
 
-// 投稿画面にて即時にアップした写真を表示する
-document.addEventListener('turbolinks:load', () => {
-  const input = document.getElementById('image-upload');
-  const imagePreview = document.getElementById('image-preview');
-
-  // input と imagePreview が null でないことを確認
-  if (input && imagePreview) {
-    input.addEventListener('change', (event) => {
-      const file = event.target.files[0];
-      if (file) {
-        imagePreview.src = URL.createObjectURL(file);
-        imagePreview.hidden = false;
-      } else {
-        imagePreview.hidden = true;
-      }
-    });
-  }
+document.addEventListener('turbolinks:load', function() {
+  setupImageUpload('#image-upload', 'previews');
 });
+
+function setupImageUpload(uploadClass, previewContainerID) {
+  document.querySelectorAll(uploadClass).forEach(function(input) {
+    input.addEventListener('change', function(event) {
+      const files = event.target.files;
+      const container = document.getElementById(previewContainerID);
+
+      container.innerHTML = '';
+
+      Array.from(files).forEach(function(file) {
+        const img = document.createElement('img');
+        img.setAttribute('class', 'col-lg-3 col-sm-5 mx-1 my-1');
+        img.src = URL.createObjectURL(file);
+        img.onload = function() {
+          URL.revokeObjectURL(img.src);
+        }
+        container.appendChild(img);
+      });
+    });
+  });
+}
+
 
 $(document).on("turbolinks:load", function() {
   if ($("nav.pagination a[rel=next]").length){

@@ -1,13 +1,15 @@
 class Post < ApplicationRecord
   belongs_to :user
   belongs_to :training_set, optional: true
+  belongs_to :parent, class_name: 'Post', optional: true
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  has_one_attached :image
+
+  has_many_attached :images
 
   scope :with_user_and_images, -> {
-    includes(:image_attachment => :blob, user: { profile_image_attachment: :blob })
+    includes(:images_attachments => :blob, user: { profile_image_attachment: :blob })
     .order(created_at: :desc)
   }
 
