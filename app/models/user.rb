@@ -43,6 +43,23 @@ class User < ApplicationRecord
     Post.where(user_id: following_ids)
   end
 
+  # ステータスが0(active)のユーザーのみログイン可能
+  def active_for_authentication?
+    super && self.status == "active"
+  end
+
+  # カスタムメッセージを提供する場合（任意）
+  def inactive_message
+    case self.status
+    when "active"
+      super
+    when "quit"
+      :not_active
+    when "block"
+      :blocked
+    end
+  end
+
   def guest?
     email != GUEST_USER_EMAIL
   end
@@ -53,7 +70,7 @@ class User < ApplicationRecord
       errors.add(:password, 'は少なくとも一つのアルファベットを含む必要があります')
     end
   end
-  
+
   def create_notification_follow!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
     if temp.blank?

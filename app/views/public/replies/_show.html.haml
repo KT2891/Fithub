@@ -1,7 +1,7 @@
-.row.ml-5.mb-2
+.row.my-1
   = link_to user_path(reply.user) do
     = image_tag reply.user.get_profile_image(30,30), class: "rounded-circle"
     = reply.user.name
-  %p.reply__wrap-body.col-4
+  %p.reply__wrap-body.col-6
     = reply.body
-  = link_to t("destroy"), post_comment_reply_path(reply.parent.post, reply.parent, reply), method: :delete, remote: true, class: "content-end btn btn-sm btn-danger"
+  = link_to t("destroy"), post_comment_reply_path(reply.parent.post, reply.parent, reply), method: :delete, remote: true, class: "offset-1 content-end btn btn-sm btn-danger mb-auto"
