@@ -3,8 +3,7 @@
 @use "./global/layout";
 @use "./global/header";
 @use "./admin/session_form";
-@use "./public/registration_form";
+@use "./public/mixin" as m;
 @use "./public/main_visual";
 @use "./public/sidebar";
-@use "./public/about";
 @use "./public/calendar";
