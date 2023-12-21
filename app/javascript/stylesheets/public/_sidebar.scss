@@ -6,25 +6,30 @@
 .sidebar{
   position: sticky;
   top: 0px;
-  height: 850px;
-  .main_logo{
-    height: 150px;
-    width: 150px;
-    @include m.mp(tab){
-      height: 40px;
-      width: 40px;
+  height: 100vh;
+    .main_logo{
+      height: 150px;
+      width: 150px;
+      @include m.mp(spc){
+        height: 60px;
+        width: 60px;
+      }
     }
   }
-  .sidebar__item-wrap{
-    margin: 20px 0;
-    .sidebar__item-link{
-    font-size: 25px;
-    }
+.sidebar__wrap{
+  @include m.mp(sp){
+   display: none;
+ }
+}
+.sidebar__item-wrap{
+  margin: 20px 0;
+  .sidebar__item-link{
+  font-size: 25px;
   }
-  .sidebar_text{
-    display: inline;
-    @include m.mp(tab){
-      display: none;
-    }
+}
+.sidebar_text{
+  display: inline;
+  @include m.mp(spc){
+    display: none;
   }
 }

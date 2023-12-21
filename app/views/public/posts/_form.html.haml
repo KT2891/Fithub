@@ -15,7 +15,7 @@
       .row.justify-content-center
         = f.text_area :body, placeholder: "今日はどうでしたか？", class: "post-form"
       .row.justify-content-center.mt-3
-        = f.submit t("post-submit-text"), class: "btn btn-primary rounded-pill col-1"
+        = f.submit t("post-submit-text"), class: "btn btn-primary rounded-pill col-lg-1 col-md-3"
     // 画像投稿用
     .container#tab2{hidden: true}
       .row.justify-content-center
@@ -23,7 +23,7 @@
       .row
         .justify-content-between#previews
       .row.justify-content-center.mt-3
-        = f.submit t("post-submit-text"), class: "btn btn-primary rounded-pill col-1"
+        = f.submit t("post-submit-text"), class: "btn btn-primary rounded-pill col-lg-1 col-md-3 col-sm-5"
     // トレーニング投稿用
     .container#tab3{hidden: true}
       .row.justify-content-center
@@ -35,4 +35,4 @@
                 = f.radio_button :selected_date, date
                 = image_tag asset_path("dumbbell.png"), size: "50x40", class: "ml-4"
       .row.justify-content-center.mt-3
-        = f.submit t("post-submit-text"), class: "btn btn-primary rounded-pill col-1"
+        = f.submit t("post-submit-text"), class: "btn btn-primary rounded-pill col-lg-1 col-md-3 col-sm-5"
