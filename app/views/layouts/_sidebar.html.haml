@@ -1,10 +1,10 @@
-.sidebar.container-fluid.bg-light
+.sidebar.container-fluid.bg-light.d-flex.flex-column
   .row.main-logo
     #logo.logo.mx-auto
       = link_to root_path do
         = image_tag asset_path("main_logo.png"), class: "main_logo"
   - sidebar_main_items.each do |item|
-    .row.ml-2.sidebar__item-wrap
+    .row.mx-auto.sidebar__item-wrap
       - if item[:type] == "link"
         = link_to item[:path], class: "sidebar__item-link text-dark" do
           %i.my-auto.col-2{class: item[:logo]}
