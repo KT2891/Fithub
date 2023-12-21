@@ -7,15 +7,13 @@
     .row.ml-2.sidebar__item-wrap
       - if item[:type] == "link"
         = link_to item[:path], class: "sidebar__item-link text-dark" do
-          = item[:text]
-      - elsif item[:type] == "pup_up"
-        = link_to item[:text], item[:path], local: false, class: "sidebar__item-link text-dark #{item[:class]}"
-  - sidebar_sub_items.each do |item|
-    .row.ml-2.sidebar__item-wrap
-      - if item[:type] == "link"
-        = link_to item[:text], item[:path], method: item[:method] || nil, class: "sidebar__item-link text-dark"
+          %i.my-auto.col-2{class: item[:logo]}
+          %span.col-9.offset-1.sidebar_text
+            = item[:text]
       - elsif item[:type] == "pup_up"
         %span.pointer.text-dark.sidebar__item-link{"data-toggle": "modal", "data-target": "#requestForm"}
-          = item[:text]
+          %i.my-auto.col-2{class: item[:logo]}
+          %span.col-9.offset-1.sidebar_text
+            = item[:text]
 
 = render "public/requests/form"

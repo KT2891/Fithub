@@ -8,14 +8,6 @@ module ApplicationHelper
     end
   end
 
-  def sidebar_sub_items
-    if admin_signed_in?
-      admin_sidebar_sub_items
-    else
-      user_sidebar_sub_items
-    end
-  end
-
   private
 
   def admin_sidebar_items
@@ -39,42 +31,7 @@ module ApplicationHelper
         type: "link",
         path: admin_requests_path,
         text: "Requests"
-      }
-    ]
-  end
-
-  def user_sidebar_items
-    [
-      {
-        type: "link",
-        path: posts_path,
-        text: "Post"
       },
-      {
-        type: "link",
-        path: following_user_path(current_user),
-        text: "Follow"
-      },
-      {
-        type: "link",
-        path: training_sets_path,
-        text: "Training"
-      },
-      {
-        type: "link",
-        path: body_compositions_path,
-        text: "My Body"
-      },
-      {
-        type: "link",
-        path: user_path(current_user),
-        text: "My Page"
-      },
-    ]
-  end
-
-  def admin_sidebar_sub_items
-    [
       {
         type: "link",
         path: destroy_admin_session_path,
@@ -84,18 +41,52 @@ module ApplicationHelper
     ]
   end
 
-  def user_sidebar_sub_items
-    [ {
+  def user_sidebar_items
+    [
+      {
+        logo: "fa-regular fa-pen-to-square",
         type: "link",
-        path: notifications_path,
-        text: "Notification",
+        path: posts_path,
+        text: "Post"
       },
       {
+        logo: "fa-regular fa-user",
+        type: "link",
+        path: following_user_path(current_user),
+        text: "Follow"
+      },
+      {
+        logo: "fa-solid fa-dumbbell",
+        type: "link",
+        path: training_sets_path,
+        text: "Training"
+      },
+      {
+        logo: "fa-solid fa-person",
+        type: "link",
+        path: body_compositions_path,
+        text: "My Body"
+      },
+      {
+        logo: "fa-solid fa-user-pen",
+        type: "link",
+        path: user_path(current_user),
+        text: "My Page"
+      },
+      {
+        logo: "fa-regular fa-bell",
+        type: "link",
+        path: notifications_path,
+        text: "Notice",
+      },
+      {
+        logo: "fa-regular fa-hand",
         type: "pup_up",
         text: "Request",
         class: "user-request"
       },
       {
+        logo: "fa-solid fa-arrow-right-from-bracket",
         type: "link",
         path: destroy_user_session_path,
         text: "Log Out",
@@ -103,4 +94,5 @@ module ApplicationHelper
       }
     ]
   end
+
 end
