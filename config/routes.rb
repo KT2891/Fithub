@@ -55,9 +55,11 @@ Rails.application.routes.draw do
     # 体重・体脂肪率の表示・追加・編集・削除機能
     resources :body_compositions, only: %i[index create update destroy]
     # お問い合わせ機能
-    resource :request, only: %i[new create]
+    resource :request, only: :create
     # 通知確認画面
     resources :notifications, only: :index
+    # 通報投稿用
+    resources :reports, only: :create
   end
 
   namespace :admin do
@@ -68,6 +70,8 @@ Rails.application.routes.draw do
     resources :training_menus, except: :show
     # お問い合わせの確認、既読への編集
     resources :requests, only: %i[index update]
+    # 通報の確認
+    resources :reports, only: %i[index update]
   end
 
 end
