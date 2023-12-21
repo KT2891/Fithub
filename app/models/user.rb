@@ -30,6 +30,11 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
+  # 通報に関するアソシエーション
+  has_many :active_reports, class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
+  has_many :passive_reports, class_name: "Report", foreign_key: "reported_id", dependent: :destroy
+
+
 
   scope :with_posts, -> { includes(:post) }
 

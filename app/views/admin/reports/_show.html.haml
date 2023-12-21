@@ -1,0 +1,39 @@
+%tr{class: report_check_unread(report)}
+  %td
+    = report.id
+  %td
+    = link_to t("show_post"), post_path(report.post), class: report_check_unread(report)
+  %td
+    = report.created_at.strftime('%y/%m/%d')
+  %td
+    %btn.btn.btn-primary{type: "button", "data-toggle": "modal", "data-target": "#report#{report.id}"}
+      確認
+  %td
+    = report.status_i18n
+
+
+= form_with model: report, url: admin_report_path(report), local: false, method: :patch do |f|
+  .modal.fade{id: "report#{report.id}", tabindex: "-1", role: "dialog", 'aria-labelledby': "reportLabel", 'aria-hidden': "true" }
+    .modal-dialog{ role: "document" }
+      .modal-content
+        .modal-header
+          %h5.modal-title#reportLabel
+            = t("report")
+          %button.close{ type: "button", 'data-dismiss': "modal", 'aria-label': "Close" }
+            %span{ 'aria-hidden': "true" } &times;
+        .modal-body.container.justify-content-center
+          .row.mb-3
+            %p.col-4 通報元:
+            %p.col-6.offset-1
+              = link_to report.reporter.name, user_path(report.reporter), class: "text-dark"
+          .row.mb-3
+            %p.col-4 通報先:
+            %p.col-6.offset-1
+              = link_to report.reported.name, user_path(report.reported), class: "text-dark"
+          .row.mb-3
+            = link_to report.post.body, post_path(report.post), class: "col-10 offset-1 text-dark"
+          .row
+            = f.select :status, Report.statuses.keys.map { |k| [t("enums.report.status.#{k}"), k] },{},{class: "col-2 offset-2 form-select"}
+        .modal-footer
+          %button.btn.btn-secondary{ type: "button", 'data-dismiss': "modal" } Close
+          = f.submit t("change"), class: "btn btn-primary"

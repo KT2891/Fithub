@@ -34,6 +34,21 @@ module ApplicationHelper
       },
       {
         type: "link",
+        path: admin_reports_path,
+        text: "Reports"
+      }
+    ]
+  end
+
+  def user_sidebar_items
+    [
+      {
+        type: "link",
+        path: posts_path,
+        text: "Post"
+      },
+      {
+        type: "link",
         path: destroy_admin_session_path,
         text: "Log Out",
         method: :delete

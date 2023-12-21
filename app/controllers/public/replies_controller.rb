@@ -5,6 +5,7 @@ class Public::RepliesController < ApplicationController
     @reply = current_user.comments.new(reply_params)
     @reply.parent_id = @comment.id
     @reply.save
+    @comment.create_notification_reply!(current_user, @reply.id)
   end
 
   def destroy
