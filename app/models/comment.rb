@@ -6,4 +6,6 @@ class Comment < ApplicationRecord
 
   # 子コメント（返信）への関連
   has_many :replies, class_name: 'Comment', foreign_key: 'parent_id'
+  # 通知に関するリレーション
+  has_many :notifications, dependent: :destroy
 end
