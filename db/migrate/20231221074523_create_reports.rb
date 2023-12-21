@@ -5,7 +5,7 @@ class CreateReports < ActiveRecord::Migration[6.1]
       t.bigint :reported_id
       t.bigint :post_id
       t.text :reason
-      t.integer :status
+      t.integer :status, default: 0
 
       t.timestamps
     end

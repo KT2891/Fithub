@@ -21,7 +21,7 @@
       .col-2.text-center{id: "favorite__wrap-#{show_post.id}"}
         = render "public/favorites/btn", post: show_post
       - if show_post.user != current_user
-        .btn.col-2
+        .btn.col-2{"data-toggle": "modal", "data-target": "#reportWrap#{show_post.id}"}
           %span.fa-solid.fa-triangle-exclamation
           = t("report")
     - if destroy_authenticate?(show_post)
@@ -35,6 +35,7 @@
     .col-12
       .container-fluid{id: "comment__wrap-content-#{show_post.id}"}
         = render partial: "public/comments/show_comment", collection: show_post.comments, as: :comment
-
-- if current_page?(posts_path)
-  = render "public/comments/modal", post: show_post, comment: comment
+- unless admin_signed_in?
+  - if current_page?(posts_path)
+    = render "public/comments/modal", post: show_post, comment: comment
+  = render "public/reports/modal", post: show_post, report: Report.new

@@ -39,6 +39,11 @@ module ApplicationHelper
         type: "link",
         path: admin_requests_path,
         text: "Requests"
+      },
+      {
+        type: "link",
+        path: admin_reports_path,
+        text: "Reports"
       }
     ]
   end

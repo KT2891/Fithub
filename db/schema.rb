@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(version: 2023_12_21_075700) do
     t.bigint "reported_id"
     t.bigint "post_id"
     t.text "reason"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

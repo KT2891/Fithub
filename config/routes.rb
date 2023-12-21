@@ -45,7 +45,10 @@ Rails.application.routes.draw do
       resources :comments, only: %i[create destroy] do
         resources :replies, only: %i[create destroy]
       end
+      # いいね用
       resource :favorite, only: %i[create destroy]
+      # 通報投稿用
+      resources :reports, only: :create
     end
 
     # トレーニング成果の日単位での表示・削除
@@ -58,8 +61,6 @@ Rails.application.routes.draw do
     resource :request, only: :create
     # 通知確認画面
     resources :notifications, only: :index
-    # 通報投稿用
-    resources :reports, only: :create
   end
 
   namespace :admin do

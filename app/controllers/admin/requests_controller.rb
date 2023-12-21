@@ -2,7 +2,7 @@ class Admin::RequestsController < ApplicationController
   before_action :set_request, only: :update
 
   def index
-    @requests = Request.all
+    @requests = Request.order(created_at: :desc)
   end
 
   def update
