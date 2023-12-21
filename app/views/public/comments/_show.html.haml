@@ -1,4 +1,4 @@
-.row.my-2.ml-5
+.row.my-2.offset-1
   = link_to user_path(comment.user) do
     = image_tag comment.user.get_profile_image(30,30), class: "rounded-circle"
     = comment.user.name
@@ -6,12 +6,11 @@
     = comment.body
   %span.offset-2.btn.btn-success.mr-4{ id: "reply-btn-#{comment.id}" }
     = t("reply")
-  = link_to t("destroy"), post_comment_path(comment.post,comment), method: :delete, remote: true, class: "content-end btn btn-sm btn-danger"
-.container.reply__wrap.ml-5{id: "reply__wrap-comment-#{comment.id}"}
-  - unless comment.replies.empty?
-    %span.fa-solid.fa-arrow-right
+  - if comment.user == current_user
+    = link_to t("destroy"), post_comment_path(comment.post,comment), method: :delete, remote: true, class: "content-end btn btn-sm btn-danger"
+.coutainer.reply__wrap.offset-2{id: "reply__wrap-comment-#{comment.id}"}
   %div{id: "reply__wrap-content-#{comment.id}"}
     = render partial: "public/replies/show_reply", collection: comment.replies, as: "reply"
 .row.my-2.ml-5.comment__reply-form{ id: "comment-reply-form-#{comment.id}" }
   = form_with model: [comment.post, comment, Comment.new], url: post_comment_replies_path(comment.post, comment), method: :post, local: false do |i|
-    = i.text_field :body, placeholder: t("send-reply")
+    = i.text_field :body, placeholder: t("send-reply"), class: "col-10 reply__form"

@@ -1,2 +1,7 @@
+- comments = post.comments
+- comments_count = comments.count
+- replies_count = 0
+- comments.each do |comment|
+  - replies_count += comment.replies.count
 %span{class: comment_icon(post)}
-= post.comments.count
+= comments_count + replies_count

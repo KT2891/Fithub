@@ -44,6 +44,8 @@ ja:
       timeout: セッションがタイムアウトしました。もう一度ログインしてください。
       unauthenticated: ログインもしくはアカウント登録してください。
       unconfirmed: メールアドレスの本人確認が必要です。
+      not_active: 退会済みです。 再開する場合はリクエストから申請してください
+      blocked: このメールアドレスは使用できません。
     mailer:
       confirmation_instructions:
         action: メールアドレスの確認

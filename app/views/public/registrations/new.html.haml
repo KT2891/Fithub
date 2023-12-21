@@ -1,21 +1,19 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "public/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "public/shared/links"
+.session__wrap.bg-light.mx-auto.py-3
+  .row.justify-content-center
+    %h3
+      = t("user-sign-up")
+  = form_with model: resource, url: registration_path(resource_name), local: true do |f|
+    .row.field
+      = f.label :name, t("name"), class: "col-10 offset-2"
+      = f.text_field :name, autofocus: true, autocomplete: "name", class: "col-8 offset-2"
+    .row.field
+      = f.label :email, t("email"), class: "col-10 offset-2"
+      = f.email_field :email, autocomplete: "email", class: "col-8 offset-2"
+    .row.field
+      = f.label :password, t("password-sign-up"), class: "col-10 offset-2"
+      = f.password_field :password, autocomplete: "new-password", class: "col-8 offset-2"
+    .row.field
+      = f.label :password_confirmation, t("password_confirmation"), class: "col-10 offset-2"
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: "col-8 offset-2"
+    .row.mt-3.offset-2.actions
+      = f.submit t("sign-up")

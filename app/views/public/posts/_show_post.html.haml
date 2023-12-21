@@ -14,15 +14,6 @@
     - if show_post.training_set.present?
       .row.text-dark
         = render partial: "public/posts/show_training", collection: show_post.training_set.training_details, as: :detail
-    - unless current_page?(posts_path)
-      .comment__wrap{id: "comment__wrap-#{show_post.id}"}
-        .row.mt-2
-          .col-10
-            .container-fluid{id: "comment__wrap-content-#{show_post.id}"}
-              = render partial: "public/comments/show_comment", collection: show_post.comments, as: :comment
-        .row.ml-5.mt-2
-          .col-8
-            = render "public/comments/form", post: show_post, comment: comment
   .row.mb-2
     - unless admin_signed_in?
       .btn.col-2.offset-1.text-center{id:"comment__wrap-#{show_post.id}", "data-toggle": "modal", "data-target": "#commentWrap#{show_post.id}"}
@@ -36,6 +27,14 @@
     - if destroy_authenticate?(show_post)
       = link_to destroy_move(show_post), method: :delete, class: "btn col-2 text-center" do
         %span.fa-solid.fa-trash
+- unless current_page?(posts_path)
+  .row.offset-1
+    .col-12
+      = render "public/comments/form", post: show_post, comment: comment
+  .row
+    .col-12
+      .container-fluid{id: "comment__wrap-content-#{show_post.id}"}
+        = render partial: "public/comments/show_comment", collection: show_post.comments, as: :comment
 
 - if current_page?(posts_path)
   = render "public/comments/modal", post: show_post, comment: comment
