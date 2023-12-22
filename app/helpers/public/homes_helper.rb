@@ -42,7 +42,6 @@ module Public::HomesHelper
     [
       {
         type: "pop_up",
-        path: new_request_path,
         text: t("requests"),
         toggle: "modal",
         target: "#requestForm"

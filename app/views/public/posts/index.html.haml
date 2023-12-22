@@ -6,12 +6,12 @@
       - unless admin_signed_in?
         = render "public/posts/form", post: @post
       .row.justify-content-around.border-bottom
-      - unless admin_signed_in?
-        .col-auto.text-center.pointer.active#all_posts_btn
-          = t("all")
-        .col-auto.text-center.pointer#follow_posts_btn
-          %span
-          = t("following")
+        - unless admin_signed_in?
+          .col-auto.text-center.pointer.active#all_posts_btn
+            = t("all")
+          .col-auto.text-center.pointer#follow_posts_btn
+            %span
+            = t("following")
       .posts_show#all_posts
         = render partial: "public/posts/show_post", collection: @posts, locals: { comment: @comment}
       = paginate @posts
