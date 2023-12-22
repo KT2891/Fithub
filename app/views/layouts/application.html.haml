@@ -16,7 +16,7 @@
       #flash
         = render "layouts/notification"
     .main
-      - unless sidebar_nothing?
+      - unless sidebar_nothing? || !user_signed_in? && !admin_signed_in?
         .container
           .row
             .header__wrap.DownMove.col-12
@@ -27,5 +27,7 @@
               = yield
             .footer__wrap.col-12
               = render "layouts/footer"
+        
       - else
         = yield
+      = render "public/requests/form"

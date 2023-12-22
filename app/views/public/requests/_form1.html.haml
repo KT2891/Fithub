@@ -1,9 +1,9 @@
 = form_with model: Request.new, url: request_path, method: :post do |f|
-  .modal.fade.requestForm{ tabindex: "-1", role: "dialog", 'aria-labelledby': "requestLabel", 'aria-hidden': "true" }
+  .modal.fade.requestForm1{ tabindex: "-1", role: "dialog", 'aria-labelledby': "requestLabel1", 'aria-hidden': "true" }
     .modal-dialog.modal-dialog-centered{ role: "document" }
       .modal-content
         .modal-header
-          %h5.modal-title#requestLabel
+          %h5.modal-title#requestLabel1
             = t("requests")
           %button.close{ type: "button", 'data-dismiss': "modal", 'aria-label': "Close" }
             %span{ 'aria-hidden': "true" } &times;
