@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   enum status: { active: 0, quit: 1, block: 2 }
 
-  validate :password_must_contain_letter
+  # validate :password_must_contain_letter
 
 
 
@@ -72,7 +72,7 @@ class User < ApplicationRecord
   def password_must_contain_letter
     return if password.blank?
     unless password.match?(/[a-zA-Z]/)
-      errors.add(:password, 'は少なくとも一つのアルファベットを含む必要があります')
+      redirect_to new_user_registration_path, alert: t("error-password-valid")
     end
   end
 

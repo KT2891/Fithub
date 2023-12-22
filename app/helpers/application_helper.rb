@@ -20,41 +20,37 @@ module ApplicationHelper
   def admin_sidebar_items
     [
       {
+        logo: "fa-regular fa-pen-to-square",
         type: "link",
         path: posts_path,
         text: "Post",
       },
       {
+        logo: "fa-solid fa-dumbbell",
         type: "link",
         path: admin_training_menus_path,
         text: "Training"
       },
       {
+        logo: "fa-regular fa-user",
         type: "link",
         path: admin_users_path,
         text: "Users"
       },
       {
+        logo: "fa-regular fa-hand",
         type: "link",
         path: admin_requests_path,
         text: "Requests"
       },
       {
+        logo: "fa-solid fa-triangle-exclamation",
         type: "link",
         path: admin_reports_path,
         text: "Reports"
-      }
-    ]
-  end
-
-  def user_sidebar_items
-    [
-      {
-        type: "link",
-        path: posts_path,
-        text: "Post"
       },
       {
+        logo: "fa-solid fa-arrow-right-from-bracket",
         type: "link",
         path: destroy_admin_session_path,
         text: "Log Out",

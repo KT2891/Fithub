@@ -6,14 +6,12 @@
   - sidebar_main_items.each do |item|
     .row.mx-auto.sidebar__item-wrap
       - if item[:type] == "link"
-        = link_to item[:path], class: "sidebar__item-link text-dark" do
+        = link_to item[:path], method: item[:method] || nil, class: "sidebar__item-link text-dark" do
           %i.my-auto.col-2{class: item[:logo]}
           %span.col-9.offset-1.sidebar_text
             = item[:text]
       - elsif item[:type] == "pup_up"
-        %span.pointer.text-dark.sidebar__item-link{"data-toggle": "modal", "data-target": "#requestForm"}
+        %span.pointer.text-dark.sidebar__item-link{"data-toggle": "modal", "data-target": ".requestForm"}
           %i.my-auto.col-2{class: item[:logo]}
           %span.col-9.offset-1.sidebar_text
             = item[:text]
-
-= render "public/requests/form"
