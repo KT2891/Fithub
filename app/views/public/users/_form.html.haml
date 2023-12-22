@@ -1,30 +1,31 @@
 .container-fluid
   = form_with model: user, url: update_user_path, method: :patch do |f|
     .row.my-5
-      = f.label :name, t("name"), class: "offset-1 col-1"
-      = f.text_field :name, placeholder: t("name"), class: "offset-1 col-5"
+      = f.label :name, t("name"), class: "offset-1 col-lg-1 col-md-2 col-12"
+      = f.text_field :name, placeholder: t("name"), class: "offset-1 col-lg-5 col-md-5 col-8"
     .row.my-5
-      = f.label :email, t("name"), class: "offset-1 col-1"
-      = f.text_field :email, placeholder: t("email"), class: "offset-1 col-5"
+      = f.label :email, t("name"), class: "offset-1 col-lg-1 col-md-2 col-3"
+      = f.text_field :email, placeholder: t("email"), class: "offset-1 col-lg-5 col-md-5 col-8"
     .row.my-5
-      = f.label :introduction, t("introduction"), class: "offset-1 col-2"
-      = f.text_area :introduction, placeholder: t("introduction"), class: "col-5", size: "30x7"
+      = f.label :introduction, t("introduction"), class: "offset-1 col-lg-1 col-md-2 col-3"
+      = f.text_area :introduction, placeholder: t("introduction"), class: "offset-1 col-lg-5 col-md-5 col-8", size: "30x7"
     .row.my-5
-      = f.label :introduction, t("introduction"), class: "offset-1 col-2"
-      = f.file_field :profile_image
+      = f.label :profile_image, t("image"), class: "offset-1 col-lg-1 col-md-2 col-3"
+      = f.file_field :profile_image, class: "offset-1 col-lg-5 col-md-5 col-8"
 
 
     .row.my-5
-      = f.label :height, t("height"), class: "offset-1 col-1"
-      = f.select :height, (140..200).to_a,{},  class: "offset-1 text-center"
+      = f.label :height, t("height"), class: "offset-1 col-lg-1 col-md-2 col-3"
+      = f.select :height, (140..200).to_a,{},  class: "offset-1 col-lg-5 col-md-5 col-8"
       %p.my-auto.ml-3 cm
     .row.my-5
-      = f.label :birthday, t("birthday"), class: "offset-1 col-2"
-      = f.select :birth_year, (1930..2023).to_a,{selected: user_birth_year(user)},  class: "text-center"
-      %p.my-auto.mx-3 年
-      = f.select :birth_month, (1..12).to_a,{selected: user_birth_month(user)},  class: "text-center"
-      %p.my-auto.mx-3 月
-      = f.select :birth_day, (1..31).to_a,{selected: user_birth_day(user)},  class: "text-center"
-      %p.my-auto.mx-3 日
+      = f.label :birthday, t("birthday"), class: "offset-1 col-lg-1 col-md-2 col-4"
+      .row.offset-1.col-lg-5.col-md-5.col-11
+        = f.select :birth_year, (1930..2023).to_a,{selected: user_birth_year(user)},  class: "text-center"
+        %p.my-auto.mx-3 年
+        = f.select :birth_month, (1..12).to_a,{selected: user_birth_month(user)},  class: "text-center"
+        %p.my-auto.mx-3 月
+        = f.select :birth_day, (1..31).to_a,{selected: user_birth_day(user)},  class: "text-center"
+        %p.my-auto.mx-3 日
     .row.offset-4.mt-5
       = f.submit t("change"), class: "btn btn-lg btn-success"

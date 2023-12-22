@@ -1,14 +1,9 @@
-.container
-  .row
-    .col-3
-      = render "layouts/sidebar"
-    .container.col-9.py-5.bg-light
-      .row.col-7.mx-auto.d-flex.justify-content-between
-        %span.text-dark.pointer.active#following_btn
-          = t("follow")
-        %span.text-dark.pointer#followers_btn
-          = t("follower")
-      .row#relationship__wrap-following
-        = render "public/relationships/show_page", items: @following
-      .row#relationship__wrap-followers{hidden: true}
-        = render "public/relationships/show_page", items: @followers
+.row.col-7.mx-auto.d-flex.justify-content-between
+  %span.text-dark.pointer.active#following_btn
+    = t("follow")
+  %span.text-dark.pointer#followers_btn
+    = t("follower")
+.row#relationship__wrap-following
+  = render "public/relationships/show_page", items: @following
+.row#relationship__wrap-followers{hidden: true}
+  = render "public/relationships/show_page", items: @followers

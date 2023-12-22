@@ -1,17 +1,12 @@
-.container
-  .row
-    .col-3
-      = render "layouts/sidebar"
-    .container.bg-light.col-9.py-5
-      %h3
-        = t("report")
-      %table.table
-        %thead
-          %tr
-            %th ID
-            %th 
-            %th 日時
-            %th
-            %th 状態
-        %tbody#report__wrap
-          = render partial: "admin/reports/show", collection: @reports, as: "report"
+%h3
+  = t("report")
+%table.table
+  %thead
+    %tr
+      %th ID
+      %th 
+      %th 日時
+      %th
+      %th 状態
+  %tbody#report__wrap
+    = render partial: "admin/reports/show", collection: @reports, as: "report"

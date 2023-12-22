@@ -1,7 +1,7 @@
 // Bootstrap の Sass mixin を使えるようにするための記述
 @use "~bootstrap/scss/bootstrap" as *;
-
 @use "../global/variables" as *;
+@use "../public/mixin" as m;
 
 .m-10{
   margin: 10rem !important;
@@ -20,4 +20,40 @@
   background-color: #f5f3eb;
   min-height: 100vh;
   height: 100%;
+}
+
+h1{
+  @include m.mp(sp){
+    font-size: 20px;
+  }
+}
+
+h2{
+  @include m.mp(sp){
+    font-size: 18px;
+  }
+}
+
+h3{
+  @include m.mp(sp){
+    font-size: 16px;
+  }
+}
+
+h4{
+  @include m.mp(sp){
+    font-size: 14px;
+  }
+}
+
+p,i,span,a,button{
+  @include m.mp(sp){
+    font-size: 12px;
+  }
+}
+
+.btn{
+  @include m.mp(sp){
+    font-size: 12px;
+  }
 }

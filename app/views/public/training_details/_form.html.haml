@@ -1,14 +1,14 @@
 = form_with model: training_detail do |f|
   .row.my-3
-    %h2.col-5
+    %h2.col-lg-5.col-md-5.col-12
       トレーニング記録
-    .offset-1.col-5
+    .offset-1.col-lg-5.col-md-5.col-9
       = f.date_field :date, value: Date.current, class: "rounded-pill col-7"
   .row.mb-2
     = f.label :training_menu_id, t("training-menu")
-    = f.select :training_menu_id, TrainingMenu.all.collect { |menu| [menu.name, menu.id] },{}, class: "m-3 col-lg-3 col-md-5 offset-3"
+    = f.select :training_menu_id, TrainingMenu.all.collect { |menu| [menu.name, menu.id] },{}, class: "m-3 col-7 col-lg-3 col-md-5 offset-3"
     - @default_count.times do |count|
-      .row.border.mb-2.col-10.default-form
+      .row.border.mb-2.col-lg-10.col-12.mx-autodefault-form
         .my-auto.ml-3.text-center.set-count
           = count + 1
         .div.ml-5

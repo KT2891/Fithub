@@ -1,0 +1,14 @@
+- count = current_user.active_notifications.where(checked: false).count
+.col-12#header
+  .row.justify-content-between
+    %h3.col-auto.my-auto.header-logo
+      FITHUB
+    .col-auto
+      = link_to notifications_path do
+        %i.btn.fa-regular.fa-bell.header-item
+        - unless count == 0
+          %span.rounded-circle.notice-count
+            = count
+      = link_to user_path(current_user) do
+        = image_tag current_user.get_profile_image(30,30), class: "rounded-circle"
+    

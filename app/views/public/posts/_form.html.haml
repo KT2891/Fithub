@@ -1,14 +1,14 @@
-.container.posts__form-wrap.col-12.mt-5.pb-4
+.container.posts__form-wrap.col-12.pb-4
   .row.justify-content-between.mb-3
     %div.col-3.text-center.active#form-btn1
       %span.fa-solid.fa-pen-to-square.pointer
-      White Space
+      %p.sp-hide White Space
     %div.col-3.text-center#form-btn2.pointer
       %span.fa-regular.fa-image
-      Shere Image
+      %p.sp-hide Shere Image
     %div.col-3.text-center#form-btn3.pointer
       %span.fa-solid.fa-dumbbell
-      Share Training
+      %p.sp-hide Share Training
   = form_with model: post do |f|
     // テキスト記述用
     .container#tab1
@@ -27,7 +27,7 @@
     // トレーニング投稿用
     .container#tab3{hidden: true}
       .row.justify-content-center
-        .col-10
+        .col-12
           = month_calendar events: current_user.training_sets do |date, events|
             = date.day
             - events.each do |event|

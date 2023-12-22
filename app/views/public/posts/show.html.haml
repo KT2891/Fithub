@@ -1,7 +1,2 @@
-.container
-  .row
-    .col-3
-      = render "layouts/sidebar"
-    .posts__main.col-9.mb-5
-      .posts_show
-        = render "public/posts/show_post", show_post: @post, comment: @comment
+.posts_show
+  = render "public/posts/show_post", show_post: @post, comment: @comment

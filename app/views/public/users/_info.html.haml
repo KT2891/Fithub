@@ -1,12 +1,12 @@
 .row.mt-4
   .col-3
-    = image_tag user.get_profile_image(100,100), class: "rounded-circle"
+    = image_tag user.get_profile_image(100,100), class: "rounded-circle mypage-image"
   .col-4.ml-3
-    %p
+    %p.my-auto
       = user.name
   - if user.guest? && user == current_user
     .col-4
-      = link_to t("change-profile"), edit_user_path, class: "btn btn-success"
+      = link_to t("edit"), edit_user_path, class: "btn btn-success"
   - elsif !user.guest? && user != current_user
     .col-3.mx-2{class: "follow__wrap#{user.id}"}
       = render "public/relationships/btn", user: user

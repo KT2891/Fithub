@@ -1,9 +1,4 @@
-.container
-  .row
-    .col-3
-      = render "layouts/sidebar"
-    .col-9
-      .row
-        %h2.mt-5.ml-5
-          = t("user-edit")
-        = render "public/users/form", user: @user
+.row
+  %h2.ml-5
+    = t("user-edit")
+  = render "public/users/form", user: @user

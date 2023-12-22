@@ -1,0 +1,13 @@
+.col-12
+  .row.justify-content-between
+    = link_to posts_path do
+      %i.fa-regular.fa-pen-to-square.col-2.footer-items
+    = link_to following_user_path(current_user) do
+      %i.fa-regular.fa-user.col-2.footer-items
+    = link_to training_sets_path do
+      %i.fa-solid.fa-dumbbell.col-2.footer-items
+    = link_to body_compositions_path do
+      %i.fa-solid.fa-person.col-2.footer-items
+    %span.pointer.text-dark.sidebar__item-link{"data-toggle": "modal", "data-target": "#requestForm"}
+      %i.fa-regular.fa-hand.col-2.footer-items
+= render "public/requests/form"

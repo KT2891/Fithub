@@ -1,10 +1,5 @@
-.container
-  .row
-    .col-3
-      = render "layouts/sidebar"
-    .container.bg-light.col-9.py-5
-      - if @notifications.exists?
-        = render partial: "public/notifications/show", collection: @notifications, as: "notification"
-      - else
-        %h4
-          = t("noting-notifications")
+- if @notifications.exists?
+  = render partial: "public/notifications/show", collection: @notifications, as: "notification"
+- else
+  %h4
+    = t("noting-notifications")
