@@ -1,5 +1,5 @@
-= form_with model: [post, comment] do |f|
+= form_with model: [post, comment], local: false do |f|
   .row
-    = f.text_area :body, placeholder: t("send-comment"), class: "comment_form mx-2 col-8 pt-3"
+    = f.text_area :body, placeholder: t("send-comment"), class: "comment_form mx-2 col-8 p-1"
   .row
     = f.submit t("reply"), class: "mt-1 btn btn-primary"

@@ -7,14 +7,14 @@
             = t("requests")
           %button.close{ type: "button", 'data-dismiss': "modal", 'aria-label': "Close" }
             %span{ 'aria-hidden': "true" } &times;
-        .modal-body.container.justify-content-center
+        .modal-body.justify-content-center
           - if user_signed_in?
             = f.hidden_field :user_id, value: current_user.id
-          .form-group.row
+          .row.my-3
             = f.text_field :email, class: "col-8 mx-auto", placeholder: t("email"), value: request_user_email
-          .form-group.row
+          .row.my-3
             = f.text_field :title, class: "col-8 mx-auto", placeholder: t("title")
-          .form-group.row
+          .row.my-3
             = f.text_area :body, class: "col-8 mx-auto", placeholder: t("text"), size: 40
         .modal-footer
           %button.btn.btn-secondary{ type: "button", 'data-dismiss': "modal" } Close

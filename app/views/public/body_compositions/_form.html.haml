@@ -1,41 +1,41 @@
 .container
   = form_with model: weight, url: body_compositions_path do |f|
     .row.justify-content-center
-      = f.date_field :date, value: Date.current, class: "col-3 rounded-pill"
-    .row.mt-5
-      .container.col-6
+      = f.date_field :date, value: Date.current, class: "col-lg-3 col-5 rounded-pill"
+    .row.mt-lg-3.mt-2
+      .container.col-lg-6.col-md-6.col-12
         .row
-          %p.col-3.mx-auto.bg-primary.text-light.rounded-pill.text-center.py-2
+          %p.col-4.mx-auto.bg-primary.text-light.rounded-pill.text-center.py-2
             = t("weight")
         .row
           %p.col.text-center
-            = image_tag asset_path("morning.png"), size: "50x50"
+            = image_tag asset_path("morning.png"), class: "body_compositions_image"
           %p.col.text-center
-            = image_tag asset_path("night.png"), size: "50x50"
+            = image_tag asset_path("night.png"), class: "body_compositions_image"
         .row
-          .col.p-3
+          .col.px-3
             %p.weight-form.mx-auto.d-flex.justify-content-center.align-items-center
               = f.text_field :weight, name: "body[weights][]", placeholder: "ーー" ,class: "border-0 col-6 text-center"
               kg
-          .col.p-3
+          .col.px-3
             %p.weight-form.mx-auto.d-flex.justify-content-center.align-items-center
               = f.text_field :weight, name: "body[weights][]", placeholder: "ーー" ,class: "border-0 col-6 text-center"
               kg
         .row
-      .container.col-6
+      .container.col-lg-6.col-md-6.col-12
         %p.col-4.mx-auto.bg-primary.text-light.rounded-pill.text-center.py-2
           = t("body_fat")
         .row
           %p.col.text-center
-            = image_tag asset_path("morning.png"), size: "50x50"
+            = image_tag asset_path("morning.png"), class: "body_compositions_image"
           %p.col.text-center
-            = image_tag asset_path("night.png"), size: "50x50"
+            = image_tag asset_path("night.png"), class: "body_compositions_image"
         .row
-          .col.p-3
+          .col.px-3
             %p.weight-form.mx-auto.d-flex.justify-content-center.align-items-center
               = f.text_field :body_fat, name: "body[fats][]", placeholder: "ーー" ,class: "border-0 col-6 text-center"
               = "%"
-          .col.p-3
+          .col.px-3
             %p.weight-form.mx-auto.d-flex.justify-content-center.align-items-center
               = f.text_field :body_fat, name: "body[fats][]", placeholder: "ーー" ,class: "border-0 col-6 text-center"
               = "%"

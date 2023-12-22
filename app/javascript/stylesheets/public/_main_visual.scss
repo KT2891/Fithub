@@ -3,6 +3,84 @@
 @use "../global/variables" as *;
 @use "../public/mixin" as m;
 
+.header__wrap{
+  display: none;
+  @include m.mp(sp){
+    /*fixedで上部固定*/
+    position: fixed;
+    height: 60px;
+    width:100%;
+      z-index: 999;/*最前面へ*/
+    /*以下はレイアウトのためのCSS*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background:#333;
+    color:#fff;
+    text-align: center;
+    padding: 20px;
+  }
+  .header-item{
+    font-size: 30px;
+    color: white;
+  }
+}
+
+.UpMove{
+  animation: UpAnime 0.5s forwards;
+}
+
+@keyframes UpAnime{
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
+
+/*　下に下がる動き　*/
+
+.DownMove{
+  animation: DownAnime 0.5s forwards;
+}
+@keyframes DownAnime{
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footer__wrap{
+  display: none;
+  @include m.mp(sp){
+    /*fixedで下部固定*/
+    position: fixed;
+    bottom: 0;
+    height: 60px;
+    width:100%;
+    z-index: 999;/*最前面へ*/
+    /*以下はレイアウトのためのCSS*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background:#333;
+    color:#fff;
+    text-align: center;
+    padding: 20px;
+  }
+  .footer-items{
+    color: white;
+    font-size: 20px;
+  }
+}
+
 .top__main{
   background-image: url($main-background);
   background-size: cover;
@@ -29,23 +107,54 @@
   }
 }
 
-.posts__main{
+.content__wrap{
   background-color: white;
-  .post-form{
-    font-size: 24px;
-    resize: none;
-    border: 1px solid #000;
-    width: 500px;
-    height: 200px;
+  min-height: 100vh;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  @include m.mp(sp){
+    padding-top: 70px;
+    padding-bottom: 70px;
   }
-  .posts__content-user-name{
-    &:hover{
-      text-decoration: none;
-    }
+}
+
+.notice-count{
+  display: inline-block;
+  position: relative;
+  right: 30px;
+  top: -10px;
+  background-color: #1d9bf0;
+  color: white;
+  width: 23px;
+  height: 23px;
+  text-align: center;
+}
+
+.post-form{
+  font-size: 24px;
+  resize: none;
+  border: 1px solid #000;
+  width: 500px;
+  height: 200px;
+  @include m.mp(sp){
+    font-size: 16px;
+    width: 75%;
+    height: 100px;
   }
-  .posts__content-text{
+}
+
+.sp-hide{
+  @include m.mp(sp){
+    display: none;
+  }
+}
+.posts__content-user-name{
+  &:hover{
     text-decoration: none;
   }
+}
+.posts__content-text{
+  text-decoration: none;
 }
 
 .pointer{
@@ -55,10 +164,14 @@
 }
 
 .weight-form{
-  border: 2px solid #000;
+  border: 1px solid #000;
   border-radius: 50% !important;
   height: 150px;
   width: 150px;
+  @include m.mp(sp){
+    height: 100px;
+    width: 100px;
+  }
 }
 
 .comment__reply-form{
@@ -90,4 +203,30 @@
   resize: none;
   height: 200px;
   border: none;
+  @include m.mp(sp){
+    height: 80px;
+  }
+}
+
+.user_image{
+  @include m.mp(sp){
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.body_compositions_image{
+  height: 50px;
+  width: 50px;
+  @include m.mp(sp){
+    height: 30px;
+    width: 30px;
+  }
+}
+
+.mypage-image{
+  @include m.mp(sp){
+    height: 60px;
+    width: 60px;
+  }
 }

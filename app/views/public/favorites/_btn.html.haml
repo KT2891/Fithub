@@ -1,8 +1,10 @@
 - if post.favorited_by?(current_user)
   = link_to post_favorite_path(post), method: :delete, remote: true, class: "btn text-danger" do
     %span.fa-solid.fa-heart
-    = post.favorites.count
+    %span
+      = post.favorites.count
 - else
   = link_to post_favorite_path(post), method: :post, remote: true, class: "btn text-dark" do
     %span.fa-regular.fa-heart
+    %span
     = post.favorites.count

@@ -1,9 +1,4 @@
-.container
-  .row
-    .col-3
-      = render "layouts/sidebar"
-    .col-9.pt-5.bg-light
-      = render "public/training_sets/calendar", events: @training_sets
-      .row
-        .col-7
-          = link_to t("create-today-training"), new_training_detail_path, class: "btn btn-danger"
+= render "public/training_sets/calendar", events: @training_sets
+.row
+  .col-7
+    = link_to t("create-today-training"), new_training_detail_path, class: "btn btn-danger"

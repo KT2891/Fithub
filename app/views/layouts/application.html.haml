@@ -11,9 +11,21 @@
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    .primay
+    .primary
       = yield :error
       #flash
         = render "layouts/notification"
     .main
-      = yield
+      - unless sidebar_nothing?
+        .container
+          .row
+            .header__wrap.DownMove.col-12
+              = render "layouts/header"
+            .sidebar__wrap.col-lg-3.col-md-2
+              = render "layouts/sidebar"
+            .content__wrap.col-lg-9.col-md-10
+              = yield
+            .footer__wrap.col-12
+              = render "layouts/footer"
+      - else
+        = yield

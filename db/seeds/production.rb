@@ -5,7 +5,7 @@ require_relative "admin"
 DEV_ADMIN_EMAIL = "admin@admin"
 DEV_ADMIN_PASSWORD = "adminadmin"
 
-Seeds::Admins.create(
+Seeds::Admins.create_admin(
   DEV_ADMIN_EMAIL,
   DEV_ADMIN_PASSWORD,
 )

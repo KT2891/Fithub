@@ -1,10 +1,5 @@
-.container
-  .row
-    .col-3
-      = render "layouts/sidebar"
-    .container.col-9.p-5.bg-light
-      .row.ml-3
-        %h2
-          = "#{@training_set.start_time.year}年#{@training_set.start_time.month}月#{@training_set.start_time.day}日のトレーニング"
-      .row
-        = render partial: "public/training_sets/show_detail", collection: @training_set.training_details, as: :detail
+.row.ml-3
+  %h2
+    = "#{@training_set.start_time.year}年#{@training_set.start_time.month}月#{@training_set.start_time.day}日のトレーニング"
+.row
+  = render partial: "public/training_sets/show_detail", collection: @training_set.training_details, as: :detail

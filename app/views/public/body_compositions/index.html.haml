@@ -1,7 +1,2 @@
-.container
-  .row
-    .col-3
-      = render "layouts/sidebar"
-    .col-9.pt-5.justify-content-center.bg-light
-      = render "public/body_compositions/form", weight: @weight, body_fat: @body_fat
-      = render "public/body_compositions/chart"
+= render "public/body_compositions/form", weight: @weight, body_fat: @body_fat
+= render "public/body_compositions/chart"
