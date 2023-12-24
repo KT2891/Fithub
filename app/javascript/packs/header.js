@@ -1,20 +1,23 @@
-$(document).ready(function() {
-    var Login_btn = $('.guest-login');
-    var Login_form = $(".main__form-wrap");
-
-    if (Login_btn.length) {
-        Login_btn.on('click', function() {
-            if (Login_form.hasClass('show')) {
-                Login_form.fadeTo(200, 0, function() {
-                    Login_form.removeClass('show').addClass('hidden');
-                });
-            } else {
-                Login_form.fadeTo(200, 0.8, function() {
-                    Login_form.removeClass('hidden').addClass('show');
-                });
-            }
+$(document).on('click', '.login-btn', function() {
+    var Login_form = $(".main__login-form");
+    
+    if (Login_form.hasClass('show')) {
+        Login_form.fadeTo(200, 0, function() {
+            Login_form.removeClass('show').addClass('hidden');
+        });
+    } else {
+        Login_form.fadeTo(200, 0.95, function() {
+            Login_form.removeClass('hidden').addClass('show');
         });
     }
+});
+
+$(document).on('click', '#login-close-btn', function() {
+    var Login_form = $(".main__login-form");
+    
+    Login_form.fadeOut(200, function() {
+        Login_form.removeClass('show').addClass('hidden');
+    });
 });
 
 var beforePos = 0;//スクロールの値の比較用の設定
@@ -46,45 +49,31 @@ $(window).scroll(function () {
 window.addEventListener('DOMContentLoaded', event => {
 
     // Navbar shrink function
-    var navbarShrink = function () {
-        const navbarCollapsible = document.body.querySelector('#mainNav');
-        if (!navbarCollapsible) {
-            return;
-        }
-        if (window.scrollY === 0) {
-            navbarCollapsible.classList.remove('navbar-shrink')
-        } else {
-            navbarCollapsible.classList.add('navbar-shrink')
-        }
+  var navbarShrink = function () {
+    const navbarCollapsible = document.body.querySelector('#mainNav');
+    if (!navbarCollapsible) {
+        return;
+    }
+    if (window.scrollY === 0) {
+        navbarCollapsible.classList.remove('navbar-shrink')
+    } else {
+        navbarCollapsible.classList.add('navbar-shrink')
+    }
+  };
 
-    };
-
-    // Shrink the navbar 
-    navbarShrink();
-
-    // Shrink the navbar when page is scrolled
-    document.addEventListener('scroll', navbarShrink);
-
-    //  Activate Bootstrap scrollspy on the main nav element
-    const mainNav = document.body.querySelector('#mainNav');
-    if (mainNav) {
-        new bootstrap.ScrollSpy(document.body, {
-            target: '#mainNav',
-            rootMargin: '0px 0px -40%',
-        });
-    };
-
-    // Collapse responsive navbar when toggler is visible
-    const navbarToggler = document.body.querySelector('.navbar-toggler');
-    const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
-    );
-    responsiveNavItems.map(function (responsiveNavItem) {
-        responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                navbarToggler.click();
-            }
-        });
+  navbarShrink();
+  
+  document.addEventListener('scroll', navbarShrink);
+  
+  const navbarToggler = document.body.querySelector('.navbar-toggler');
+  const responsiveNavItems = [].slice.call(
+    document.querySelectorAll('#navbarResponsive .nav-link')
+  );
+  responsiveNavItems.map(function (responsiveNavItem) {
+    responsiveNavItem.addEventListener('click', () => {
+      if (window.getComputedStyle(navbarToggler).display !== 'none') {
+        navbarToggler.click();
+      }
     });
-
+  });
 });

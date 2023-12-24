@@ -10,7 +10,6 @@ module ApplicationHelper
   
   def sidebar_nothing?
     current_page?(root_path) ||
-    current_page?(about_path) ||
     current_page?(new_admin_session_path) ||
     current_page?(new_user_registration_path)
   end

@@ -1,4 +1,6 @@
 class Public::RequestsController < ApplicationController
+  before_action :authenticate_user!, except: :create
+  
   def create
     Request.create(request_params)
     redirect_to request.referer, notice: t("success-request")

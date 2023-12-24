@@ -4,7 +4,7 @@
   .row.justify-content-between
     = link_to root_path, class: "my-auto col-auto text-light" do
       %h3.header-logo
-        FITHUB
+        = image_tag asset_path("nav-image.png")
     - unless admin_signed_in?
       .col-auto
         = link_to notifications_path do

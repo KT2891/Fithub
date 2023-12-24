@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 
   # top & about
   root "public/homes#top"
-  get "about" => "public/homes#about"
 
   # 会員用画面
   scope module: :public do

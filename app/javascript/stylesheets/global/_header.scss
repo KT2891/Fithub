@@ -3,31 +3,8 @@
 @use "../global/variables" as *;
 @use "../public/mixin" as m;
 
-// header{
-//   width: 100%;
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   z-index: 10;
-//   .main_logo{
-//     height: 100px;
-//     width: 100px;
-//     @include m.mp(tab){
-//       height: 30px;
-//       width: 30px;
-//     }
-//   }
-//   .navigation-menu-button{
-//     font-size: 25px;
-//     color: black;
-//     margin-left: 30px;
-//     &:hover {
-//       text-decoration: underline;
-//       cursor: pointer;
-//     }
-//   }
-// }
-
-// .header-logo{
-//   font-size: 24px;
-// }
+.header-logo{
+  img{
+    height: 1.5rem;
+  }
+}
