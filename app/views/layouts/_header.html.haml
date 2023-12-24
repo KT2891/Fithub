@@ -1,9 +1,10 @@
 - unless admin_signed_in?
-  - count = current_user.active_notifications.where(checked: false).count
+  - count = current_user.passive_notifications.where(checked: false).count
 .col-12#header
   .row.justify-content-between
-    %h3.col-auto.my-auto.header-logo
-      FITHUB
+    = link_to root_path, class: "my-auto col-auto text-light" do
+      %h3.header-logo
+        FITHUB
     - unless admin_signed_in?
       .col-auto
         = link_to notifications_path do
