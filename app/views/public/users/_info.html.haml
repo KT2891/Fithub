@@ -4,6 +4,9 @@
   .col-4.ml-3
     %p.my-auto
       = user.name
+    - if user.followed_by?(current_user)
+      %p.follow_you_text
+        = t("user-followed-by")
   - unless user == current_user
     .col-4{class: "follow__wrap#{user.id}"}
       = render "public/relationships/btn", user: user

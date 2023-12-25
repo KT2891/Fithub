@@ -13,7 +13,7 @@ module ApplicationHelper
     current_page?(new_admin_session_path) ||
     current_page?(new_user_registration_path)
   end
-
+  
   private
 
   def admin_sidebar_items
@@ -23,12 +23,14 @@ module ApplicationHelper
         type: "link",
         path: posts_path,
         text: "Post",
+        border: params[:controller] == 'posts' ? "active" : nil
       },
       {
         logo: "fa-solid fa-dumbbell",
         type: "link",
         path: admin_training_menus_path,
-        text: "Training"
+        text: "Training",
+        border: current_page?("/training") ? "active" : nil
       },
       {
         logo: "fa-regular fa-user",
@@ -64,37 +66,46 @@ module ApplicationHelper
         logo: "fa-regular fa-pen-to-square",
         type: "link",
         path: posts_path,
-        text: "Post"
+        text: "Post",
+        border: controller.controller_name == 'posts' ? "active" : nil
       },
       {
         logo: "fa-regular fa-user",
         type: "link",
         path: following_user_path(current_user),
-        text: "Follow"
+        text: "Follow",
+        border: controller.controller_name == 'relationships' ? "active" : nil
       },
       {
         logo: "fa-solid fa-dumbbell",
         type: "link",
         path: training_sets_path,
-        text: "Training"
+        text: "Training",
+        border: 
+          if controller.controller_name == 'training_sets' || controller.controller_name == 'training_details'
+            "active"
+          end
       },
       {
         logo: "fa-solid fa-person",
         type: "link",
         path: body_compositions_path,
-        text: "My Body"
+        text: "My Body",
+        border: controller.controller_name == 'body_compositions' ? "active" : nil
       },
       {
         logo: "fa-solid fa-user-pen",
         type: "link",
         path: user_path(current_user),
-        text: "My Page"
+        text: "My Page",
+        border: current_page?(user_path(current_user)) ? "active" : nil
       },
       {
         logo: "fa-regular fa-bell",
         type: "link",
         path: notifications_path,
         text: "Notice",
+        border: controller.controller_name == 'notifications' ? "active" : nil
       },
       {
         logo: "fa-regular fa-hand",
