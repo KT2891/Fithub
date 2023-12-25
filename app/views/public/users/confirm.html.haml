@@ -1,2 +1,5 @@
-%h1 Public::Users#confirm
-%p Find me in app/views/public/users/confirm.html.haml
+.row.mt-5.justify-content-center
+  %h1.col-auto 本当に退会しますか？
+.row.justify-content-around.mt-5
+  = link_to "戻る", user_path(current_user), class: "btn btn-xl btn-success"
+  = link_to "退会", leave_user_path, method: :patch, class: "btn btn-xl btn-danger"

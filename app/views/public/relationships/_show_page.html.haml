@@ -1,3 +1,5 @@
-%table.col-10.mx-auto.mt-5.border-top
-  %tbody
-    = render partial: "public/relationships/show", collection: items, as: "user"
+- if show_post.user.status == "active"
+  %table.col-10.mx-auto.mt-5.border-top
+    %tbody
+      = render partial: "public/relationships/show", collection: items, as: "user"
+œ

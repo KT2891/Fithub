@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :set_user, only: [:show]
-  before_action :set_current_user, only: %i[edit update destroy]
+  before_action :set_current_user, only: %i[edit update leave]
 
   def show
     @posts = @user.posts
@@ -24,9 +24,9 @@ class Public::UsersController < ApplicationController
   def confirm
   end
 
-  def destroy
+  def leave
     current_user.update(status: 1)
-    redirect_to destroy_user_session_path
+    redirect_to root_path
   end
 
   private
