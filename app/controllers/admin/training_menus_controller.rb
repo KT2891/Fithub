@@ -22,6 +22,7 @@ class Admin::TrainingMenusController < ApplicationController
   end
 
   def edit
+    @training_menu.training_parts.build unless @training_menu.training_parts
   end
   
   def status_update
