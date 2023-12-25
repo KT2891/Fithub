@@ -1,25 +1,3 @@
-$(document).on('click', '.login-btn', function() {
-    var Login_form = $(".main__login-form");
-    
-    if (Login_form.hasClass('show')) {
-        Login_form.fadeTo(200, 0, function() {
-            Login_form.removeClass('show').addClass('hidden');
-        });
-    } else {
-        Login_form.fadeTo(200, 0.95, function() {
-            Login_form.removeClass('hidden').addClass('show');
-        });
-    }
-});
-
-$(document).on('click', '#login-close-btn', function() {
-    var Login_form = $(".main__login-form");
-    
-    Login_form.fadeOut(200, function() {
-        Login_form.removeClass('show').addClass('hidden');
-    });
-});
-
 var beforePos = 0;//スクロールの値の比較用の設定
 
 //スクロール途中でヘッダーが消え、上にスクロールすると復活する設定を関数にまとめる

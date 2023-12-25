@@ -9,6 +9,33 @@ class Public::RegistrationsController < Devise::RegistrationsController
    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 
+  def create
+    build_resource(sign_up_params)
+
+    resource.save
+    yield resource if block_given?
+
+    if resource.persisted?
+      # 新規登録成功時の処理
+      if resource.active_for_authentication?
+        set_flash_message! :notice, :signed_up
+        sign_up(resource_name, resource)
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        # メール認証などが必要なときの処理
+        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+      # 登録失敗時の処理
+      respond_to do |format|
+        format.json { render json: { errors: resource.errors.full_messages }, status: :unprocessable_entity }
+        format.html { render 'user/homes/top' }
+      end
+    end
+  end
+
   # GET /resource/sign_up
   # def new
   #   super

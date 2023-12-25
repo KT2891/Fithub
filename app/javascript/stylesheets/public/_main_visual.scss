@@ -80,7 +80,7 @@
     font-size: 20px;
   }
 }
-.main__login-form{
+.main__form{
   z-index: 10;
   top: 100px;
   right: 7%;
@@ -91,6 +91,8 @@
   background-color: #404040;
   border-radius: 20px;
 }
+
+
 .top__main{
   background-image: url($main-background);
   background-size: cover;
