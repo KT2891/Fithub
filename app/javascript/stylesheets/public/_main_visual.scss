@@ -132,6 +132,23 @@
   text-align: center;
 }
 
+.sidebar__item-link{
+  position: relative;
+}
+
+.notice-count-side{
+  font-size: 14px;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: -5px;
+  background-color: #1d9bf0;
+  color: white;
+  width: 23px;
+  height: 23px;
+  text-align: center;
+}
+
 .post-form{
   font-size: 24px;
   resize: none;
@@ -203,10 +220,17 @@
 
 .comment_form{
   resize: none;
-  height: 200px;
+  height: 130px;
   border: none;
   @include m.mp(sp){
-    height: 80px;
+    height: 50px;
+  }
+}
+
+.follow_you_text{
+  font-size: 10px;
+  @include m.mp(sp){
+    font-size: 7px;
   }
 }
 

@@ -1,3 +1,5 @@
+- unless admin_signed_in?
+  - count = current_user.passive_notifications.where(checked: false).count
 .sidebar.container-fluid.bg-light.d-flex.flex-column
   .row.main-logo
     #logo.logo.mx-auto
@@ -6,8 +8,12 @@
   - sidebar_main_items.each do |item|
     .row.mx-auto.sidebar__item-wrap
       - if item[:type] == "link"
-        = link_to item[:path], method: item[:method] || nil, class: "sidebar__item-link text-dark" do
+        = link_to item[:path], method: item[:method] || nil, class: "sidebar__item-link text-dark #{item[:border]}" do
           %i.my-auto.col-2{class: item[:logo]}
+          - if item[:text] == "Notice"
+            - unless count == 0
+              %span.rounded-circle.notice-count-side
+                = count
           %span.col-9.offset-1.sidebar_text
             = item[:text]
       - elsif item[:type] == "pup_up"
