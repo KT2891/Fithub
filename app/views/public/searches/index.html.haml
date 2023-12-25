@@ -1,0 +1,26 @@
+.row
+  %h3.col-auto
+    = "#{@word}の検索結果"
+  %p
+    = "#{@search_items_count}件"
+
+- if @category == "user"
+  %table.table
+    %tr
+    %td
+      = link_to user_path(user) do
+        = image_tag user.get_profile_image(50,50), class: "rounded-circle"
+    %td
+      .row
+        = user.name
+      .row.text-secondary
+        - if user.followed_by?(current_user)
+          %p.follow_you_text
+            = t("user-followed-by")
+    %td
+      #follow__wrap
+        = render "public/relationships/btn", user: user
+- else
+  .posts_show#all_posts
+    = render partial: "public/posts/show_post", collection: @show_items, locals: { comment: Comment.new}
+  = paginate @show_items

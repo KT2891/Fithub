@@ -63,6 +63,14 @@ module ApplicationHelper
   def user_sidebar_items
     [
       {
+        logo: "fa-solid fa-magnifying-glass",
+        type: "pup_up",
+        text: "Search",
+        class: "user-serach",
+        toggle: "modal",
+        target: ".searchForm"
+      },
+      {
         logo: "fa-regular fa-pen-to-square",
         type: "link",
         path: posts_path,
@@ -111,7 +119,9 @@ module ApplicationHelper
         logo: "fa-regular fa-hand",
         type: "pup_up",
         text: "Request",
-        class: "user-request"
+        class: "user-request",
+        toggle: "modal",
+        target: ".requestForm"
       },
       {
         logo: "fa-solid fa-arrow-right-from-bracket",

@@ -42,6 +42,11 @@ class User < ApplicationRecord
   def followed_by?(user)
     following.include?(user)
   end
+  
+  # 部分検索用
+  def self.looks(word)
+    User.where("name LIKE?", "%#{word}%")
+  end
 
   # フォローしているユーザーのポストを取得
   def following_posts

@@ -28,7 +28,7 @@
       - if destroy_authenticate?(show_post)
         = link_to destroy_move(show_post), method: :delete, class: "btn col-4 text-center" do
           %span.fa-solid.fa-trash
-  - unless current_page?(posts_path)
+  - unless current_page?(posts_path) || current_page?(searches_path)
     .row.offset-1
       .col-12
         = render "public/comments/form", post: show_post, comment: comment
