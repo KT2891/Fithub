@@ -1,13 +1,13 @@
 .row.my-2
-  = link_to user_path(comment.user), class: "col-3" do
+  = link_to user_path(comment.user), class: "col-lg-8 col-8" do
     = image_tag comment.user.get_profile_image(30,30), class: "rounded-circle"
     = comment.user.name
-  %p.commnet__wrap-body.col-6
-    = comment.body
-  %span.btn.btn-success.mr-4{ id: "reply-btn-#{comment.id}" }
-    = t("reply")
   - if comment.user == current_user
-    = link_to t("destroy"), post_comment_path(comment.post,comment), method: :delete, remote: true, class: "content-end btn btn-sm btn-danger"
+    = link_to t("destroy"), post_comment_path(comment.post,comment), method: :delete, remote: true, class: "offset-2 col-md-auto col-2 my-auto content-end btn btn-danger"
+  %p.commnet__wrap-body.col-6.offset-2
+    = comment.body
+  %span.btn.btn-success.col-md-auto.offset-2.col-2.my-auto{ id: "reply-btn-#{comment.id}" }
+    = t("reply")
 .coutainer.reply__wrap.offset-1{id: "reply__wrap-comment-#{comment.id}"}
   %div{id: "reply__wrap-content-#{comment.id}"}
     = render partial: "public/replies/show_reply", collection: comment.replies, as: "reply"

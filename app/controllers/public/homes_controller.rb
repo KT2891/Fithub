@@ -3,8 +3,9 @@ class Public::HomesController < ApplicationController
     @user = User.new
     @devise_mapping = Devise.mappings[:user]
     @resource_name = :user
-  end
-
-  def about
+    
+    if user_signed_in? || admin_signed_in?
+      redirect_to posts_path
+    end
   end
 end

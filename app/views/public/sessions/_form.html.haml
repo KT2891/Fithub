@@ -1,26 +1,27 @@
 .container-fluid
   .row
-    %h2.mx-auto.text-center
-      = t("log-in")
+    %h2.mx-auto.text-center.mt-2
+      Sign in
+    #login-close-btn.btn.close-wrap
+      %span.fa-solid.fa-xmark.close-btn
   .row
     .error-messages.mx-auto.pr-3.pl-3.rounded#login-error-messages
   .row.mx-auto
     = form_with model: user, url: user_session_path, local: false, id: "login-form", class: "my-1 d-flex justify-content-center" do |f|
       .wrap
         .field.m-3
-          = f.label :email, t("email")
+          = f.label :email, "Email"
           %br
           = f.email_field :email, autocomplete: "username", size: 30
         .field.m-3
-          = f.label :password, t("password")
+          = f.label :password, "Password"
           %br
           = f.password_field :password, autocomplete: "current-password", size: 30
         .text-center.mt-5.mb-2
           = f.submit "Login", class: 'btn btn-lg btn-primary'
         %br
-        .row.register-link
-          %p.offset-2
-            = link_to t("guest"), users_guest_sign_in_path, method: :post, class: "btn btn-sm btn-secondary text-light"
-          %p.offset-2
-            新規登録は
-            = link_to t("regstration-link"), new_user_registration_path, class: "btn btn-sm btn-success text-light"
+        .row.justify-content-around
+          %p
+            = link_to "Guest", users_guest_sign_in_path, method: :post, class: "btn btn-sm btn-secondary text-light"
+          %p
+            = link_to "Sign up", new_user_registration_path, class: "btn btn-sm btn-success text-light"

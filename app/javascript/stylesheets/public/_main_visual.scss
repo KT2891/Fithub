@@ -80,7 +80,17 @@
     font-size: 20px;
   }
 }
-
+.main__login-form{
+  z-index: 10;
+  top: 100px;
+  right: 7%;
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+  color: white;
+  background-color: #404040;
+  border-radius: 20px;
+}
 .top__main{
   background-image: url($main-background);
   background-size: cover;
@@ -91,16 +101,6 @@
     border-left: 2px solid gray;
     border-top: 2px solid gray;
     padding: 10px;
-  }
-  .main__form-wrap{
-    margin-top: 100px;
-    opacity: 0;
-    pointer-events: none;
-    .main__login-form{
-    color: white;
-    background-color: #404040;
-    border-radius: 20px;
-    }
   }
   .error-messages{
     background-color: rgba(255, 0, 0, 0.5);
@@ -229,4 +229,8 @@
     height: 60px;
     width: 60px;
   }
+}
+
+.pagination{
+  opacity: 0;
 }

@@ -13,46 +13,28 @@ module Public::UsersHelper
     user.birthday.nil? ? 1 : user.birthday.day
   end
 
-  def link_items
-    if @user == current_user
-      current_user_link_items
-    else
-      other_user_link_items
-    end
-  end
-
   def current_user_link_items
     [
       {
-        type: "ajax",
-        text: t("post")
-      },
-      {
-        type: "ajax",
-        text: t("commnet")
-      },
-      {
-        type: "link",
         path: training_sets_path,
-        text: t("my-training")
+        text: t("my-training"),
+        class: "btn btn-primary"
       },
       {
-        type: "link",
         path: body_compositions_path,
-        text: "My Body"
-      }
-    ]
-  end
-
-  def other_user_link_items
-    [
+        text: "My Body",
+        class: "btn btn-primary"
+      },      
       {
-        type: "ajax",
-        text: t("post")
+        path: edit_user_path,
+        text: t("edit"),
+        class: "btn btn-success"
       },
       {
-        type: "ajax",
-        text: t("commnet")
+        path: destroy_user_session_path,
+        text: "Log Out",
+        class: "btn btn-danger",
+        method: :delete
       }
     ]
   end

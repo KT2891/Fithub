@@ -52,8 +52,7 @@ class Public::TrainingDetailsController < ApplicationController
       if check_count_params_present?(params[:weights][count], params[:counts][count])
         @training_detail.training_counts.create(
           weight: params[:weights][count].to_i,
-          count: params[:counts][count].to_i,
-          memo: params[:memos][count]
+          count: params[:counts][count].to_i
         )
       else
         return

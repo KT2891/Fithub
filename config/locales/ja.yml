@@ -58,7 +58,7 @@ ja:
   success-update-message: 会員情報を更新しました
   error-update-message: 更新に失敗しました
   create-today-training: 本日のトレーニング
-  weight: 重さ
+  training-weight: 重さ
   count: 回数
   memo: メモ
   training-menu: トレーニングメニュー
@@ -68,7 +68,7 @@ ja:
   add-set: セットを追加
   body_fat: 体脂肪率
   weight: 体重
-  unfollow: フォロー解除
+  unfollow: 解除
   follow: フォロー
   follower: フォロワー
   success-follow: フォローしました
