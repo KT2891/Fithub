@@ -1,11 +1,9 @@
 .row
   %h3.col-auto
     = "#{@word}の検索結果"
-  %p
-    = "#{@search_items_count}件"
 
 - if @category == "user"
-  %table.col-10.mx-auto.mt-5.border-top
+  %table.col-10.mx-auto.border-top
     %tbody
       = render partial: "public/relationships/show", collection: @show_items, as: "user"
 - else

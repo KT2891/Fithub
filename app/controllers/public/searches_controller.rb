@@ -3,7 +3,6 @@ class Public::SearchesController < ApplicationController
     @word = params[:word]
     @category = params[:category]
     search_items
-    @search_items_count = @search_items.count
   end
 
   private
