@@ -37,6 +37,7 @@ ja:
   password: パスワード
   log-in: ログイン
   log-in-error-message: ログインに失敗しました
+  log-in-user-quit: 退会済みです。復帰の場合は問い合わせから連絡してください。
   regstration-link: こちら
   post-submit-text: 投稿
   post-success-message: 投稿しました

@@ -3,6 +3,7 @@
 @use "./global/layout";
 @use "./global/top";
 @use "./global/header";
+@use "./global/error";
 @use "./admin/session_form";
 @use "./public/mixin" as m;
 @use "./public/main_visual";

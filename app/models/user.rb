@@ -48,23 +48,6 @@ class User < ApplicationRecord
     Post.where(user_id: following_ids)
   end
 
-  # ステータスが0(active)のユーザーのみログイン可能
-  def active_for_authentication?
-    super && self.status == "active"
-  end
-
-  # カスタムメッセージを提供する場合（任意）
-  def inactive_message
-    case self.status
-    when "active"
-      super
-    when "quit"
-      :not_active
-    when "block"
-      :blocked
-    end
-  end
-
   def guest?
     email != GUEST_USER_EMAIL
   end

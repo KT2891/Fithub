@@ -6,6 +6,7 @@ class Admin::TrainingMenusController < ApplicationController
 
   def new
     @training_menu = TrainingMenu.new
+    @training_menu.training_parts.build
   end
 
   def create
