@@ -17,17 +17,20 @@
       #flash
         = render "layouts/notification"
     .main
-      - unless sidebar_nothing? || !user_signed_in? && !admin_signed_in?
-        .container
-          .row
-            .header__wrap.DownMove.col-12
-              = render "layouts/header"
-            .sidebar__wrap.col-lg-3.col-md-2
-              = render "layouts/sidebar"
-            .content__wrap.col-lg-9.col-md-10
-              = yield
-            .footer__wrap.col-12
-              = render "layouts/footer"
-        = render "public/requests/form"
-      - else
+      - if controller.controller_name == 'errors'
         = yield
+      - else
+        - unless sidebar_nothing? || !user_signed_in? && !admin_signed_in?
+          .container
+            .row
+              .header__wrap.DownMove.col-12
+                = render "layouts/header"
+              .sidebar__wrap.col-lg-3.col-md-2
+                = render "layouts/sidebar"
+              .content__wrap.col-lg-9.col-md-10
+                = yield
+              .footer__wrap.col-12
+                = render "layouts/footer"
+          = render "public/requests/form"
+        - else
+          = yield

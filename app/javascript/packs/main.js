@@ -219,11 +219,11 @@ $(document).on("turbolinks:load", function() {
 })
 
 window.addEventListener('load', function() {
-    // 3秒後に要素を非表示にする
+    // 2秒後に要素を非表示にする
     setTimeout(function() {
         var primaryElement = document.querySelector('.primary');
         if (primaryElement) {
             primaryElement.style.display = 'none';
         }
-    }, 3000); // 3000ミリ秒（3秒）後に実行
+    }, 2000); // 2000ミリ秒（2秒）後に実行
 });

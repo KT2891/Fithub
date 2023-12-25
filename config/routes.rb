@@ -73,5 +73,7 @@ Rails.application.routes.draw do
     # 通報の確認
     resources :reports, only: %i[index update]
   end
-
+  # エラー発生時
+  get '*path', controller: 'public/errors', action: 'render_404', constraints: lambda { |req| !(req.path =~ /\.(jpg|jpeg|png|gif|...)$/i) }
+  post '*path', controller: 'public/errors', action: 'render_500', constraints: lambda { |req| !(req.path =~ /\.(jpg|jpeg|png|gif|...)$/i) }
 end

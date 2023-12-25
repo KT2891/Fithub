@@ -4,7 +4,7 @@
       = f.label :name, t("training"), class: "col-3 offset-1"
       = f.text_field :name, placeholder: t("training"), class: "col-4 offset-1"
     .row.mb-3
-      = f.label :training_part, t("body_part"), class: "col-3 offset-1"
+      = f.label :training_parts, t("body_part"), class: "col-3 offset-1"
       = f.fields_for :training_parts do |i|
         = i.select :training_part,
         TrainingPart.training_parts.keys.map{ |k| [t("enums.training_part.training_part.#{k}"), k] },
