@@ -1,14 +1,15 @@
-%tr
-  %td
-    = link_to user_path(user) do
-      = image_tag user.get_profile_image(50,50), class: "rounded-circle"
-  %td
-    .row
-      = user.name
-    .row.text-secondary
-      - if user.followed_by?(current_user)
-        %p.follow_you_text
-          = t("user-followed-by")
-  %td
-    #follow__wrap
-      = render "public/relationships/btn", user: user
+- if user.status == "active"
+  %tr
+    %td
+      = link_to user_path(user) do
+        = image_tag user.get_profile_image(50,50), class: "rounded-circle"
+    %td
+      .row
+        = user.name
+      .row.text-secondary
+        - if user.followed_by?(current_user)
+          %p.follow_you_text
+            = t("user-followed-by")
+    %td
+      #follow__wrap
+        = render "public/relationships/btn", user: user
