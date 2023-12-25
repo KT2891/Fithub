@@ -1,5 +1,6 @@
 class Admin::TrainingMenusController < ApplicationController
-  before_action :set_training_menu, only: %i[edit update destroy]
+  before_action :set_training_menu, only: %i[status_update edit update destroy]
+  
   def index
     @training_menus = TrainingMenu.with_training_part
   end
@@ -21,6 +22,11 @@ class Admin::TrainingMenusController < ApplicationController
   end
 
   def edit
+  end
+  
+  def status_update
+    @training_menu.update(training_menu_params)
+    redirect_to admin_training_menus_path, notice: "ステータスを更新しました"
   end
 
   def update

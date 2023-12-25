@@ -70,6 +70,7 @@ Rails.application.routes.draw do
     resources :users, only: %i[index show edit update]
     # トレーニングメニューの追加
     resources :training_menus, except: :show
+    patch "training_menu/update_status/:id" => "training_menus#status_update", as: "status_update"
     # お問い合わせの確認、既読への編集
     resources :requests, only: %i[index update]
     # 通報の確認

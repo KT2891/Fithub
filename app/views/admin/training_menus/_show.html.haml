@@ -17,7 +17,7 @@
     = active_text(training_menu)
 
 
-= form_with model: training_menu, url: admin_training_menu_path(training_menu), method: :patch do |f|
+= form_with model: training_menu, url: admin_status_update_path(training_menu), method: :patch do |f|
   .modal.fade{id: "trainingMenu#{training_menu.id}", tabindex: "-1", role: "dialog", 'aria-labelledby': "trainingMenuLabel", 'aria-hidden': "true" }
     .modal-dialog{ role: "document" }
       .modal-content
