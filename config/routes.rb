@@ -76,6 +76,6 @@ Rails.application.routes.draw do
     resources :reports, only: %i[index update]
   end
   # エラー発生時
-  get '*path', controller: 'public/errors', action: 'render_404', constraints: lambda { |req| !(req.path =~ /\.(jpg|jpeg|png|gif|...)$/i) }
+  match "*path", to: "public/errors#render_404", via: :all, constraints: lambda { |req| !(req.path =~ /\.(jpg|jpeg|png|gif)$/i) && !req.path.include?("rails/active_storage") }
   post '*path', controller: 'public/errors', action: 'render_500', constraints: lambda { |req| !(req.path =~ /\.(jpg|jpeg|png|gif|...)$/i) }
 end
