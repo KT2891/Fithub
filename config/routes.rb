@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     resource :request, only: :create
     # 通知確認画面
     resources :notifications, only: :index
+    resources :searches, only: :index
   end
 
   namespace :admin do

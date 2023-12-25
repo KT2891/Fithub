@@ -17,6 +17,11 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
   
+  # 部分検索用
+  def self.look(word)
+    Post.where("body LIKE?", "%#{word}%")
+  end
+  
   def create_notification_like!(current_user)
     # すでに「いいね」されているか検索
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
