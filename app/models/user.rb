@@ -44,7 +44,7 @@ class User < ApplicationRecord
   end
   
   # 部分検索用
-  def self.looks(word)
+  def self.look(word)
     User.where("name LIKE?", "%#{word}%")
   end
 

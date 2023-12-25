@@ -33,6 +33,6 @@
             - events.each do |event|
               %div
                 = f.radio_button :selected_date, date
-                = image_tag asset_path("dumbbell.png"), size: "50x40", class: "ml-4"
+                = image_tag asset_path("dumbbell.png"), size: "50x40", class: "ml-4 training_icon"
       .row.justify-content-center.mt-3
         = f.submit t("post-submit-text"), class: "btn btn-primary rounded-pill col-lg-1 col-md-3 col-5"
