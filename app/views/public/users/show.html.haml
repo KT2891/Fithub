@@ -2,6 +2,7 @@
 - if @user == current_user
   .row.justify-content-around.p-2.border-bottom
     - current_user_link_items.each do |item|
-      = link_to item[:text], item[:path], method: item[:method] || nil, class: "text-light col-lg-2 col-md-2 col-5 mb-2 #{item[:class]}" 
+      - unless item[:path] == edit_user_path && !current_user.guest?
+        = link_to item[:text], item[:path], method: item[:method] || nil, class: "text-light col-lg-2 col-md-2 col-5 mb-2 #{item[:class]}" 
 .posts_show
   = render partial: "public/posts/show_post", collection: @user.posts, locals: { comment: Comment.new}
