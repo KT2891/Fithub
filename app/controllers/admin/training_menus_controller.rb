@@ -12,7 +12,6 @@ class Admin::TrainingMenusController < ApplicationController
 
   def create
     @training_menu = TrainingMenu.new(training_menu_params)
-    byebug
     if @training_menu.save
       training_part_create
       redirect_to admin_training_menus_path, notice: t("success-create-training")
@@ -46,7 +45,9 @@ class Admin::TrainingMenusController < ApplicationController
   private
 
   def training_part_create
-    @training_menu.training_parts.create(training_part_params)
+    params[:training_part][:training_part].each do |part|
+      @training_menu.training_parts.create(training_part: part)
+    end
   end
 
   def training_menu_params
