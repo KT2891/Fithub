@@ -6,7 +6,8 @@ class Admin::RequestsController < ApplicationController
   end
 
   def update
-    @requset.update(request_params)
+    @request.update(request_params)
+    redirect_to admin_requests_path, notice: "更新しました"
   end
 
   private

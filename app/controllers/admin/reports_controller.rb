@@ -7,7 +7,7 @@ class Admin::ReportsController < ApplicationController
 
   def update
     @report.update(report_params)
-    @reports = Report.order(created_at: :desc)
+    redirect_to admin_reports_path, notice: "更新しました"
   end
 
   private

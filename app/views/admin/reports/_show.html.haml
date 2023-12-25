@@ -12,7 +12,7 @@
     = report.status_i18n
 
 
-= form_with model: report, url: admin_report_path(report), local: false, method: :patch do |f|
+= form_with model: report, url: admin_report_path(report), method: :patch do |f|
   .modal.fade{id: "report#{report.id}", tabindex: "-1", role: "dialog", 'aria-labelledby': "reportLabel", 'aria-hidden': "true" }
     .modal-dialog{ role: "document" }
       .modal-content
