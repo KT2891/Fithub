@@ -119,8 +119,10 @@ document.addEventListener('turbolinks:load', () => {
   const tab3 = document.getElementById('tab3');
   const postBtn1 = document.getElementById('all_posts_btn')
   const postBtn2 = document.getElementById('follow_posts_btn')
+  const postBtn3 = document.getElementById('favorite_posts_btn')
   const postTab1 = document.getElementById('all_posts');
   const postTab2 = document.getElementById('follow_posts');
+  const postTab3 = document.getElementById('favorite_posts');
 
   // btn1とtab1がnullでないか確認
   if (btn1 && tab1) {
@@ -162,8 +164,10 @@ document.addEventListener('turbolinks:load', () => {
     postBtn1.addEventListener('click', () => {
       postTab1.hidden = false;
       postTab2.hidden = true;
+      postTab3.hidden = true;
       postBtn1.classList.add('active');
       postBtn2.classList.remove('active');
+      postBtn3.classList.remove('active');
     });
   }
 
@@ -171,8 +175,20 @@ document.addEventListener('turbolinks:load', () => {
     postBtn2.addEventListener('click', () => {
       postTab1.hidden = true;
       postTab2.hidden = false;
+      postTab3.hidden = true;
       postBtn1.classList.remove('active');
       postBtn2.classList.add('active');
+      postBtn3.classList.remove('active');
+    });
+  }
+  if (postBtn3 && postTab3) {
+    postBtn3.addEventListener('click', () => {
+      postTab1.hidden = true;
+      postTab2.hidden = true;
+      postTab3.hidden = false;
+      postBtn1.classList.remove('active');
+      postBtn2.classList.remove('active');
+      postBtn3.classList.add('active');
     });
   }
 

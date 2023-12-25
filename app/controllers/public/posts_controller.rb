@@ -6,7 +6,9 @@ class Public::PostsController < ApplicationController
     # フォロワーのポストのみ取得
     unless admin_signed_in?
       @follow_posts = current_user.following_posts.with_user_and_images.page(params[:page]).per(5)
+      @favorite_posts = Post.liked_posts(current_user, params[:page], 5)
     end
+    
     # フォーム用インスタンス生成
     @post = Post.new
     @comment = Comment.new

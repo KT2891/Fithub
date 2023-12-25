@@ -7,6 +7,9 @@
     .col-auto.text-center.pointer#follow_posts_btn
       %span
       = t("following")
+    .col-auto.text-center.pointer#favorite_posts_btn
+      %span
+      = t("favorite")
 .posts_show#all_posts
   = render partial: "public/posts/show_post", collection: @posts, locals: { comment: @comment}
 = paginate @posts
@@ -14,3 +17,7 @@
   .following_post_show#follow_posts{hidden: true}
     = render partial: "public/posts/show_post", collection: @follow_posts, locals: { comment: @comment}
   = paginate @follow_posts
+- unless admin_signed_in?
+  .favorite_post_show#favorite_posts{hidden: true}
+    = render partial: "public/posts/show_post", collection: @favorite_posts, locals: { comment: @comment}
+  = paginate @favorite_posts

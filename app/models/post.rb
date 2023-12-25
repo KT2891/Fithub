@@ -22,6 +22,14 @@ class Post < ApplicationRecord
     Post.where("body LIKE?", "%#{word}%")
   end
   
+  def self.liked_posts(user, page, per_page) # 1. モデル内での操作を開始
+    includes(:favorites) # 2. post_favorites テーブルを結合
+    .where(favorites: { user_id: user.id }) # 3. ユーザーがいいねしたレコードを絞り込み
+    .order(created_at: :desc) # 4. 投稿を作成日時の降順でソート
+    .page(page) # 5. ページネーションのため、指定ページに表示するデータを選択
+    .per(per_page)
+  end
+  
   def create_notification_like!(current_user)
     # すでに「いいね」されているか検索
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
