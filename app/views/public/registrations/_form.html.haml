@@ -1,33 +1,32 @@
-.container-fluid
-  .row
-    %h2.mx-auto.text-center.mt-2
-      Sign Up
-    #signup-close-btn.btn.close-wrap
-      %span.fa-solid.fa-xmark.close-btn
-  .row
-    .error-messages.mx-auto.pr-3.pl-3.rounded#registration-error-messages
-  .row.mx-auto
-    = form_with model: user, url: user_registration_path, id: "signup-form", class: "my-1 d-flex justify-content-center" do |f|
-      .wrap
-        .field.m-3
-          = f.label :name, "Name"
-          %br
-          = f.text_field :name, autocomplete: "username", size: 30
-        .field.m-3
-          = f.label :email, "Email"
-          %br
-          = f.email_field :email, autocomplete: "username", id: "user_registration_email", size: 30
-        .field.m-3
-          = f.label :password, "Password(6文字以上)"
-          %br
-          = f.password_field :password, autocomplete: "current-password", id: "user_registration_password", size: 30
-        .field.m-3
-          = f.label :password_confirmation, "Password(確認用)"
-          %br
-          = f.password_field :password_confirmation, autocomplete: "current-password", id: "user_registration_password_confirmation", size: 30
-        .text-center.mt-5.mb-2
-          = f.submit "Login", class: 'btn btn-lg btn-primary'
+.row
+  %h2.mx-auto.text-center.mt-2
+    Sign Up
+  #signup-close-btn.btn.close-wrap
+    %span.fa-solid.fa-xmark.close-btn
+.row
+  .error-messages.mx-auto.pr-3.pl-3.rounded#registration-error-messages
+.row.mx-auto
+  = form_with model: user, url: user_registration_path, id: "signup-form", class: "my-1 d-flex justify-content-center" do |f|
+    .wrap
+      .field.m-3
+        = f.label :name, "Name"
         %br
-        .row.justify-content-center
-          %p
-            = link_to "Guest", users_guest_sign_in_path, method: :post, class: "btn btn-sm btn-secondary text-light"
+        = f.text_field :name, autocomplete: "username", size: 30
+      .field.m-3
+        = f.label :email, "Email"
+        %br
+        = f.email_field :email, autocomplete: "username", id: "user_registration_email", size: 30
+      .field.m-3
+        = f.label :password, "Password(6文字以上)"
+        %br
+        = f.password_field :password, autocomplete: "current-password", id: "user_registration_password", size: 30
+      .field.m-3
+        = f.label :password_confirmation, "Password(確認用)"
+        %br
+        = f.password_field :password_confirmation, autocomplete: "current-password", id: "user_registration_password_confirmation", size: 30
+      .text-center.mt-5.mb-2
+        = f.submit "Login", class: 'btn btn-lg btn-primary'
+      %br
+      .row.justify-content-center
+        %p
+          = link_to "Guest", users_guest_sign_in_path, method: :post, class: "btn btn-sm btn-secondary text-light"
