@@ -18,12 +18,12 @@
             = render partial: "public/posts/show_training", collection: show_post.training_set.training_details, as: :detail
       .row.mb-2
         - unless admin_signed_in?
-          .btn.col-3.offset-1.text-center{id:"comment__wrap-#{show_post.id}", "data-toggle": "modal", "data-target": "#commentWrap#{show_post.id}"}
+          .btn.col-3.offset-1.text-center{id:"comment__wrap-#{show_post.id}", "data-toggle": "modal", "data-target": ".commentWrap#{show_post.id}"}
             = render "public/comments/count", post: show_post
           .col-3.text-center{id: "favorite__wrap-#{show_post.id}"}
             = render "public/favorites/btn", post: show_post
           - if show_post.user != current_user
-            .btn.col-4{"data-toggle": "modal", "data-target": "#reportWrap#{show_post.id}"}
+            .btn.col-4{"data-toggle": "modal", "data-target": ".reportWrap#{show_post.id}"}
               %span.fa-solid.fa-triangle-exclamation.col-3
               = t("report")
         - if destroy_authenticate?(show_post)
