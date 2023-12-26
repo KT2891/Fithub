@@ -17,11 +17,11 @@
           %span.nav-link.signup-btn Sign up
 / Masthead
 %header.masthead
+  .main__login-form.main__form
+    = render "public/sessions/form", user: @user
+  .main__signup-form.main__form
+    = render "public/registrations/form", user: @user
   .container
-    .main__login-form.main__form
-      = render "public/sessions/form", user: @user
-    .main__signup-form.main__form
-      = render "public/registrations/form", user: @user
     .masthead-subheading Welcome To FitHub!
     .masthead-heading.text-uppercase It's Nice To Meet You
     %span.btn.btn-primary.btn-xl.text-uppercase.login-btn.mr-2 Sign in
