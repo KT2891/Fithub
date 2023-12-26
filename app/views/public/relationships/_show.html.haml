@@ -1,15 +1,15 @@
 - if user.status == "active"
-  %tr
-    %td.col-2
+  .row
+    .col-2
       = link_to user_path(user) do
         = image_tag user.get_profile_image(50,50), class: "rounded-circle user_image"
-    %td.col-lg-7.col-5
+    .col-lg-7.col-5
       .row
         = user.name
       .row.text-secondary
         - if user.followed_by?(current_user)
           %p.follow_you_text
             = t("user-followed-by")
-    %td.col-lg-3.col-5
-      .follow__wrap{class: "follow__wrap#{user.id}"}
+    .col-lg-3.col-5.my-auto
+      .follow__wrap.text-center{class: "follow__wrap#{user.id}"}
         = render "public/relationships/btn", user: user
