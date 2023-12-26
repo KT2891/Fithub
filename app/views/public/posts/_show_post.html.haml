@@ -37,7 +37,7 @@
         .col-12
           .container-fluid{id: "comment__wrap-content-#{show_post.id}"}
             = render partial: "public/comments/show_comment", collection: show_post.comments, as: :comment
-    - unless admin_signed_in?
-      - if current_page?(posts_path)
-        = render "public/comments/modal", post: show_post, comment: comment
-      = render "public/reports/modal", post: show_post, report: Report.new
+- unless admin_signed_in?
+  - if current_page?(posts_path)
+    = render "public/comments/modal", post: show_post, comment: comment
+  = render "public/reports/modal", post: show_post, report: Report.new
