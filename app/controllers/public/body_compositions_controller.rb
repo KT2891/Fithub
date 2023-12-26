@@ -55,7 +55,7 @@ class Public::BodyCompositionsController < ApplicationController
     data = (type == :weight) ? Weight : BodyFat
     # 各パラメータからデータを取得
     record = data.find_by(user_id: current_user.id, date: day, day_or_night: period)
-    record&.send(type
+    record&.send(type)
   end
 
   # グラフのX軸用のデータ作成
