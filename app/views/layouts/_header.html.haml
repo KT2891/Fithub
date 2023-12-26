@@ -5,16 +5,17 @@
     = link_to root_path, class: "my-auto col-auto text-light" do
       %h3.header-logo
         = image_tag asset_path("nav-image.png")
-    - unless admin_signed_in?
-      .col-auto
-        = link_to notifications_path do
+    .col-auto
+      .btn
+        %spam.fa-solid.fa-magnifying-glass.header-item{"data-toggle": "modal", "data-target": ".searchForm"}
+      - unless admin_signed_in?
+        = link_to notifications_path, class: "mr-2" do
           %i.btn.fa-regular.fa-bell.header-item
           - unless count == 0
             %span.rounded-circle.notice-count
               = count
         = link_to user_path(current_user) do
           = image_tag current_user.get_profile_image(30,30), class: "rounded-circle"
-    - else
-      .col-auto
+      - else
         = link_to destroy_admin_session_path, method: :delete do
           %span.fa-solid.fa-arrow-right-from-bracket.header-item
