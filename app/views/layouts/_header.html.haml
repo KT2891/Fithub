@@ -18,4 +18,5 @@
           = image_tag current_user.get_profile_image(30,30), class: "rounded-circle"
       - else
         = link_to destroy_admin_session_path, method: :delete do
-          %span.fa-solid.fa-arrow-right-from-bracket.header-item
+          .btn
+            %span.fa-solid.fa-arrow-right-from-bracket.header-item

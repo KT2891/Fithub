@@ -2,25 +2,23 @@ class Public::BodyCompositionsController < ApplicationController
   def index
     @weight = Weight.new
     @body_fat = BodyFat.new
-
+    # グラフ用データ取得
     @weights_by_week = get_data(:weight)
     @body_fats_by_week = get_data(:body_fat)
     @week_by_night_and_morning = get_day_of_week_morning_and_night
-
   end
 
   def create
+    # 各データがすでにある場合は更新で、ない場合は作成
     create_or_update_data(:weight)
     create_or_update_data(:body_fat)
     redirect_to body_compositions_path, notice: t("success-save-message")
   end
 
-  def edit
-  end
-
   private
 
   def create_or_update_data(type)
+    # データを朝と夜に対してそれぞれ作成もしくは更新
     [0, 1].each do |i|
       data = find_data(type, i)
       attributes = (type == :weight) ? { weight: params[:body][:weights][i] } : { body_fat: params[:body][:fats][i] }
@@ -51,13 +49,19 @@ class Public::BodyCompositionsController < ApplicationController
 
     line_chart_data
   end
-
+  # 
   def get_data_for_day_and_period(type, day, period)
+    # typeの値から取得先のモデル指定
     data = (type == :weight) ? Weight : BodyFat
-    record = data.where(user_id: current_user.id, date: day, day_or_night: period).first
-    record&.send(type) # weight or body_fat
+    # 各パラメータからデータを取得
+    record = data.find_by(user_id: current_user.id, date: day, day_or_night: period)
+    record&.send(type
   end
 
+  # グラフのX軸用のデータ作成
+  # [MM/DD 朝, 夜, MM/DD 朝, 夜, ...]
+  # 今日から1週間前までを取得
+  # 機能拡張の際は選択した日からに変える
   def get_day_of_week_morning_and_night
     week_of_day = []
     days = [*Date.current - 1.week .. Date.current]

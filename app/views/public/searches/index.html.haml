@@ -1,11 +1,9 @@
 .row
-  %h3.col-auto
+  %h3.col-auto.mx-auto
     = "#{@word}の検索結果"
-
 - if @category == "user"
-  %table.col-10.mx-auto.border-top
-    %tbody
-      = render partial: "public/relationships/show", collection: @show_items, as: "user"
+  .col-10.mx-auto.border-top
+    = render partial: "public/relationships/show", collection: @show_items, as: "user"
 - else
   .posts_show#all_posts
     = render partial: "public/posts/show_post", collection: @show_items, locals: { comment: Comment.new}

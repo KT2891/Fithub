@@ -9,7 +9,9 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
+    @comment = Comment.find(params[:id])
+    # コメント投稿者とログインユーザが一致した場合のみ削除可能
+    @comment.destroy if @comment.user == current_user
     @comments = @post.comments
   end
 
