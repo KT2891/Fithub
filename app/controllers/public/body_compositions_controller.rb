@@ -32,8 +32,8 @@ class Public::BodyCompositionsController < ApplicationController
   end
 
   def find_data(type, period)
-    klass = (type == :weight) ? Weight : BodyFat
-    klass.find_by(user_id: current_user.id, date: params[:weight][:date], day_or_night: period)
+    class_data = (type == :weight) ? Weight : BodyFat
+    class_data.find_by(user_id: current_user.id, date: params[:weight][:date], day_or_night: period)
   end
 
   def get_data(type)
