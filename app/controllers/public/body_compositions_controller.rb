@@ -35,7 +35,7 @@ class Public::BodyCompositionsController < ApplicationController
     class_data = (type == :weight) ? Weight : BodyFat
     class_data.find_by(user_id: current_user.id, date: params[:weight][:date], day_or_night: period)
   end
-
+  
   def get_data(type)
     line_chart_data = []
     base_days = [*Date.current - 1.week .. Date.current]

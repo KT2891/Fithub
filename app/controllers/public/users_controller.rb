@@ -9,7 +9,7 @@ class Public::UsersController < ApplicationController
 
   def edit
     if !@user.guest?
-      redirect_to user_path(@user), alert: "ゲストユーザーはプロフィール編集を行えません。"
+      redirect_to user_path(@user), alert: t("error-guest-edit")
     end
   end
 
