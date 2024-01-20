@@ -29,11 +29,9 @@
 - 日々のトレーニング成果の管理と分析がしたい時
 ​
 ## 設計書
-![FIthub drawio](https://github.com/KT2891/Fithub/assets/132236070/3bb908ab-3139-4f23-a25c-5dab93d2a4c2)
+![FIthub drawio](https://github.com/KT2891/java_practice/assets/132236070/11394696-cd36-4a8e-b1ae-ec9b83af8fa3)
 
 ![遷移図](https://github.com/KT2891/Fithub/assets/132236070/726abf2d-7b8e-4af5-b43a-8b95da33ac28)
-
-[ワイヤーフレーム.pdf](https://github.com/KT2891/Fithub/files/13556647/default.pdf)
 
 ## 実装機能
 - 初期実装
