@@ -8,9 +8,12 @@ class User < ApplicationRecord
 
   enum status: { active: 0, quit: 1, block: 2 }
 
-  # validate :password_must_contain_letter
-
-
+  validates :name, presence: true,
+                   length: { maximum: 20}
+  validates :sex, inclusion: { in: [0, 1, 2]}
+  validates :share_parmission, inclusion: { in: [0,1,2] }
+  validates :introduction, length: { maximum: 150 }
+  
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy

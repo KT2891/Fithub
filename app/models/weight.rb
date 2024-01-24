@@ -1,5 +1,7 @@
 class Weight < ApplicationRecord
+  
+  validates :weight, presence: true
+  
   belongs_to :user
 
-  validates :weight, presence: true
 end

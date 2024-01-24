@@ -1,4 +1,8 @@
 class Post < ApplicationRecord
+  
+  validates :user_id, presence: true
+  validates :body, length: { maximum: 200 }
+  
   belongs_to :user
   belongs_to :training_set, optional: true
   belongs_to :parent, class_name: 'Post', optional: true

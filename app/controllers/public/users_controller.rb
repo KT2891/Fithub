@@ -8,7 +8,7 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
-    if !@user.guest?
+    unless @user.guest?
       redirect_to user_path(@user), alert: t("error-guest-edit")
     end
   end
@@ -47,7 +47,8 @@ class Public::UsersController < ApplicationController
     # IDでユーザを検索
     @user = User.find(params[:id])
   end
-
+  
+  # 誕生日更新
   def update_birthday
     return unless birthday_present?
     birthday_info = to_date(params[:user][:birth_year].to_i, params[:user][:birth_month].to_i, params[:user][:birth_day].to_i)
@@ -59,12 +60,13 @@ class Public::UsersController < ApplicationController
       return
     end
   end
-
+  
+  # 生年月日のフィールドが存在するか確認
   def birthday_present?
-    # 生年月日のフィールドが存在するか確認
     params[:user][:birth_year].present? && params[:user][:birth_month].present? && params[:user][:birth_day].present?
   end
 
+  # 誕生日を存在する日付か確認
   def to_date(year, month, day)
     if Date.valid_date?(year, month, day)
       date = Date.new(year, month, day)

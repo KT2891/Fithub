@@ -62,10 +62,7 @@ class Public::TrainingDetailsController < ApplicationController
 
   # データの個数確認
   def get_count_param_length
-    length = [
-      params[:weights].length,
-      params[:counts].length
-      ].max
+    [params[:weights].length, params[:counts].length].max
   end
 
   # ログインしているユーザを変数に格納

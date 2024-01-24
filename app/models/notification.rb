@@ -1,5 +1,7 @@
 class Notification < ApplicationRecord
+  
   default_scope -> { order(created_at: :desc) }
+  
   belongs_to :post, optional: true
   belongs_to :comment, optional: true
   belongs_to :reply, class_name: "Comment", foreign_key: "reply_id", optional: true

@@ -1,6 +1,7 @@
 class Public::RepliesController < ApplicationController
   before_action :set_post, only: %i[create destroy]
   before_action :set_comment, only: %i[create destroy]
+  
   def create
     @reply = current_user.comments.new(reply_params)
     @reply.parent_id = @comment.id
@@ -18,7 +19,7 @@ class Public::RepliesController < ApplicationController
   def reply_params
     params.require(:comment).permit(:body)
   end
-
+  
   def set_post
     @post = Post.find(params[:post_id])
   end

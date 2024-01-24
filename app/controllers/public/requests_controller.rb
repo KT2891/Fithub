@@ -7,6 +7,7 @@ class Public::RequestsController < ApplicationController
   end
 
   private
+  # ストロングパラメータ設定
   def request_params
     params.require(:request).permit(:user_id, :email, :title, :body)
   end
