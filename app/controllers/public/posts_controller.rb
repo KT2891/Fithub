@@ -1,4 +1,7 @@
 class Public::PostsController < ApplicationController
+  
+  
+  
   def index
     # 全てのポスト取得
     # ページネーション1ページ5件
@@ -29,7 +32,7 @@ class Public::PostsController < ApplicationController
     if post.save
       redirect_to posts_path, notice: t("post-success-message")
     else
-      render :index, alert: t("post-error-message")
+      redirect_to posts_path, alert: t("post-error-message")
     end
   end
 
