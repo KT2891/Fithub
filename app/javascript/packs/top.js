@@ -16,7 +16,7 @@ document.addEventListener('turbolinks:load', () => {
       }
     });
   }
-  const registrationForm = document.querySelector('#registration-form');
+  const registrationForm = document.querySelector('#signup-form');
   if (registrationForm) {
     registrationForm.addEventListener('ajax:error', (event) => {
       const [data, status, xhr] = event.detail;

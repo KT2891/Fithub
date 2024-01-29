@@ -7,7 +7,7 @@
   .row
     .error-messages.mx-auto.pr-3.pl-3.rounded#registration-error-messages
   .row.justify-content-center
-    = form_with model: user, url: user_registration_path, id: "signup-form", class: "my-1 d-flex justify-content-center" do |f|
+    = form_with model: user, url: user_registration_path, local: false, id: "signup-form", class: "my-1 d-flex justify-content-center" do |f|
       .wrap
         .field.m-3
           = f.label :name, "Name"

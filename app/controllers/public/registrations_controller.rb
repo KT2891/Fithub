@@ -11,7 +11,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource(sign_up_params)
-
+    
     resource.save
     yield resource if block_given?
 
@@ -31,7 +31,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
       # 登録失敗時の処理
       respond_to do |format|
         format.json { render json: { errors: resource.errors.full_messages }, status: :unprocessable_entity }
-        format.html { render 'user/homes/top' }
+        format.html { render 'public/homes/top' }
       end
     end
   end

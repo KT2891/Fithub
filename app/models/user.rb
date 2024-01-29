@@ -11,7 +11,6 @@ class User < ApplicationRecord
   validates :name, presence: true,
                    length: { maximum: 20}
   validates :sex, inclusion: { in: [0, 1, 2]}
-  validates :share_parmission, inclusion: { in: [0,1,2] }
   validates :introduction, length: { maximum: 150 }
   
 
