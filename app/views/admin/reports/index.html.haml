@@ -10,3 +10,4 @@
       %th 状態
   %tbody#report__wrap
     = render partial: "admin/reports/show", collection: @reports, as: "report"
+= render partial: "admin/reports/modal", collection: @reports, as: "report"
