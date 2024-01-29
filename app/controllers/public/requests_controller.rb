@@ -2,8 +2,12 @@ class Public::RequestsController < ApplicationController
   before_action :authenticate_user!, except: :create
   
   def create
-    Request.create(request_params)
-    redirect_to request.referer, notice: t("success-request")
+    request = Request.new(request_params)
+    if request.save
+      redirect_to request.referer, notice: t("success-request")
+    else
+      redirect_to root_path, alert: t("error-request")
+    end
   end
 
   private

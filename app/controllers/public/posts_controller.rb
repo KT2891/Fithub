@@ -1,7 +1,5 @@
 class Public::PostsController < ApplicationController
   
-  
-  
   def index
     # 全てのポスト取得
     # ページネーション1ページ5件

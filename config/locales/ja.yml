@@ -86,6 +86,7 @@ ja:
   text: 本文
   title: タイトル
   success-request: リクエストを送信しました
+  error-request: リクエスト送信に失敗しました
   admin-sign-in: 管理者ログイン
   not-have-authenticate: あなたには権限がありません
   destroy-post: 投稿を削除しました
