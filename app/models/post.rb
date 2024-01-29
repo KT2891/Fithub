@@ -1,10 +1,9 @@
 class Post < ApplicationRecord
   
   validates :user_id, presence: true
-  validates :body, length: { maximum: 200 }
+  validates :body, presence: true, length: { maximum: 200 }
   
-  belongs_to :user
-  belongs_to :training_set, optional: true
+  belongs_to :user  belongs_to :training_set, optional: true
   belongs_to :parent, class_name: 'Post', optional: true
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
